@@ -1,3 +1,4 @@
+using FluentAssertions;
 using Homework_01;
 using System;
 using Xunit;
@@ -13,10 +14,12 @@ namespace HomeworkXUnit
             ITS = new TextSorting();
         }
 
-        [Fact]
-        public void Test1()
+        [Theory]
+        [InlineData("without,hello,bag,world", "bag,hello,without,world")]
+        public void Test1(string text, string expected)
         {
-
+            var result = ITS.SortByAlphabetical(text);
+            result.Should().Be(expected);
         }
     }
 }
