@@ -16,7 +16,7 @@ namespace HomeworkXUnit
 
         [Theory]
         [InlineData("without,hello,bag,world", "bag,hello,without,world")]
-        public void Test1(string text, string expected)
+        public void SortByAlphabeticalShouldWork(string text, string expected)
         {
             var result = ITS.SortByAlphabetical(text);
             result.Should().Be(expected);

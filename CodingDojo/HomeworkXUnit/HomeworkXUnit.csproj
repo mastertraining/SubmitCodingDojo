@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Homework 01\Homework 01.csproj" />
+    <ProjectReference Include="..\Homework 02\Homework 02.csproj" />
   </ItemGroup>
 
 </Project>
