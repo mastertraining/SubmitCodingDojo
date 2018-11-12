@@ -10,7 +10,18 @@ namespace Homework_02
     {
         public string GetFormattedString(string text)
         {
-            throw new NotImplementedException();
+            var textArray = text.Split(',');
+            var StringBuild = new StringBuilder();
+            StringBuild.Append("[");
+            var formatNumberList = new List<string> { };
+            foreach (var StrNumber in textArray)
+            {
+                var formatNumber = double.Parse(StrNumber) * 11;
+                formatNumberList.Add($"\n\t{formatNumber}");
+            }
+            StringBuild.Append(string.Join(",", formatNumberList));
+            StringBuild.Append("\n]");
+            return StringBuild.ToString();
         }
     }
 }
