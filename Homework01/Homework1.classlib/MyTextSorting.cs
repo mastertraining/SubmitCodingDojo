@@ -2,7 +2,7 @@
 
 namespace Homework1.classlib
 {
-    public interface ITextSorting
+    public interface MyTextSorting
     {
         string SortByAlphabetical(string text);
     }
