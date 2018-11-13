@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using homework01.lib;
 
 namespace homework01.console
 {
@@ -6,7 +8,13 @@ namespace homework01.console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Input text : ");
+            var text = Console.ReadLine();
+            var sut = new TextSorting();
+            var sort = sut.SortByAlphabetical(text);
+            var builder = new StringBuilder();
+            builder.Append("Result: ").Append(sort);
+            Console.WriteLine(builder);
         }
     }
 }
