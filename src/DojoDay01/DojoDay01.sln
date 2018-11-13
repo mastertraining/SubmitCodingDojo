@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework01.Lib", "Homework01.Lib\Homework01.Lib.csproj", "{F61F8842-F097-4993-B23D-776A25456288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework01.Lib", "Homework01.Lib\Homework01.Lib.csproj", "{F61F8842-F097-4993-B23D-776A25456288}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework01.Lib.Contract", "Homework01.Lib.Contract\Homework01.Lib.Contract.csproj", "{845BF84A-6BFB-4821-9542-BC9AF587F31D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework01.Lib.Contract", "Homework01.Lib.Contract\Homework01.Lib.Contract.csproj", "{845BF84A-6BFB-4821-9542-BC9AF587F31D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DojoDay01.Test", "DojoDay01.Test\DojoDay01.Test.csproj", "{0567DADE-DA39-4F7B-9937-DE0C5DCD2199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DojoDay01.Test", "DojoDay01.Test\DojoDay01.Test.csproj", "{0567DADE-DA39-4F7B-9937-DE0C5DCD2199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework02.Lib", "Homework02.Lib\Homework02.Lib.csproj", "{32469BFD-2CD6-486A-857E-03642862E57B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework02.Lib", "Homework02.Lib\Homework02.Lib.csproj", "{32469BFD-2CD6-486A-857E-03642862E57B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework02.Lib.Contract", "Homework02.Lib.Contract\Homework02.Lib.Contract.csproj", "{30FDC389-506B-460F-897A-32FDC18A5888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Homework02.Lib.Contract", "Homework02.Lib.Contract\Homework02.Lib.Contract.csproj", "{30FDC389-506B-460F-897A-32FDC18A5888}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DojoDay01.Cons", "DojoDay01.Console\DojoDay01.Cons.csproj", "{60BA11C6-FDE0-45AC-BB0E-0A21C325CBB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{30FDC389-506B-460F-897A-32FDC18A5888}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30FDC389-506B-460F-897A-32FDC18A5888}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30FDC389-506B-460F-897A-32FDC18A5888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60BA11C6-FDE0-45AC-BB0E-0A21C325CBB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60BA11C6-FDE0-45AC-BB0E-0A21C325CBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60BA11C6-FDE0-45AC-BB0E-0A21C325CBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60BA11C6-FDE0-45AC-BB0E-0A21C325CBB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
