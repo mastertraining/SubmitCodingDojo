@@ -8,6 +8,9 @@ namespace homework01.test
     {
         [Theory]
         [InlineData("without,hello,bag,world", "bag,hello,without,world")]
+        [InlineData("wheel,house,bat,ant", "ant,bat,house,wheel")]
+        [InlineData("ant,air,ate,aaa", "aaa,air,ant,ate")]
+
         public void Test(string text, string expected)
         {
             {
