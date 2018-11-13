@@ -3,7 +3,7 @@ using Xunit;
 
 namespace homework02.test
 {
-    public class UnitTest1
+    public class TextMultiplierTest
     {
         [Fact]
         public void Test1()
