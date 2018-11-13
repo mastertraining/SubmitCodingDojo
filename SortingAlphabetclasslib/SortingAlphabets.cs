@@ -16,9 +16,6 @@ namespace SortingAlphabetclasslib
             var addcomma = string.Join(",",split);
 
             return addcomma;
-
-
-            
         }
     }
 }
