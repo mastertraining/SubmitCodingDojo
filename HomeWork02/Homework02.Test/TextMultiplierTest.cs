@@ -1,9 +1,8 @@
-﻿using Homework01.Lib;
-using Homework02.Lib;
+﻿using Homework02.Lib;
 using System;
 using Xunit;
 
-namespace DojoDay01.Test
+namespace Homework02.Test
 {
     public class TextMultiplierTest
     {

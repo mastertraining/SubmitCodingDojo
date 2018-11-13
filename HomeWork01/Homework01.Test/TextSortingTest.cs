@@ -2,7 +2,7 @@ using Homework01.Lib;
 using System;
 using Xunit;
 
-namespace DojoDay01.Test
+namespace Homework01.Test
 {
     public class TextSortingTest
     {
