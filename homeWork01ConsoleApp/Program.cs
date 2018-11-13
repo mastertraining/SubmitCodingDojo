@@ -6,7 +6,9 @@ namespace homeWork01ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           var text = new homeWork01();
+          
+            Console.WriteLine();
         }
     }
 }
