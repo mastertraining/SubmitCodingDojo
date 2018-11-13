@@ -8,7 +8,9 @@ namespace Homework1.classlib
     {
         public string SortByAlphabetical(string text)
         {
-           return "";
+            var split_number = text.Split(',');
+            
+            return "";
         }
 
     }
