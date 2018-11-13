@@ -1,14 +1,21 @@
 using System;
+using SortingAlphabetclasslib;
 using Xunit;
 
 namespace SortingAlphabetTest
 {
     public class UnitTest1
     {
-        [Fact]
-        public void Test1()
+        [Theory (DisplayName = "เรียงตัวอักษรใหม่")]
+        [InlineData ("guitar,electon,piano,panda", "electon,guitar,panda,piano")]
+        [InlineData ("guitar,electon,piano,panda,paacda", "electon,guitar,paacda,panda,piano")]
+        public void Test1(string text, string expected)
         {
+            var sut = new SortingAlphabets();
+            var result = sut.SortByAlphabetical(text);
+            Assert.Equal (expected, result);
 
         }
+
     }
 }
