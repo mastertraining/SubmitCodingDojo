@@ -7,7 +7,10 @@ namespace Homework01.Lib
     {
         public string SortByAlphabetical(string text)
         {
-            throw new NotImplementedException();
+            var splittedText = text.Split(",");
+            Array.Sort(splittedText);
+            var result = string.Join(",", splittedText);
+            return result;
         }
     }
 }
