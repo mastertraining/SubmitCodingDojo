@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Text;
+//using Homework2.classlib;
 
-namespace Homework1.console
+namespace Homework2.console
 {
-    class Program
+    class MultiplierProgram
     {
         static void Main(string[] args)
         {
