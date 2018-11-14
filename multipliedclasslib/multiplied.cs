@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace multipliedclasslib
 {
@@ -13,9 +15,15 @@ namespace multipliedclasslib
         {
             //split
             var Split = text.Split(',');
-            // int[] a = int.Parse(Split);
+            //convert && *
+            var convert = Split.Select(x => (int.Parse(x)*11).ToString());
+            //Join ","
+            var addcomma = string.Join(",\n\t",convert);
+            // add []
+            var add = new StringBuilder();
+            add.Append($"[\n{addcomma}\n]");
 
-            return "Split";
+            return add.ToString();
         }
 
     
