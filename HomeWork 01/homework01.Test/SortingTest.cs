@@ -5,7 +5,7 @@ namespace homework01.Test
 {
     public class SortingTest
     {
-        [Theory]
+        [Theory(DisplayName="เรียงตามตัวอักษร")]
         [InlineData("without,hello,bag,world", "bag,hello,without,world")]
         [InlineData("bat,cat,ant,bag", "ant,bag,bat,cat")]
 
