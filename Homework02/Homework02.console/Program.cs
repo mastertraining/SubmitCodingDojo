@@ -8,7 +8,14 @@ namespace Homework02.console
     {
         static void Main(string[] args)
         {
-            var split_number = new StringBuilder();
+
+            System.Console.WriteLine("");
+            string numbers = Console.ReadLine();
+            
+            var numbers_sum = new StringSort();
+            var result = numbers_sum.GetFormattedString(numbers);
+            
+            System.Console.WriteLine(result);
         }
     }
 }

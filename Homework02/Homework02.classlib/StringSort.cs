@@ -27,5 +27,6 @@ namespace Homework02.classlib
 
             return result;
         }
+
     }
 }
