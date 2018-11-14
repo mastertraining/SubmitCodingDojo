@@ -4,7 +4,7 @@ using System.Text;
 
 namespace multipliedclasslib
 {
-    class multiplied : ITextMultiplier
+    public class multiplied : ITextMultiplier
     {
         static void Main(string[] args)
         {
@@ -21,7 +21,7 @@ namespace multipliedclasslib
             var addcomma = string.Join(",\n\t",convert);
             // add []
             var add = new StringBuilder();
-            add.Append($"[\n{addcomma}\n]");
+            add.Append($"[\n\t{addcomma}\n]");
 
             return add.ToString();
         }
