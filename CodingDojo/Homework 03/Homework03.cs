@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Homework_03
@@ -8,7 +9,7 @@ namespace Homework_03
     {
         public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            return text.Select(it => it.ToUpper());
         }
     }
 }
