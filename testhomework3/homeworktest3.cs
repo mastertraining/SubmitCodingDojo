@@ -9,7 +9,7 @@ namespace testhomework3
     public class homeworktest3
     {
         [Theory]
-        [InlineData()]
+        [InlineData("u","U")]
         public void Test1(IEnumerable<string> text, IEnumerable<string> excepted)
         {
             var upper = new workup();

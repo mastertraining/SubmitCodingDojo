@@ -8,7 +8,8 @@ namespace homework3
     {
         public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
         {
-            text = new string []{};
+            int i = int.Parse(Console.ReadLine());
+            text = new string[i];
             var word = text.Select(it=> it.ToUpper());
             return word;
            
