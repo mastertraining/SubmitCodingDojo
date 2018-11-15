@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace hw4ClassLib
 {
@@ -6,7 +8,10 @@ namespace hw4ClassLib
     {
         public string GetDivisibleBy5Text(string text)
         {
-            throw new NotImplementedException();
+            var sprit = text.Split(',');
+            var divBy5 = sprit.Where(it => Convert.ToInt32(it, 2) % 5 == 0).ToArray();
+            var returnText = string.Join(",", divBy5);
+            return returnText;
         }
     }
 }
