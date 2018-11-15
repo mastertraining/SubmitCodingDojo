@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace HomeWork4
 {
-    class Program
+    class Program : IHomework04
     {
-        static void Main(string[] args)
+        public string GetDivisibleBy5Text(string text)
         {
-            Console.WriteLine("Hello World!");
+            List<int> divisibleByFive = new List<int>{};
+            int[] arrInt = Array.ConvertAll(text.Split(','), x => Convert.ToInt32(x, 2));
+            foreach(var val in arrInt) if (val % 5 == 0) divisibleByFive.Add(val);
+            return string.Join(", ", divisibleByFive.Select(x => Convert.ToString(x, 2)));
         }
     }
 }
