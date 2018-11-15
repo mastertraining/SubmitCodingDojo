@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace homework03
@@ -7,7 +8,12 @@ namespace homework03
     {
         public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            var Capitalize = text.ToArray();
+            for (int i = 0; i < Capitalize.Length; i++)
+            {
+                Capitalize[i] = Capitalize[i].ToUpper();
+            }
+            return Capitalize;
         }
     }
 }
