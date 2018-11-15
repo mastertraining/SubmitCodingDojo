@@ -9,14 +9,14 @@ namespace HomeWork4.classlib
         public string GetDivisibleBy5Text(string text)
         {
             var splitString = text.Split(',').ToList();
-            // var listNumber = new List<int>();
-            var listNumber = splitString.Where(elements => Convert.ToInt32(elements,2) % 5 ==0);
-            var result = String.Join(",",listNumber);
-            // splitString.ForEach(it => listNumber.Add(int.Parse(it)));
-            // foreach (var list in listNumber)
-            // {
-
-            // }
+            var listNumber = splitString.Where(elements => Convert.ToInt32(elements,2) % 5 == 0).ToList();
+            string result;
+            if(listNumber.Count() != 0) {
+                result = String.Join(",",listNumber);
+            }
+            else {
+                result = "";
+            }
             return result;
         }
     }

@@ -10,7 +10,12 @@ namespace HomeWork4.console
             Console.Write("Enter 2 digit Number : ");
             string twoDigitNumber = Console.ReadLine();
             var result = hw4ClassLib.GetDivisibleBy5Text(twoDigitNumber);
-            Console.WriteLine(result);
+            if(result != "") {
+               Console.WriteLine(result); 
+            }
+            else {
+                Console.WriteLine("No 2 Digits Number that Devided by 5"); 
+            }
         }
     }
 }
