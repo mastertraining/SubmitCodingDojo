@@ -5,7 +5,7 @@ namespace HomeWork1
 {
     public class Program : ITextSorting
     {
-        string ITextSorting.SortByAlphabetical(string text)
+        public string SortByAlphabetical(string text)
         {
             string[] str = text.Split(','); 
             Array.Sort<string>(str); 
