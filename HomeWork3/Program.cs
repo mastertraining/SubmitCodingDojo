@@ -1,12 +1,12 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace HomeWork3
 {
-    class Program
+    class Program : IHomework03
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
+        { List<string> allupper = new List<string>(){}; foreach(var val in text) allupper.Add(val.ToUpper()); return allupper; }
     }
 }
