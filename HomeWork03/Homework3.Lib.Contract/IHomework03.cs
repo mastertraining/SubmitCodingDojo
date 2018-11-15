@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Homework02.Lib.Contract
+namespace Homework3.Lib.Contract
 {
     public interface IHomework03
     {
