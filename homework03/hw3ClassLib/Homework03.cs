@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace hw3ClassLib
 {
@@ -7,7 +8,8 @@ namespace hw3ClassLib
     {
         public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
         {
-            throw new NotImplementedException();
+            return text.Select(it => it.ToUpper());
         }
     }
 }
+
