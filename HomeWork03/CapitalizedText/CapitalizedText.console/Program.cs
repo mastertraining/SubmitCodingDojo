@@ -21,7 +21,7 @@ namespace CapitalizedText.console
             }
             var wordUpper = svc.CapitalizedText(inputSet);
             Console.WriteLine("Result :");
-            Console.WriteLine(string.Join("\n",wordUpper));
+            Console.WriteLine(string.Join(Environment.NewLine,wordUpper));
         }
     }
 }
