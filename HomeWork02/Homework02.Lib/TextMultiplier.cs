@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using Homework02.Lib.Contract;
 
 namespace Homework02.Lib
 {

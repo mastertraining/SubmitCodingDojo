@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <ProjectReference Include="..\Homework02.Lib.Contract\Homework02.Lib.Contract.csproj" />
+    <ProjectReference Include="..\Homework4.Lib.Contract\Homework4.Lib.Contract.csproj" />
   </ItemGroup>
 
 </Project>
