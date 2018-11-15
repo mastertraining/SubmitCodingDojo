@@ -3,13 +3,14 @@ using System.Linq;
 
 namespace HomeWork1
 {
-    class Program
+    public class Program : ITextSorting
     {
-        static void Main(string[] args)
+        string ITextSorting.SortByAlphabetical(string text)
         {
-            string[] input = Console.ReadLine().Split(','); 
-            Array.Sort<string>(input); 
-            Console.WriteLine(string.Join(',', input));
+            string[] str = text.Split(','); 
+            Array.Sort<string>(str); 
+            return string.Join(',', str);
         }
+
     }
 }
