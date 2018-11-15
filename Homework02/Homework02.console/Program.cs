@@ -14,7 +14,7 @@ namespace Homework02.console
             
             var numbers_sum = new StringSort();
             var result = numbers_sum.GetFormattedString(numbers);
-            
+
             System.Console.WriteLine(result);
         }
     }
