@@ -8,7 +8,6 @@ namespace HomeWork01.lib
     {
         public IEnumerable<string> CapitalizedText(IEnumerable<string> text)
         {
-            //var upper = text.Select(x => x.ToUpper());
             return text;
         }
     }
