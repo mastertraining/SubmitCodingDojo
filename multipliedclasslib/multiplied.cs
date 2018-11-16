@@ -16,7 +16,7 @@ namespace multipliedclasslib
             //split
             var Split = text.Split(',');
             //convert && *
-            var convert = Split.Select(x => (int.Parse(x)*11).ToString());
+            var convert = Split.Select(x => (int.Parse(x)*11));
             //Join ","
             var addcomma = string.Join(",\n\t",convert);
             // add []
