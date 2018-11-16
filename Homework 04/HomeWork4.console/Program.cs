@@ -6,15 +6,18 @@ namespace HomeWork4.console
     class Program
     {
         static void Main(string[] args)
-        {   var hw4ClassLib = new HomeWork4Classlib();
+        {
+            var hw4ClassLib = new HomeWork4Classlib();
             Console.Write("Enter 2 digit Number : ");
-            string twoDigitNumber = Console.ReadLine();
+            var twoDigitNumber = Console.ReadLine();
             var result = hw4ClassLib.GetDivisibleBy5Text(twoDigitNumber);
-            if(result != "") {
-               Console.WriteLine(result); 
+            if (result != "")
+            {
+                Console.WriteLine(result);
             }
-            else {
-                Console.WriteLine("No 2 Digits Number that Devided by 5"); 
+            else
+            {
+                Console.WriteLine("No 2 Digits Number that Devided by 5");
             }
         }
     }

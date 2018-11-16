@@ -14,7 +14,7 @@ namespace HomeWork3.console
             var sb = new StringBuilder();
             var listString = new List<string>();
             Console.Write("Enter Count of Input : ");
-            int countInput = int.Parse(Console.ReadLine());
+            var countInput = int.Parse(Console.ReadLine());
             for (int i = 0; i < countInput; i++)
             {   
                 Console.Write("Word {0} :",i + 1);
