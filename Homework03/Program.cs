@@ -43,20 +43,27 @@ namespace demoupper
             // var count = int.Parse(Console.ReadLine());
             // var text = new string[count];
 
-            // //วนลูปเพื่อป้อนค่าแต่ละค่า
+            // // //วนลูปเพื่อป้อนค่าแต่ละค่า
             // for (int i = 0; i < text.Length; i++)
             // {
             //     text[i] = Console.ReadLine();
             // }
 
-            // //เก็บค่าแล้วเลือกตัวนั้นมาทำเป็น 'พิมพ์ใหญ่'
-            // var result = text.Select(it=>it.ToUpper());
 
+            // var input = (Console.ReadLine());
+            // var valid = string.IsNullOrEmpty(input);
+            // while (valid == false)
+            // {
+            // //เก็บค่าแล้วเลือกตัวนั้นมาทำเป็น 'พิมพ์ใหญ่'
+            // var result = input.Select(it => it.ToUpper());
             // //เอาค่านั้นมาแสดง
             // foreach (var item in result)
             // {
             //     System.Console.WriteLine(item);
             // }
+            // }
+
+
 
 
             // //ใส่ค่าทีละตัว

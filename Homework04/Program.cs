@@ -1,12 +1,20 @@
 ﻿using System;
 
-namespace Homework04
+namespace homework04
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Enter your number");
+            var text = Console.ReadLine();
+
+            var sut = new homework04Logic();
+            var result = sut.GetDivisibleBy5Text(text);
+           
+             Console.WriteLine(result);
+                
+            
         }
     }
 }
