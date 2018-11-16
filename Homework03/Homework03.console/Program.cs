@@ -10,7 +10,7 @@ namespace Homework03.console
         {
             List<string> text = new List<string>();
 
-            System.Console.WriteLine("Input String for Upper :");
+            System.Console.WriteLine("Input Line for Text to Upper :");
             int String_Line = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < String_Line; i++)
