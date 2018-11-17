@@ -6,33 +6,53 @@ namespace Homework5
 {
     class Program: IHomework05
     {
-        Dictionary<char, int> g = new Dictionary<char, int>
+        static StringBuilder LEDscreen;
+        Dictionary<char, int> GapsMaper = new Dictionary<char, int>
         {
-            {'1', 1}, {'2', 1},
-            {'3', 1}, {'4', 1},
-            {'5', 1}, {'6', 1},
-            {'7', 1}, {'8', 1},
-            {'9', 1}, {'A', 1},
+            {'1', 1}, {'2', 5},
+            {'3', 9}, {'4', 13},
+            {'5', 17}, {'6', 21},
+            {'7', 25}, {'8', 29},
+            {'9', 33}, {'A', 37},
+            {'a', 37}
         };
-        StringBuilder LEDscreen = new StringBuilder();
+
         static void Main()
         {
             Program prm = new Program();
-            Console.WriteLine(prm.DisplayLEDOnScreen("1"));
+            LEDscreen = ScreenBuilder();
+            while (true)
+            {
+                Console.WriteLine(prm.DisplayLEDOnScreen());
+                Console.Write("Please choose LED to turn On/Off: ");
+                string input = Console.ReadLine();
+                prm.DisplayLEDOnScreen(input);
+            }
         }
-        
+
         static StringBuilder ScreenBuilder() 
         {
-            StringBuilder sb = new StringBuilder("");
-
-            return sb;
+            return new StringBuilder().Insert(0, "[ ]", 10)
+                .Replace("][", "] [").Append("\n")
+                .Append(" 1   2   3   4   5  ")
+                .Append(" 6   7   8   9   A");
         }
+        
         public string DisplayLEDOnScreen(string ledNo = "")
         {
-            this.LEDscreen = ScreenBuilder();
             char idx = (ledNo.Length > 0)? ledNo[0] : ' ';
 
-
+            if (GapsMaper.ContainsKey(idx))
+            {
+                 if (LEDscreen.ToString()[GapsMaper[idx]] == '!')
+                {
+                    LEDscreen.Remove(GapsMaper[idx], 1).Insert(GapsMaper[idx], ' ');
+                }
+                else
+                {
+                    LEDscreen.Remove(GapsMaper[idx], 1).Insert(GapsMaper[idx], '!');
+                }
+            }
 
             return LEDscreen.ToString();
         }
