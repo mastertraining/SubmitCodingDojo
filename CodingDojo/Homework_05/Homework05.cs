@@ -7,7 +7,7 @@ namespace Homework_05
 {
     public class Homework05 : IHomework05
     {
-        private IList<string> LedIndex;
+        private IList<string> ledIndex;
         private IList<string> ledStatus;
         private readonly int ledCount = 10;
         private readonly string ledOnSign = "[!]";
@@ -19,7 +19,7 @@ namespace Homework_05
         public Homework05() {
             RegisterIndexName();
             ledStatus = Enumerable.Repeat(ledOffSign, ledCount).ToList();
-            LedIndex = Enumerable.Range(1, ledCount)
+            ledIndex = Enumerable.Range(1, ledCount)
                 .Select(it => ledIndexName.TryGetValue(it, out var value) ? value : it.ToString())
                 .ToList();
         }
@@ -28,12 +28,12 @@ namespace Homework_05
 
         public string DisplayLEDOnScreen(string ledNo)
         {
-            var index = LedIndex.IndexOf(ledNo);
+            var index = ledIndex.IndexOf(ledNo);
             ledStatus[index] = ledStatus[index] == ledOffSign ? ledOnSign : ledOffSign;
 
-            var eachLedStatus = string.Join(ledStatusWriteSpace, ledStatus);
-            var eachLedIndex = string.Join(ledIndexWriteSpace, LedIndex);
-            return $"{eachLedStatus}{Environment.NewLine} {eachLedIndex}";    
+            var ledStatusWriteLine = string.Join(ledStatusWriteSpace, ledStatus);
+            var ledIndexWriteLine = string.Join(ledIndexWriteSpace, ledIndex);
+            return $"{ledStatusWriteLine}{Environment.NewLine} {ledIndexWriteLine}";    
         }
     }
 }
