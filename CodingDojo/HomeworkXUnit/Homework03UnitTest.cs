@@ -28,8 +28,7 @@ namespace HomeworkXUnit
         {
             new object[] {
                 new string[] { "Hello world", "Practice makes perfect" } ,
-                new string[] { "HELLO WORLD", "PRACTICE MAKES PERFECT"
-                }
+                new string[] { "HELLO WORLD", "PRACTICE MAKES PERFECT" }
             }
         };
     }
