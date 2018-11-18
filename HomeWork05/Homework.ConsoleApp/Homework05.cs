@@ -11,7 +11,7 @@ namespace Homework.ConsoleApp
 
         public void SetLED()
         {
-            LED = new Dictionary<string, string>()
+            LED = new Dictionary<string, string>
             {
                 {"1", "[ ]"},
                 {"2", "[ ]"},
