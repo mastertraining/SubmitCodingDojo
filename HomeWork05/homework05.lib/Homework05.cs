@@ -8,25 +8,21 @@ namespace homework05.lib
     {
         private bool[] _leds;
 
-        public Homework05()
-        {
-            _leds = new bool[10];
-        }
+        public Homework05() => _leds = new bool[10];
 
         public string DisplayLEDOnScreen(string ledNo)
         {
             var isLedNoValid = !string.IsNullOrWhiteSpace(ledNo);
-            if(!isLedNoValid) return RenderLeds();
+            if (!isLedNoValid) return RenderLeds();
 
-            if (ledNo.Equals("a", StringComparison.CurrentCultureIgnoreCase)) ledNo = "10";
-            if (int.TryParse(ledNo, out int ledNumber))
-            {
-                var isNumberValid = ledNumber > 0 && ledNumber < 11;
-                if (!isNumberValid) return RenderLeds();
+            int.TryParse(ledNo, out int ledNumber);
+            var isSpecialAlphabet = ledNo.Equals("a", StringComparison.CurrentCultureIgnoreCase);
+            var isNumberValid = ledNumber > 0 && ledNumber < 10;
+            if (!isNumberValid && !isSpecialAlphabet) return RenderLeds();
 
-                var toggleLedNumber = ledNumber - 1;
-                _leds[toggleLedNumber] = !_leds[toggleLedNumber];
-            }
+            if (isSpecialAlphabet) ledNumber = 10;
+            var toggleLedNumber = ledNumber - 1;
+            _leds[toggleLedNumber] = !_leds[toggleLedNumber];
             return RenderLeds();
         }
 

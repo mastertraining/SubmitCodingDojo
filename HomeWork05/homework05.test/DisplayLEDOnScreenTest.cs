@@ -30,6 +30,7 @@ namespace homework05.test
         [InlineData("")]
         [InlineData(null)]
         [InlineData("0")]
+        [InlineData("10")]
         [InlineData("11")]
         [InlineData("b")]
         public void DisplayLEDOnScreen_Fail(string ledNo)
