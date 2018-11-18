@@ -11,23 +11,25 @@ namespace Homework.ConsoleApp
 
         public void SetLED()
         {
-            LED = new Dictionary<string, string>();
-            LED.Add("1", "[ ]");
-            LED.Add("2", "[ ]");
-            LED.Add("3", "[ ]");
-            LED.Add("4", "[ ]");
-            LED.Add("5", "[ ]");
-            LED.Add("6", "[ ]");
-            LED.Add("7", "[ ]");
-            LED.Add("8", "[ ]");
-            LED.Add("9", "[ ]");
-            LED.Add("A", "[ ]");
+            LED = new Dictionary<string, string>()
+            {
+                {"1", "[ ]"},
+                {"2", "[ ]"},
+                {"3", "[ ]"},
+                {"4", "[ ]"},
+                {"5", "[ ]"},
+                {"6", "[ ]"},
+                {"7", "[ ]"},
+                {"8", "[ ]"},
+                {"9", "[ ]"},
+                {"A", "[ ]"}
+            };
         }
 
         public string DisplayLEDOnScreen(string ledNo)
         {
             ledNo = ledNo.ToUpper();
-            
+
             if (LED.ContainsKey(ledNo))
             {
                 LED[ledNo] = (LED[ledNo] == "[ ]") ? "[!]" : "[ ]";
