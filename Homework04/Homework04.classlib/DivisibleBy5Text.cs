@@ -8,7 +8,7 @@ namespace Homework04.classlib
     {
         public string GetDivisibleBy5Text(string text)
         {
-            //0100,0011,1010,1001,0101
+              //0100,0011,1010,1001,0101
             string[] words = text.Split(',');
             var String_Binary = new List<string>();
             foreach (string word in words)
