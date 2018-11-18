@@ -50,7 +50,7 @@ namespace Homework05.console
                     }
                     if (true)
                     {
-
+                        System.Console.WriteLine();
                     }
                 }
             }
