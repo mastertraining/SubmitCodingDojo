@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace hw5ClassLib
 {
@@ -7,24 +9,30 @@ namespace hw5ClassLib
     {
         public string DisplayLEDOnScreen(string ledNo)
         {
+            ledNo = ledNo.ToUpper();
             var LEDs = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" };
             var LED = new StringBuilder();
-            var num = new StringBuilder();
-            // Thread.Sleep(500);
-            var text = Console.Read();
-
 
             for (int i = 0; i < LEDs.Length; i++)
             {
-                LED.Append('[').Append('!').Append("]");
-                // Console.Write($"[ ]{Environment.NewLine}{i} ");
+                if (ledNo == LEDs[i])
+                {
+                    LED.Append("[!]");
+                }
+                else
+                {
+                    LED.Append("[ ]");
+                }
             }
+
+            LED.Append(Environment.NewLine);
+
             for (int i = 0; i < LEDs.Length; i++)
             {
-                num.Append(' ').Append(LEDs[i]).Append(' ');
-                // Console.Write($"[ ]{Environment.NewLine}{i} ");
+                LED.Append(' ').Append(LEDs[i]).Append(' ');
             }
-            return ledNo;
+
+            return LED.ToString();
         }
     }
 }
