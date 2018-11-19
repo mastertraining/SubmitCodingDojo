@@ -11,14 +11,16 @@ namespace Homework05.console
             var led = new LED();
             led.defaultLight();
             var numberSlot = "";
-            do
+            while (true)
             {
                 var listLED = led.DisplayLEDOnScreen(numberSlot);
                 System.Console.WriteLine(listLED);
 
                 System.Console.Write("Please choose LED to turn On/Off: ");
                 numberSlot = Console.ReadLine();
-            } while (true);
+            }
+
+
         }
     }
 }
