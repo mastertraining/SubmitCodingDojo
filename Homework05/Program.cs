@@ -26,8 +26,8 @@ namespace Homework05
             {
                 if (isturnoff)
                 {
-                    System.Console.WriteLine(aadd);
-                    System.Console.WriteLine("Please choose LED to turn On: ");
+                System.Console.WriteLine(aadd);
+               System.Console.WriteLine("Please choose LED to turn On: ");
                 }
                 else
                 {
@@ -35,10 +35,12 @@ namespace Homework05
                     System.Console.WriteLine("Please choose LED to turn On/Off: ");
                 }
                 isturnoff = !isturnoff;
-                input = System.Console.ReadLine();
+              input = System.Console.ReadLine();
 
             }
             Console.WriteLine("Exit program");
+
+           
 
 
 
