@@ -6,7 +6,15 @@ namespace Homework05
     {
         public string DisplayLEDOnScreen(string ledNo)
         {
-            throw new NotImplementedException();
+            var isvalidno = int.Parse(ledNo);
+            // var lednumber = (isvalidno > 0 && isvalidno < 10);
+
+           
+
+
+
+
+            return ledNo;
         }
     }
 }
