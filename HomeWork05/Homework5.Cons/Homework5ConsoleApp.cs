@@ -1,5 +1,5 @@
-﻿using Homework5.Lib;
-using System;
+﻿using System;
+using Homework5.Lib;
 
 namespace Homework5.Cons
 {
