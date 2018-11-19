@@ -15,8 +15,9 @@ namespace Homework_05
         private readonly string ledStatusWriteSpace = " ";
         private readonly string ledIndexWriteSpace = "   ";
         private IDictionary<int, string> ledIndexName = new Dictionary<int, string>();
-        
-        public Homework05() {
+
+        public Homework05()
+        {
             RegisterIndexName();
             ledStatus = Enumerable.Repeat(ledOffSign, ledCount).ToList();
             ledIndex = Enumerable.Range(1, ledCount)
@@ -29,11 +30,12 @@ namespace Homework_05
         public string DisplayLEDOnScreen(string ledNo)
         {
             var index = ledIndex.IndexOf(ledNo);
-            ledStatus[index] = ledStatus[index] == ledOffSign ? ledOnSign : ledOffSign;
+            if (index != -1)
+                ledStatus[index] = ledStatus[index] == ledOffSign ? ledOnSign : ledOffSign;
 
             var ledStatusWriteLine = string.Join(ledStatusWriteSpace, ledStatus);
             var ledIndexWriteLine = string.Join(ledIndexWriteSpace, ledIndex);
-            return $"{ledStatusWriteLine}{Environment.NewLine} {ledIndexWriteLine}";    
+            return $"{ledStatusWriteLine}{Environment.NewLine} {ledIndexWriteLine}";
         }
     }
 }
