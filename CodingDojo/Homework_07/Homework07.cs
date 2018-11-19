@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Homework_07
@@ -8,7 +9,10 @@ namespace Homework_07
     {
         public string RemoveAndSortTextByAlphabetical(string text)
         {
-            throw new NotImplementedException();
+            var textArray = text.Split(" ");
+            var distinctTexts = textArray.Distinct().ToArray();
+            Array.Sort(distinctTexts);
+            return string.Join(" ", distinctTexts);
         }
     }
 }
