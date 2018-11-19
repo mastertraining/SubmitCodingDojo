@@ -11,6 +11,8 @@ namespace hw5ClassLib
         public List<string> listNoLED { get; set; }
         public string DisplayLEDOnScreen(string ledNo)
         {
+            listLED = new List<string>(new string[] { "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]" });
+            listNoLED = new List<string>(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" });
             ledNo = ledNo.ToUpper();
             var sb = new StringBuilder();
 
