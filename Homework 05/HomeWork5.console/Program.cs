@@ -9,50 +9,26 @@ namespace HomeWork5.console
     class Program
     {
         static void Main(string[] args)
-        {
-            var listNoLed = new List<string>(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" });
-            var listStatusLed = new List<bool>(new bool[] { false, false, false, false, false, false, false, false, false, false });
-            string noLed = null;
+        {   
             var hw5 = new HomeWork5ClassLib();
-            
-            while (true)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    for (int j = 0; j < listNoLed.Count; j++)
-                    {
-                        if (i == 0)
-                        {
-                            if (noLed == listNoLed[j])
-                            {
-                                if (listStatusLed[j] == false)
-                                {
-                                    listStatusLed[j] = true;
-                                }
-                                else
-                                {
-                                    listStatusLed[j] = false;
-                                }
-                            }
+            hw5.listLed = new Dictionary<string, string>();
+            hw5.listLed.Add("1","[ ]");
+            hw5.listLed.Add("2","[ ]");
+            hw5.listLed.Add("3","[ ]");
+            hw5.listLed.Add("4","[ ]");
+            hw5.listLed.Add("5","[ ]");
+            hw5.listLed.Add("6","[ ]");
+            hw5.listLed.Add("7","[ ]");
+            hw5.listLed.Add("8","[ ]");
+            hw5.listLed.Add("9","[ ]");
+            hw5.listLed.Add("A","[ ]");
+            var ledNo = "close";
+            while (true) {
 
-                            if (listStatusLed[j])
-                            {
-                                Console.Write("[!]\t");
-                            }
-                            else
-                            {
-                                Console.Write("[ ]\t");
-                            }
-                        }
-                        else
-                        {
-                            Console.Write(" " + listNoLed[j] + "\t");
-                        }
-                    }
-                    Console.WriteLine();
-                }
-                Console.Write("Please choose LED to turn On/Off: ");
-                noLed = Console.ReadLine().ToUpper();
+                var displayLed =hw5.DisplayLEDOnScreen(ledNo);
+                Console.WriteLine(displayLed);
+                Console.Write("Please choose LED to turn On/Off:  ");
+                ledNo = Console.ReadLine();
             }
         }
     }
