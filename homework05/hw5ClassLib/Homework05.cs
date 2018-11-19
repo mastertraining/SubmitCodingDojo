@@ -7,34 +7,35 @@ namespace hw5ClassLib
 {
     public class Homework05 : IHomework05
     {
-        // public string[] updateLED { get; set; }
+        public List<string> listLED { get; set; }
+        public List<string> listNoLED { get; set; }
         public string DisplayLEDOnScreen(string ledNo)
         {
             ledNo = ledNo.ToUpper();
-            var LEDs = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" };
-            var LED = new StringBuilder();
+            var sb = new StringBuilder();
 
-            for (int i = 0; i < LEDs.Length; i++)
+            for (int j = 0; j < listNoLED.Count; j++)
             {
-                if (ledNo == LEDs[i])
+
+                if (ledNo == listNoLED[j])
                 {
-                    LED.Append("[!]");
-                }
-                else
-                {
-                    LED.Append("[ ]");
+
+                    if (listLED[j] == "[ ]")
+                    {
+                        listLED[j] = "[!]";
+                    }
+                    else
+                    {
+                        listLED[j] = "[ ]";
+                    }
                 }
             }
 
-            LED.Append(Environment.NewLine);
+            var resultLED = String.Join(" ", listLED);
+            var resultNoLED = String.Join("   ", listNoLED);
+            sb.AppendLine(resultLED).Append(" ").Append(resultNoLED);
 
-            for (int i = 0; i < LEDs.Length; i++)
-            {
-                LED.Append(' ').Append(LEDs[i]).Append(' ');
-            }
-
-
-            return LED.ToString();
+            return sb.ToString();
         }
     }
 }

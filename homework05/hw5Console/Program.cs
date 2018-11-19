@@ -10,42 +10,22 @@ namespace hw5Console
     {
         static void Main(string[] args)
         {
-            var LEDs = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" };
-            var LED = new StringBuilder();
-            var text = new List<string>() { " " };
-
-            for (int i = 0; i < LEDs.Length; i++)
-            {
-                LED.Append("[ ]");
-            }
-
-            LED.Append(Environment.NewLine);
-
-            for (int i = 0; i < LEDs.Length; i++)
-            {
-                LED.Append(' ').Append(LEDs[i]).Append(' ');
-            }
-
-            Console.WriteLine(LED);
+            var hw5 = new Homework05();
+            hw5.listLED = new List<string>(new string[] { "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]" });
+            hw5.listNoLED = new List<string>(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" });
+            var noLed = "close";
             while (true)
             {
-                Console.Write($"Please choose LED to turn On/Off: ");
-                var input = Console.ReadLine().ToString();
-                if (string.IsNullOrEmpty(input))
+                var disPlayLED = hw5.DisplayLEDOnScreen(noLed);
+                Console.WriteLine(disPlayLED);
+                Console.Write("Please choose LED to turn On/Off: ");
+                noLed = Console.ReadLine();
+                if (string.IsNullOrEmpty(noLed))
                 {
                     break;
                 }
-                var showLED = new Homework05();
-                var result = showLED.DisplayLEDOnScreen(input);
-                Console.WriteLine(result);
-                // text.Add(result);
-                // foreach (var item in text)
-                // {
-                //     Console.WriteLine(item);
-                // }
-
-
             }
         }
     }
 }
+
