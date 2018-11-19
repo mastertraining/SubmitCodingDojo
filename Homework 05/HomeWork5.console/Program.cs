@@ -24,7 +24,6 @@ namespace HomeWork5.console
             hw5.listLed.Add("A","[ ]");
             var ledNo = "close";
             while (true) {
-
                 var displayLed =hw5.DisplayLEDOnScreen(ledNo);
                 Console.WriteLine(displayLed);
                 Console.Write("Please choose LED to turn On/Off:  ");
