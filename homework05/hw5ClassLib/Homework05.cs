@@ -7,6 +7,7 @@ namespace hw5ClassLib
 {
     public class Homework05 : IHomework05
     {
+        // public string[] updateLED { get; set; }
         public string DisplayLEDOnScreen(string ledNo)
         {
             ledNo = ledNo.ToUpper();
@@ -31,6 +32,7 @@ namespace hw5ClassLib
             {
                 LED.Append(' ').Append(LEDs[i]).Append(' ');
             }
+
 
             return LED.ToString();
         }
