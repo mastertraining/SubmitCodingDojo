@@ -11,9 +11,11 @@ namespace Homework5.Cons
 
             Console.WriteLine(@"[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]
  1   2   3   4   5   6   7   8   9   A");
+
             while (true)
             {
                 Console.Write("Please choose LED to turn On/Off: ");
+
                 var ledNo = Console.ReadLine();
 
                 var isCorrectNumber = int.TryParse(ledNo, out var ledNoText) && ledNoText >= 1 && ledNoText <= 9;
