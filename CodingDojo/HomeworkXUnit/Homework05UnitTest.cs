@@ -17,7 +17,7 @@ namespace HomeworkXUnit
 
         [Theory]
         [MemberData(nameof(GetDisplayLEDOnScreenCase))]
-        public void DisplayLEDOnScreenShouldWork(string[] ledNo, String expected)
+        public void DisplayLEDOnScreenShouldWork(string[] ledNo, string expected)
         {
             var result = string.Empty;
             foreach (var No in ledNo)
