@@ -39,36 +39,6 @@ namespace Homework05
 
             }
             Console.WriteLine("Exit program");
-
-           
-
-
-
-
-
-            //เครื่องโชว์สัตว์เลี้ยง
-            //bool isshowcat = true;
-            // string input = "y";
-            // while (input == "y")
-            // {
-            //    if (isshowcat)
-            //    {
-            //        Console.WriteLine("Here a cute cat");
-            //        Console.WriteLine("Do you want to see a dog (y/n)");
-            //        //isshowcat = false;
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Here an awesome dog");
-            //        Console.WriteLine("Do you want to see a cat (y/n)");
-            //        //isshowcat = true;
-            //    }
-            //    isshowcat = !isshowcat;
-            //    input = Console.ReadLine();
-
-            // }
-            // Console.WriteLine("Good BYE");
-
         }
     }
 }
