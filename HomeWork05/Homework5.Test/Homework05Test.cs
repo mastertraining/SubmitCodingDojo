@@ -25,7 +25,6 @@ new bool[] { false, false, false, true, false, false, false, false, false, false
 new bool[] { false, false, false, true, false, false, false, false, false, true },
 "4"
                     )]
-
         public void InputLEDWithStringNumberItMustReturnLEDDisplay(string expected, bool[] currentSwitches, string ledSelect)
         {
             var svc = new Homework05();
