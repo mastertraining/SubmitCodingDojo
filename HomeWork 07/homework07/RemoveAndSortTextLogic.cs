@@ -8,9 +8,8 @@ namespace homework07
         public string RemoveAndSortTextByAlphabetical(string text)
         {
             var split = text.Split(' ');
-            var removeText = split.OrderBy(it => it);
-            var removeAndSort = removeText.Distinct();
-            var result = string.Join(" ", removeAndSort);
+            var removeAndSortText = split.OrderBy(it => it).Distinct();
+            var result = string.Join(" ", removeAndSortText);
             return result;
         }
     }
