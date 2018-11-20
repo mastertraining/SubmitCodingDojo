@@ -3,10 +3,10 @@ using Xunit;
 
 namespace homework06.Test
 {
-    public class UnitTest1
+    public class DisplayLEDOnScreenTest
     {
         [Fact]
-        public void Test1()
+        public void CheckResultDisplayLEDOnScreen()
         {
 
         }
