@@ -122,7 +122,6 @@ namespace Homework_06
             }
             var saveLedOnText = string.Join(" ", LedOnList);
             File.WriteAllText(saveStatePath, saveLedOnText);
-            var b = File.ReadAllText(saveStatePath);
         }
 
         public void SetAppConfigurations(string onSymbol, string offSymbol, int spacing)
