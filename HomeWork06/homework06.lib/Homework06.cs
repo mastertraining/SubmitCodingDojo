@@ -10,7 +10,7 @@ namespace homework06.lib
         private const string FileName = @"config.yaml";
         private string _onSymbol;
         private string _offSymbol;
-        private int _spaceDistance;
+        private int _spacingDistanceAmount;
         private const int DefaultspaceDistanceAmount = 3;
 
         private bool[] _leds;
@@ -36,41 +36,44 @@ namespace homework06.lib
         public string LoadState()
         {
             if (!File.Exists(FileName)) CreateDefaultStateFile();
+
             using (var file = File.OpenText(FileName))
             {
                 var onSymbol = string.Empty;
                 var offSymbol = string.Empty;
                 var spacing = 0;
 
-                var text = file.ReadToEnd();
-                var textEachLine = text.Split('\n');
+                var textEachLine = file.ReadToEnd().Split('\n');
                 var ledIndex = 0;
-                foreach (var item in textEachLine)
+                foreach (string item in textEachLine)
                 {
-                    if (item.Contains("on-symbol : "))
+                    var isLedValue = item.StartsWith("\t- { ") &&
+                                     item.Contains(",") &&
+                                     item.Contains("number : ") &&
+                                     item.Contains("value : ");
+                    if (isLedValue)
                     {
-                        var value = item.Split(':').LastOrDefault().Trim();
-                        var symbol = string.IsNullOrWhiteSpace(value) ? " " : value;
-                        onSymbol = symbol;
-                    }
-                    else if (item.Contains("off-symbol : "))
-                    {
-                        var value = item.Split(':').LastOrDefault().Trim();
-                        var symbol = string.IsNullOrWhiteSpace(value) ? " " : value;
-                        offSymbol = symbol;
-                    }
-                    else if (item.Contains("spaces : "))
-                    {
-                        var value = item.Split(':').LastOrDefault().Trim();
-                        spacing = int.Parse(value);
-                    }
-                    else if (item.Contains(","))
-                    {
+                        System.Console.WriteLine("Item: " + item);
+                        System.Console.WriteLine("IsEndWith: " + item.EndsWith(" }"));
+
                         var itemSplited = item.Split(',');
                         var ledNumbers = itemSplited.FirstOrDefault().Split(':').LastOrDefault();
                         var ledValue = itemSplited.LastOrDefault().Split(':').LastOrDefault();
                         _leds[ledIndex] = ledValue.ToLower().Contains("true");
                         ledIndex++;
+                    }
+                    else
+                    {
+                        var textValue = item.Split(':').LastOrDefault().Trim();
+                        if (item.Contains("spaces : "))
+                        {
+                            spacing = int.Parse(textValue);
+                            continue;
+                        }
+
+                        var value = string.IsNullOrWhiteSpace(textValue) ? " " : textValue;
+                        if (item.Contains("on-symbol : ")) onSymbol = value;
+                        else if (item.Contains("off-symbol : ")) offSymbol = value;
                     }
                 }
                 SetAppConfigurations(onSymbol, offSymbol, spacing);
@@ -84,28 +87,36 @@ namespace homework06.lib
         {
             this._onSymbol = onSymbol;
             this._offSymbol = offSymbol;
-            this._spaceDistance = spacing;
+            this._spacingDistanceAmount = spacing;
         }
 
         private string RenderLeds()
         {
-            Func<bool, string> ConvertToLedFormat = (it) =>
+            Func<bool, string> ConvertToLedFormat = (isOnSymbol) =>
             {
-                var symbolOnDisplay = string.IsNullOrWhiteSpace(_onSymbol) ? " " : _onSymbol;
-                var symbolOffDisplay = string.IsNullOrWhiteSpace(_offSymbol) ? " " : _offSymbol;
-                return it ? $"[{symbolOnDisplay}]" : $"[{symbolOffDisplay}]";
+                var onSymbolDisplay = !string.IsNullOrWhiteSpace(_onSymbol) ? _onSymbol : " ";
+                var offSymbolDisplay = !string.IsNullOrWhiteSpace(_offSymbol) ? _offSymbol : " ";
+                return isOnSymbol ? $"[{onSymbolDisplay}]" : $"[{offSymbolDisplay}]";
             };
 
-            var spaceLedAmount = new string(' ', _spaceDistance);
-            var speaceLedNumberAmount = new string(' ', _spaceDistance - 1 > 0 ? DefaultspaceDistanceAmount + (_spaceDistance - 1) : DefaultspaceDistanceAmount);
+            var spaceLedAmount = new string(' ', _spacingDistanceAmount);
+            var spacingCalculate = _spacingDistanceAmount - 1;
+            var speacingLedNumberAmount = spacingCalculate > 0 ? DefaultspaceDistanceAmount + spacingCalculate : DefaultspaceDistanceAmount;
+            var spacingLedNumber = new string(' ', speacingLedNumberAmount);
 
             var ledDisplay = _leds.Select(ConvertToLedFormat);
             var ledRow = string.Join(spaceLedAmount, ledDisplay);
-            var numberRow = $"{Environment.NewLine} 1{speaceLedNumberAmount}2{speaceLedNumberAmount}3{speaceLedNumberAmount}4{speaceLedNumberAmount}5{speaceLedNumberAmount}6{speaceLedNumberAmount}7{speaceLedNumberAmount}8{speaceLedNumberAmount}9{speaceLedNumberAmount}A";
 
             var render = new StringBuilder();
-            render.Append(ledRow);
-            render.Append(numberRow);
+            render.AppendLine(ledRow);
+            for (int i = 0; i < _leds.Count(); i++)
+            {
+                var ledNumber = i + 1;
+                var isFirstNumber = ledNumber == 1;
+                var ledNumberDisplay = ledNumber >= _leds.Count() ? "A" : ledNumber.ToString();
+                var number = isFirstNumber ? ledNumberDisplay.PadLeft(2) : ledNumberDisplay;
+                render.Append($"{number}{spacingLedNumber}");
+            }
             return render.ToString();
         }
 
@@ -117,7 +128,7 @@ namespace homework06.lib
             {
                 var onSymbol = isCreate ? "!" : _onSymbol;
                 var offSymbol = isCreate ? " " : _offSymbol;
-                var spaces = isCreate ? "1" : _spaceDistance.ToString();
+                var spaces = isCreate ? "1" : _spacingDistanceAmount.ToString();
                 var leds = isCreate ? new[] { false, false, false, false, false, false, false, false, false, false } : _leds;
 
                 var defaultState = new StringBuilder();
