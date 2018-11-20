@@ -8,10 +8,11 @@ namespace homework06.console
     {
         static void Main(string[] args)
         {
+            var ledOnScreenControl = new Homework06();
             var displayMessage = new List<string>();
             var announceText = $"Hello Welcome to DisplayLEDOnScreen analysis (HomeWork 05)";
-            var rulesText = $"Rules:{Environment.NewLine}\tInput: 1 - 9 and 'A' or 'a' only{Environment.NewLine}\tInput: 0 for exit program";
-            var ledScreen = $"Led Screen:{Environment.NewLine}\t[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]{Environment.NewLine}\t 1   2   3   4   5   6   7   8   9   A";
+            var rulesText = $"Rules:{Environment.NewLine}\tInput: 1 - 9 and 'A' or 'a' only{Environment.NewLine}\tInput: 'exit' for exit program{Environment.NewLine}\tInput: 'save' for save state (if unsaved, It will disppear when close the program{Environment.NewLine}\tInput: 'rules' for display rules again";
+            var ledScreen = $"Current Led Screen:{Environment.NewLine}{ledOnScreenControl.LoadState()}";
 
             displayMessage.Add(announceText);
             displayMessage.Add(rulesText);
@@ -19,17 +20,20 @@ namespace homework06.console
             var message = string.Join(Environment.NewLine, displayMessage);
             System.Console.Write(message);
 
-            var ledOnScreen = new Homework06();
             var isContinueInputLedOnScreen = true;
             while (isContinueInputLedOnScreen)
             {
                 System.Console.Write($"{Environment.NewLine}Please choose LED to turn On/Off: ");
                 var input = Console.ReadLine();
-                if (input.Equals("0")) isContinueInputLedOnScreen = false;
-                else
+                switch (input)
                 {
-                    var displayLed = ledOnScreen.DisplayLEDOnScreen(input);
-                    System.Console.WriteLine(displayLed);
+                    case "exit": isContinueInputLedOnScreen = false; break;
+                    case "save": ledOnScreenControl.SaveCurrentState(); break;
+                    case "rules": System.Console.WriteLine($"{new String('=', 60)}{Environment.NewLine}{rulesText}{Environment.NewLine}{ledScreen}"); break;
+                    default:
+                        var displayLed = ledOnScreenControl.DisplayLEDOnScreen(input);
+                        System.Console.WriteLine(displayLed);
+                        break;
                 }
             }
             System.Console.WriteLine("Exit program!");
