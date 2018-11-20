@@ -9,12 +9,12 @@ namespace Homework7.classlib
     {
         public string RemoveAndSortTextByAlphabetical(string text)
         {
-            var builder = new StringBuilder();
+            var removeText = new StringBuilder();
             var SplitString = text.Split(' ').Distinct();
             var result = SplitString.OrderBy(it => it);
             var JoinString = String.Join(" ", result);
 
-            return builder.Append(JoinString).ToString();
+            return removeText.Append(JoinString).ToString();
         }
     }
 }
