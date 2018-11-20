@@ -1,4 +1,4 @@
-public interface ITextMultiplier
+public interface IHomework2
 {
     string GetFormattedString(string text);
 }
