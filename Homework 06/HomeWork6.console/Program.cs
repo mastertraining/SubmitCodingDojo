@@ -39,10 +39,6 @@ namespace HomeWork6.console
                 }
                 else
                 {
-                    if (statusSave)
-                    {
-                        Console.WriteLine(saveMessage);
-                    }
                     Console.Write("Please choose LED to turn On/Off: ");
                     noLed = Console.ReadLine();
                     displyaLED = hw6.DisplayLEDOnScreen(noLed);
@@ -52,6 +48,10 @@ namespace HomeWork6.console
                     {
                         hw6.SaveCurrentState();
                         statusSave = true;
+                    }
+                    if (statusSave)
+                    {
+                        Console.WriteLine(saveMessage);
                     }
                 }
             }
