@@ -7,10 +7,10 @@ namespace homework07
     {
         static void Main(string[] args)
         {
-            var a = Console.ReadLine();
-            var g = new logic();
-            var f = g.RemoveAndSortTextByAlphabetical(a);
-            System.Console.WriteLine(f);
+            var alphabet = Console.ReadLine();
+            var alphanumerically = new logic();
+            var result = alphanumerically.RemoveAndSortTextByAlphabetical(alphabet);
+            System.Console.WriteLine(result);
 
         }
     }

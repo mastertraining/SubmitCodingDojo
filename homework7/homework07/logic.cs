@@ -7,11 +7,12 @@ namespace homework07
     {
         public string RemoveAndSortTextByAlphabetical(string text)
         {
-            var Split = text.Split(' ');
-            var word = Split.OrderBy(it => it);
-            var eiei = word.Distinct();
-            var result = string.Join(" ", eiei);
+            var split = text.Split(' ');
+            var sort = split.OrderBy(it => it);
+            var word = sort.Distinct();
+            var result = string.Join(" ", word);
             return result;
+          
         }
     }
 }
