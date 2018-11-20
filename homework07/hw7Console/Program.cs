@@ -1,4 +1,5 @@
 ﻿using System;
+using hw7ClassLib;
 
 namespace hw7Console
 {
@@ -6,7 +7,11 @@ namespace hw7Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Input text: ");
+            var input = Console.ReadLine();
+            var call = new Homework07();
+            var showText = call.RemoveAndSortTextByAlphabetical(input);
+            Console.Write(showText);
         }
     }
 }

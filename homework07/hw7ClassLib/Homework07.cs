@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace hw7ClassLib
 {
@@ -6,7 +8,11 @@ namespace hw7ClassLib
     {
         public string RemoveAndSortTextByAlphabetical(string text)
         {
-            throw new NotImplementedException();
+            var split = text.Split(' ');
+            Array.Sort(split);
+            var distinct = split.Distinct();
+            var sortText = string.Join(" ", distinct);
+            return sortText.ToUpper();
         }
     }
 }
