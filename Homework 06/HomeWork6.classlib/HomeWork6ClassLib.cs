@@ -10,6 +10,7 @@ namespace HomeWork6.classlib
     {
         public string filePath { get; set; }
         public string saveStateLED { get; set; }
+        public string saveMessage { get; set; }
         public List<string> LED { get; set; }
         public List<string> noLED { get; set; }
         public void defaultLED()
@@ -84,6 +85,7 @@ namespace HomeWork6.classlib
                 var txt = saveStateLED.Replace("[ ]", "[*]");
                 writer.Write(txt);
             }
+            saveMessage = "Current state had been saved!";
         }
 
         public void SetAppConfigurations(string onSymbol, string offSymbol, int spacing)
