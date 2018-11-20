@@ -10,18 +10,35 @@ namespace HomeWork6.console
             var hw6 = new HomeWork6ClassLib();
             hw6.defaultLED();
             var noLed = "Close";
+            string displyaLED = "Start";
             var loadState = hw6.LoadState();
-            Console.WriteLine(loadState);
-
+            if (loadState != "NoFile")
+            {
+                Console.WriteLine(loadState);
+            }
             while (true)
             {
-                Console.Write("Please choose LED to turn On/Off: ");
-                noLed = Console.ReadLine();
-                var displyaLED = hw6.DisplayLEDOnScreen(noLed);
-                Console.WriteLine(displyaLED);
-                if (noLed == "Save")
+                if (loadState == "NoFile")
                 {
-                    hw6.SaveCurrentState();
+                    displyaLED = hw6.DisplayLEDOnScreen(noLed);
+                    Console.WriteLine(displyaLED);
+                    Console.Write("Please choose LED to turn On/Off: ");
+                    noLed = Console.ReadLine();
+                    if (noLed == "Save")
+                    {
+                        hw6.SaveCurrentState();
+                    }
+                }
+                else
+                {
+                    Console.Write("Please choose LED to turn On/Off: ");
+                    noLed = Console.ReadLine();
+                    displyaLED = hw6.DisplayLEDOnScreen(noLed);
+                    Console.WriteLine(displyaLED);
+                    if (noLed == "Save")
+                    {
+                        hw6.SaveCurrentState();
+                    }
                 }
             }
         }
