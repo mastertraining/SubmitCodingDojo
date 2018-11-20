@@ -19,8 +19,6 @@ namespace Homework05.console
                 System.Console.Write("Please choose LED to turn On/Off: ");
                 numberSlot = Console.ReadLine();
             }
-
-
         }
     }
 }

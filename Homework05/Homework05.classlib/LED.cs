@@ -39,6 +39,7 @@ namespace Homework05.classlib
 
             lightLED.AppendLine(light).Append(" ").Append(lightNumbers);
             return lightLED.ToString();
+            
 
         }
     }
