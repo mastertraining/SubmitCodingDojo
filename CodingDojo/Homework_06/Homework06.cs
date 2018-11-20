@@ -126,6 +126,7 @@ namespace Homework_06
 
         public void SetAppConfigurations(string onSymbol, string offSymbol, int spacing)
         {
+            if (onSymbol == offSymbol) return; 
             using (var writer = File.CreateText(configPath))
             {
                 var newConfig = new YamlMappingNode();
