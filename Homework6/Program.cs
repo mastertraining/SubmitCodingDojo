@@ -23,13 +23,18 @@ namespace Homework6
         public string saveState { get; set; }
         public string filePath { get; set; }
 
+
         static void Main() {
             var prm = new Program();
-            prm.defaultLED();
-            Console.WriteLine(prm.DisplayLEDOnScreen("5"));;
+            prm.setLED();
+            prm.DisplayLEDOnScreen("a");
+            prm.DisplayLEDOnScreen("9");
+            prm.DisplayLEDOnScreen("8");
+            prm.SaveCurrentState();
+            Console.WriteLine(prm.saveState);;
         }
 
-        public void defaultLED() 
+        public void setLED() 
         {
             LEDs = new List<string>(new string[] { "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]" });
             noLEDs = new List<string>(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" });
@@ -38,19 +43,23 @@ namespace Homework6
         public string DisplayLEDOnScreen(string ledNo)
         {
             ReadYaml();
-            SetAppConfigurations(getConfig[0], getConfig[1], int.Parse(getConfig[2]));
+            SetAppConfigurations("*", "_", 3);
             ledNo = ledNo.ToUpper();
             
             for (int i = 0; i < 10; ++i)
             {
-                if (ledNo == noLEDs[i])
+                if (noLEDs[i] == ledNo)
                 {
-                    LEDs[i] = (LEDs[i] == "[ ]")? configOn : configOff;
+                    LEDs[i] = (LEDs[i] == configOff)? configOn : configOn;
+                }
+                else
+                {
+
                 }
             }
 
-            string rsLEDs = String.Join(configSpace, noLEDs);  
-            string rsNoLEDs = string.Join(configSpaceNo, LEDs);
+            string rsLEDs = String.Join(configSpace, LEDs);  
+            string rsNoLEDs = string.Join(configSpaceNo, noLEDs);
 
             saveState = new StringBuilder()
             .AppendLine(rsLEDs).Append(" ")
@@ -61,26 +70,6 @@ namespace Homework6
 
         public void ReadYaml() 
         {
-            fileYamlPath = @"config.yaml";
-            var read = new StreamReader(fileYamlPath);
-            var deserializer = new DeserializerBuilder().Build();
-            var yamlObject = deserializer.Deserialize(read);
-            var buildToJson = new SerializerBuilder()
-            .JsonCompatible()
-            .Build();
-            var json = buildToJson.Serialize(yamlObject);
-            var reviseJson = json.Replace("-", "");
-            var jsonToObj = JsonConvert.DeserializeObject<ConfigLED>(reviseJson);
-            var serializer = new YamlDotNet.Serialization.Serializer();
-             using (var writer = new StringWriter())
-            {
-                serializer.Serialize(writer, jsonToObj);
-                var yaml = writer.ToString();
-                getConfig = yaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            }
-            config.Add(getConfig[0].Substring(config[0].Length - 1, 1));
-            config.Add(getConfig[1].Substring(config[1].Length - 1, 1));
-            config.Add(getConfig[2].Substring(config[2].Length - 1, 1));
         }
 
         public string LoadState()
@@ -93,13 +82,12 @@ namespace Homework6
                 {
                     data = reader.ReadToEnd();
                 }
-                var subStringNewLine = data.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                var listLED = subStringNewLine[0].Split(' ').ToList();
             }
             else
             {
                 data = "No Such that File";
             }
+
             return data;
         }
 
@@ -118,7 +106,7 @@ namespace Homework6
             configOff = new StringBuilder("[").Append(offSymbol).Append("]").ToString();
 
             configSpace = new StringBuilder().Insert(0, " ", spacing).ToString();
-            configSpaceNo = new StringBuilder().Insert(0, " ", int.Parse(config[2] + 2)).ToString();
+            configSpaceNo = new StringBuilder().Insert(0, " ", 5).ToString();
         }
     }
 }
