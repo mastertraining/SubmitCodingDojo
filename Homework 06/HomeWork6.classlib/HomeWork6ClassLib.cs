@@ -22,38 +22,80 @@ namespace HomeWork6.classlib
         public string configSpaces { get; set; }
         public string configSpaceNo { get; set; }
         public List<string> getConfig { get; set; }
+        public List<string> statusLED { get; set; }
+        public string getYaml { get; set; }
+
         public void defaultLED()
         {
-            LED = new List<string>(new string[] { "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]" });
+            var readYaml = ReadYaml();
+            getConfig = new List<string>();
+            getConfig = readYaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            config = new List<string>();
+            config.Add(getConfig[0].Substring(getConfig[0].Length - 1, 1));
+            config.Add(getConfig[1].Substring(getConfig[1].Length - 1, 1));
+            config.Add(getConfig[2].Substring(getConfig[2].Length - 1, 1));
+            SetAppConfigurations(config[0], config[1], int.Parse(config[2]));
+            LED = new List<string>(new string[] { configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff });
+            statusLED = new List<string>(new string[] { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" });
             noLED = new List<string>(new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" });
         }
         public string DisplayLEDOnScreen(string ledNo)
         {
-            ReadYaml();
-            SetAppConfigurations(config[0], config[1], int.Parse(config[2]));
+            // var readYaml = ReadYaml();
+            // getConfig = new List<string>();
+            // getConfig = readYaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            // config = new List<string>();
+            // config.Add(getConfig[0].Substring(getConfig[0].Length-1,1));
+            // config.Add(getConfig[1].Substring(getConfig[1].Length-1,1));
+            // config.Add(getConfig[2].Substring(getConfig[2].Length-1,1));
+            // SetAppConfigurations(config[0], config[1], int.Parse(config[2]));
             var ledNoUpper = ledNo.ToUpper();
             for (int i = 0; i < noLED.Count; i++)
             {
                 if (ledNoUpper == noLED[i])
                 {
-                    if (LED[i] == "[ ]")
+                    if (statusLED[i] == "0")
                     {
-                        LED[i] = configOn;
+                        statusLED[i] = "1";
                     }
                     else
                     {
-                        LED[i] = configOff;
+                        statusLED[i] = "0";
                     }
+                    // if (LED[i] == configOff)
+                    // {
+                    //     LED[i] = configOn;
+                    //     statusLED[i] = "1";
+                    // }
+                    // else
+                    // {
+                    //     LED[i] = configOff;
+                    //     statusLED[i] = "0";
+                    // }
+                }
+            }
+            for (int i = 0; i < statusLED.Count; i++)
+            {
+                if(statusLED[i] == "0") {
+                    
+                    LED[i] = configOff;
+                }
+                else {
+                    LED[i] = configOn;
                 }
             }
             var listNoLed = String.Join(configSpaceNo, noLED);
             var listValueLed = String.Join(configSpaces, LED);
             var sb = new StringBuilder();
             var resultDisplayLed = sb.AppendLine(listValueLed).Append(" ").Append(listNoLed).ToString();
-            saveStateLED = resultDisplayLed;
+            // saveStateLED = resultDisplayLed;
 
             return resultDisplayLed;
         }
+
+        // public void CheckLoad(string getLoad) {
+        //     getLoad
+        // }
 
         public string LoadState()
         {
@@ -65,21 +107,21 @@ namespace HomeWork6.classlib
                 {
                     resultFormRead = reader.ReadToEnd();
                 }
-                var subStringNewLine = resultFormRead.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                var listLED = subStringNewLine[0].Split(' ').ToList();
-                for (int i = 0; i < LED.Count; i++)
-                {
-                    if (listLED[i] == "[*]")
-                    {
-                        listLED[i] = "[ ]";
-                        LED[i] = listLED[i];
-                    }
-                    else
-                    {
-                        LED[i] = listLED[i];
-                    }
-                }
-                resultFormRead = resultFormRead.Replace("[*]", "[ ]");
+                // var subStringNewLine = resultFormRead.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                // var listLED = subStringNewLine[0].Split(' ').ToList();
+                // for (int i = 0; i < LED.Count; i++)
+                // {
+                //     if (listLED[i] == "[*]")
+                //     {
+                //         listLED[i] = "[ ]";
+                //         LED[i] = listLED[i];
+                //     }
+                //     else
+                //     {
+                //         LED[i] = listLED[i];
+                //     }
+                // }
+                // resultFormRead = resultFormRead.Replace("[*]", "[ ]");
             }
             else
             {
@@ -91,16 +133,18 @@ namespace HomeWork6.classlib
         public void SaveCurrentState()
         {
             filePath = @"SaveState.txt";
+            saveStateLED = String.Join(" ",statusLED);
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                var txt = saveStateLED.Replace("[ ]", "[*]");
-                writer.Write(txt);
+                // var txt = saveStateLED.Replace("[ ]", "[*]");
+                // writer.Write(txt);
+                writer.Write(saveStateLED);
             }
         }
 
-        public void ReadYaml()
+        public string ReadYaml()
         {
-            fileYamlPath = @"config.yaml";
+            fileYamlPath = @"config.yml";
             var read = new StreamReader(fileYamlPath);
             var deserializer = new DeserializerBuilder().Build();
             var yamlObject = deserializer.Deserialize(read);
@@ -117,11 +161,9 @@ namespace HomeWork6.classlib
             {
                 serializer.Serialize(writer, jsonToObj);
                 var yaml = writer.ToString();
-                getConfig = yaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                getYaml = yaml;
             }
-            config.Add(getConfig[0].Substring(config[0].Length - 1, 1));
-            config.Add(getConfig[1].Substring(config[1].Length - 1, 1));
-            config.Add(getConfig[2].Substring(config[2].Length - 1, 1));
+            return getYaml;
         }
 
         public void SetAppConfigurations(string onSymbol, string offSymbol, int spacing)
