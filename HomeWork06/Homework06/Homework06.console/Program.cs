@@ -8,8 +8,6 @@ namespace Homework06.console
         static void Main(string[] args)
         {
             var svc = new Homework06();
-            var displayLoaded = svc.LoadState();
-            Console.WriteLine(displayLoaded);
             while (true)
             {
                 Console.Write("Please choose LED to turn On/Off: ");
