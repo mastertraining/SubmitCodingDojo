@@ -10,11 +10,7 @@ namespace HomeworkXUnit
     public class Homework03UnitTest
     {
         private IHomework03 IHW;
-
-        public Homework03UnitTest()
-        {
-            IHW = new Homework03();
-        }
+        public Homework03UnitTest() => IHW = new Homework03();
 
         [Theory]
         [MemberData(nameof(GetCapitalizedTextCases))]

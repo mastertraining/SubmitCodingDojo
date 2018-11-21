@@ -9,6 +9,12 @@ namespace Homework_06
 {
     public class Homework06 : IHomework06
     {
+        private IList<string> ledIndex;
+        private IList<bool> ledStatus;
+        private string ledOnSign;
+        private string ledOffSign;
+        private string ledStatusWriteSpace;
+        private string ledIndexWriteSpace;
         private readonly int defaultspacing = 1;
         private readonly int defaultLedCount = 10;
         private readonly string defaultOnSymbol = "!";
@@ -18,26 +24,15 @@ namespace Homework_06
         private readonly string configOffSpaces = "spaces";
         private readonly string configOnSymbolName = "on-symbol";
         private readonly string configOffSymbolName = "off-symbol";
-
-        private IList<string> ledIndex;
-        private IList<bool> ledStatus;
-        private string ledOnSign;
-        private string ledOffSign;
-        private string ledStatusWriteSpace;
-        private string ledIndexWriteSpace;
         private IDictionary<int, string> ledIndexName = new Dictionary<int, string>();
 
-        public Homework06() => SetupLedSystem();
-
-        private void SetupLedSystem()
+        public Homework06()
         {
             RegisterIndexName();
-
             ledStatus = Enumerable.Repeat(false, defaultLedCount).ToList();
             ledIndex = Enumerable.Range(1, defaultLedCount)
                 .Select(it => ledIndexName.TryGetValue(it, out var value) ? value : it.ToString())
                 .ToList();
-
             LoadState();
         }
 
@@ -48,7 +43,6 @@ namespace Homework_06
             var index = ledIndex.IndexOf(ledNo);
             if (index != -1)
                 ledStatus[index] = !ledStatus[index];
-
             return LedStateWriteLine();
         }
 
@@ -73,20 +67,16 @@ namespace Homework_06
                         ledStatus[index] = true;
                 });
             }
-
             if (File.Exists(configPath))
                 using (var reader = new StreamReader(configPath))
                 {
                     var yaml = new YamlStream();
                     yaml.Load(reader);
                     var configData = (YamlMappingNode)yaml.Documents[0].RootNode;
-
                     SetSymbol(configData.Children);
                 }
             else
-            {
                 SetAppConfigurations(defaultOnSymbol, defaultOffSymbol, defaultspacing);
-            }
             return LedStateWriteLine();
         }
 
@@ -96,7 +86,6 @@ namespace Homework_06
                 : !string.IsNullOrEmpty(ledOnSign) ? ledOnSign : $"[{defaultOnSymbol}]";
             ledOffSign = config.TryGetValue(configOffSymbolName, out var offSymbol) && offSymbol.ToString().Length == 1 ? $"[{offSymbol}]"
                 : !string.IsNullOrEmpty(ledOffSign) ? ledOffSign : $"[{defaultOffSymbol}]";
-
             if (config.TryGetValue(configOffSpaces, out var space))
             {
                 var spacing = int.Parse(space.ToString()) > 0 ? int.Parse(space.ToString()) : 1;
@@ -133,10 +122,8 @@ namespace Homework_06
                 newConfig.Children.Add(configOffSpaces, spacing.ToString());
                 var yaml = new YamlStream(new YamlDocument(newConfig));
                 yaml.Save(writer, false);
-
                 SetSymbol(newConfig.Children);
             }
         }
-
     }
 }

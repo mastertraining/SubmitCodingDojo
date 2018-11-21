@@ -10,8 +10,7 @@ namespace Homework_01
     {
         public string SortByAlphabetical(string text)
         {
-            var textArray = text.Split(',');
-            Array.Sort(textArray);
+            var textArray = text.Split(',').OrderBy(it => it);
             return string.Join(",", textArray);
         }
     }

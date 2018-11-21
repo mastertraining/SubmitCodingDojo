@@ -10,18 +10,20 @@ namespace HomeworkXUnit
     public class TextMultiplierUnitTest
     {
         private ITextMultiplier ITM;
-
-        public TextMultiplierUnitTest()
-        {
-            ITM = new TextMultiplier();
-        }
+        public TextMultiplierUnitTest() => ITM = new TextMultiplier();
 
         [Theory]
-        [InlineData("34,67,55,33,12,28", "[\n\t374,\n\t737,\n\t605,\n\t363,\n\t132,\n\t308\n]")]
+        [MemberData(nameof(GetFormattedStringCase))]
         public void GetFormattedStringShouldWork(string text, string expected)
         {
             var result = ITM.GetFormattedString(text);
             result.Should().Be(expected);
         }
+
+        public static IEnumerable<object[]> GetFormattedStringCase => new List<object[]>
+        {
+            new object[]{"34,67,55,33,12,28",
+                $"[{Environment.NewLine}\t374,{Environment.NewLine}\t737,{Environment.NewLine}\t605,{Environment.NewLine}\t363,{Environment.NewLine}\t132,{Environment.NewLine}\t308{Environment.NewLine}]" }
+        };
     }
 }

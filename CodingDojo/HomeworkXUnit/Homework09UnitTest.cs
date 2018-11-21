@@ -13,7 +13,6 @@ namespace HomeworkXUnit
     public class Homework09UnitTest
     {
         private IHomework09 IHW;
-
         public Homework09UnitTest() => IHW = new Homework09();
 
         [Theory]

@@ -10,8 +10,7 @@ namespace Homework_07
         public string RemoveAndSortTextByAlphabetical(string text)
         {
             var textArray = text.Split(" ");
-            var distinctTexts = textArray.Distinct().ToArray();
-            Array.Sort(distinctTexts);
+            var distinctTexts = textArray.Distinct().OrderBy(it => it);
             return string.Join(" ", distinctTexts);
         }
     }

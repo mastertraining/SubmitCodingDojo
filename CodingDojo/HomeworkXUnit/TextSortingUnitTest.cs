@@ -8,11 +8,7 @@ namespace HomeworkXUnit
     public class TextSortingUnitTest
     {
         private ITextSorting ITS;
-
-        public TextSortingUnitTest()
-        {
-            ITS = new TextSorting();
-        }
+        public TextSortingUnitTest() => ITS = new TextSorting();
 
         [Theory]
         [InlineData("without,hello,bag,world", "bag,hello,without,world")]

@@ -9,21 +9,14 @@ namespace HomeworkXUnit
     public class Homework05UnitTest
     {
         private IHomework05 IHW;
-
-        public Homework05UnitTest()
-        {
-            IHW = new Homework05();
-        }
+        public Homework05UnitTest() => IHW = new Homework05();
 
         [Theory]
         [MemberData(nameof(GetDisplayLEDOnScreenCase))]
         public void DisplayLEDOnScreenShouldWork(string[] ledNo, string expected)
         {
             var result = string.Empty;
-            foreach (var No in ledNo)
-            {
-                result = IHW.DisplayLEDOnScreen(No);
-            }
+            foreach (var No in ledNo) result = IHW.DisplayLEDOnScreen(No);
             result.Should().Be(expected);
         }
 

@@ -20,7 +20,6 @@ namespace Homework_09
         public void AddProductToCart(IProduct product)
         {
             if (product == null) return;
-
             product = Products.FirstOrDefault(it => it.SKU == product.SKU);
             if (product != null) Cart.Add(product);
         }
@@ -29,7 +28,6 @@ namespace Homework_09
         {
             var productFile = @"product.csv";
             if (!File.Exists(productFile)) return new List<IProduct>();
-
             using (var reader = File.OpenText(productFile))
             using (var csv = new CsvReader(reader))
             {
