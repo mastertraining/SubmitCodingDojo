@@ -90,7 +90,7 @@ namespace Homework6.Lib
 
         public string DisplayLEDOnScreen(string ledNo)
         {
-            var index = ledNo.ToUpper() == "A" ? 9 : int.Parse(ledNo) - 1;
+            var index = ledNo == "A" ? 9 : int.Parse(ledNo) - 1;
             Switches[index] = !Switches[index];
             return GetLEDStringFromSwitches();
         }
