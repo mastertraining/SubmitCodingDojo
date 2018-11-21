@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Homework06.console
 {
@@ -7,7 +8,8 @@ namespace Homework06.console
         static void Main(string[] args)
         {
             var svc = new Homework06();
-            Console.WriteLine(svc.DisplayLEDOnScreen(""));
+            var displayLoaded = svc.LoadState();
+            Console.WriteLine(displayLoaded);
             while (true)
             {
                 Console.Write("Please choose LED to turn On/Off: ");
