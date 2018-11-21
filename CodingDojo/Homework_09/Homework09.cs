@@ -1,5 +1,7 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Homework_09
@@ -13,6 +15,15 @@ namespace Homework_09
 
         public IEnumerable<IProduct> GetAllProducts()
         {
+            var productFile = @"product.csv";
+            var b = File.Exists(productFile);
+            using (var reader = File.OpenText(productFile))
+            {
+                using (var csv = new CsvReader(reader))
+                {
+                    var records = csv.GetRecords<Product>();
+                }
+            }
             throw new NotImplementedException();
         }
 
