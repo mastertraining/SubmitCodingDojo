@@ -14,11 +14,7 @@ namespace Homework.ConsoleApp
             {
                 var frontSpace = new string(' ', input - i);
                 var backSpace = (i == input) ? new string('_', i - 1) : new string(' ', i - 1);
-                triangle.Append(frontSpace).Append("/").Append(backSpace).Append("|");
-                if (i != input)
-                {
-                    triangle.AppendLine();
-                }
+                triangle.AppendLine().Append(frontSpace).Append("/").Append(backSpace).Append("|");
             }
             return triangle.ToString();
         }
