@@ -8,7 +8,7 @@ namespace Homework7.Lib
     {
         public string RemoveAndSortTextByAlphabetical(string text)
         {
-            var arrayStringWithRemoveAndOrder = text.Split(' ').OrderBy(it => it).GroupBy(it => it).Select(it => it.Key);
+            var arrayStringWithRemoveAndOrder = text.Split(' ').OrderBy(it => it).Distinct();
             return string.Join(' ', arrayStringWithRemoveAndOrder);
         }
     }
