@@ -10,13 +10,18 @@ namespace Homework_09
     public class Homework09 : IHomework09
     {
         private IList<IProduct> Cart;
-        public Homework09() => Cart = new List<IProduct>();
+        private IList<IProduct> Products;
+        public Homework09()
+        {
+            Cart = new List<IProduct>();
+            Products = GetAllProducts().ToList();
+        }
 
         public void AddProductToCart(IProduct product)
         {
             if (product == null) return;
 
-            product = GetAllProducts().FirstOrDefault(it => it.SKU == product.SKU);
+            product = Products.FirstOrDefault(it => it.SKU == product.SKU);
             if (product != null) Cart.Add(product);
         }
 
