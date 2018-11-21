@@ -16,10 +16,6 @@ namespace HomeWork6.console
             string displyaLED = "Start";
             var loadState = hw6.LoadState();
             hw6.statusLED = loadState.Split(' ').ToList();
-            // if (loadState != "NoFile")
-            // {
-            //     Console.WriteLine(loadState);
-            // }
             while (true)
             {
                 if (loadState == "NoFile")
