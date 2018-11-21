@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace Homework7
 {
-    class Program
+    class Program: IHomework07
     {
-        static void Main(string[] args)
+        public string RemoveAndSortTextByAlphabetical(string text)
         {
             string input = Console.ReadLine();
 
@@ -17,7 +17,7 @@ namespace Homework7
 
             string output = String.Join(" ", wordsDis.ToArray());
 
-            Console.Write(output);
+            return output;
         }
     }
 }
