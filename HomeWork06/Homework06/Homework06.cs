@@ -33,8 +33,8 @@ namespace Homework06
                     sw.WriteLine(string.Join(",",ledSwitch));
                 }
             }
-            string textRead = System.IO.File.ReadAllText(statePath);
-            string[] readArray = textRead.Split(',');
+            var textRead = System.IO.File.ReadAllText(statePath);
+            var readArray = textRead.Split(',');
             for (int i = 0; i < readArray.Length; i++)
             {
                 ledSwitch[i] = bool.Parse(readArray[i]);
