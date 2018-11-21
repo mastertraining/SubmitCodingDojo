@@ -24,7 +24,6 @@ namespace HomeWork6.classlib
         public List<string> getConfig { get; set; }
         public List<string> statusLED { get; set; }
         public string getYaml { get; set; }
-
         public void defaultLED()
         {
             var readYaml = ReadYaml();
@@ -60,7 +59,6 @@ namespace HomeWork6.classlib
             {
                 if (statusLED[i] == "0")
                 {
-
                     LED[i] = configOff;
                 }
                 else
@@ -75,7 +73,6 @@ namespace HomeWork6.classlib
 
             return resultDisplayLed;
         }
-
         public string LoadState()
         {
             string resultFormRead;
@@ -93,7 +90,6 @@ namespace HomeWork6.classlib
             }
             return resultFormRead;
         }
-
         public void SaveCurrentState()
         {
             filePath = @"SaveState.txt";
@@ -103,7 +99,6 @@ namespace HomeWork6.classlib
                 writer.Write(saveStateLED);
             }
         }
-
         public string ReadYaml()
         {
             fileYamlPath = @"config.yml";
@@ -127,7 +122,6 @@ namespace HomeWork6.classlib
             }
             return getYaml;
         }
-
         public void SetAppConfigurations(string onSymbol, string offSymbol, int spacing)
         {
             var onSymbolSb = new StringBuilder();
