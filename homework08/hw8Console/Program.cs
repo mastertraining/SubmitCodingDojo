@@ -1,4 +1,5 @@
 ﻿using System;
+using hw8ClassLib;
 
 namespace hw8Console
 {
@@ -6,7 +7,11 @@ namespace hw8Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.Write("Input data: ");
+            var call = new Homework08();
+            var input = Console.ReadLine();
+            var result = call.GetTriangleShapeAsText(int.Parse(input));
+            Console.Write(result);
         }
     }
 }
