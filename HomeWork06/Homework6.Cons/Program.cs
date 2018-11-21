@@ -1,0 +1,40 @@
+﻿using Homework6.Lib;
+using System;
+
+namespace Homework6.Cons
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var svc = new Homework06();
+            Console.WriteLine(svc.LoadState());
+
+            while (true)
+            {
+                Console.Write("Please choose LED to turn On/Off: ");
+
+                var ledNo = Console.ReadLine();
+
+                var isCorrectNumber = int.TryParse(ledNo, out var ledNoText) && ledNoText >= 1 && ledNoText <= 9;
+                var isA = ledNo.ToUpper() == "A";
+                var isSave = ledNo == "Save";
+
+                if (isCorrectNumber || isA)
+                {
+                    Console.WriteLine(svc.DisplayLEDOnScreen(ledNo));
+                }
+                else if (isSave)
+                {
+                    svc.SaveCurrentState();
+                    Console.WriteLine("Current state had been saved!");
+                    Console.WriteLine(svc.LoadState());
+                }
+                else
+                {
+                    Console.WriteLine("Please enter 1-9 or a/A ");
+                }
+            }
+        }
+    }
+}
