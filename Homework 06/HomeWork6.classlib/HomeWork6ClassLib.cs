@@ -29,11 +29,15 @@ namespace HomeWork6.classlib
         {
             var readYaml = ReadYaml();
             getConfig = new List<string>();
-            getConfig = readYaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            getConfig = readYaml.Split(new string[] { Environment.NewLine, "onSymbol: ", "offSymbol: ", "spaces: " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            // Console.WriteLine(getConfig[2]);
             config = new List<string>();
-            config.Add(getConfig[0].Substring(getConfig[0].Length - 1, 1));
-            config.Add(getConfig[1].Substring(getConfig[1].Length - 1, 1));
-            config.Add(getConfig[2].Substring(getConfig[2].Length - 1, 1));
+            config.Add(getConfig[0]);
+            config.Add(getConfig[1]);
+            config.Add(getConfig[2]);
+            // config.Add(getConfig[0].Substring(getConfig[0].Length - 1, 1));
+            // config.Add(getConfig[1].Substring(getConfig[1].Length - 1, 1));
+            // config.Add(getConfig[2].Substring(getConfig[2].Length - 1, 1));
             SetAppConfigurations(config[0], config[1], int.Parse(config[2]));
             LED = new List<string>(new string[] { configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff, configOff });
             statusLED = new List<string>(new string[] { "0", "0", "0", "0", "0", "0", "0", "0", "0", "0" });

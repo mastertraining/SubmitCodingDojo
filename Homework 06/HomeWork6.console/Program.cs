@@ -42,7 +42,7 @@ namespace HomeWork6.console
                     Console.Write("Please choose LED to turn On/Off: ");
                     noLed = Console.ReadLine();
                     statusSave = false;
-                    if (noLed == "Save")
+                    if (noLed == "save")
                     {
                         hw6.SaveCurrentState();
                         statusSave = true;
