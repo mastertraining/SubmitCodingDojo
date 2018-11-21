@@ -8,7 +8,24 @@ namespace Homework05
     class Program
     {
         static void Main(string[] args)
-        {
+        {          
+            string switchhB = "[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]";
+            string switchNo = " 1   2   3   4   5   6   7   8   9   A";
+            var add = new StringBuilder();
+            var display = add.Append($"{switchhB}\n{switchNo}");
+            System.Console.WriteLine(display);
+            System.Console.WriteLine("Please choose LED to turn On/Off:");
+
+            while (true)
+            {
+                var input = System.Console.ReadLine();
+                var test = new Logic();
+                var result = test.DisplayLEDOnScreen(input);
+
+                System.Console.Write(result);
+            }
+
+            // }
             // bool isturnoff = true;
             // string input = "1";
 
@@ -38,41 +55,6 @@ namespace Homework05
 
             // }
             // Console.WriteLine("Exit program");
-
-
-            var input = System.Console.ReadLine();
-
-            var test = new Logic();
-            var result = test.DisplayLEDOnScreen(input);
-
-            System.Console.Write(result);
-
-
-
-            var ledNo = System.Console.ReadLine();
-            //var switchh = new bool[] { false, false, false, false, false, false, false, false, false, false };
-            string[] switchhB = new string[] { "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]", "[ ]" };
-            var switchNo = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "A" };
-            ledNo = ledNo.ToUpper();
-            for (int i = 0; i < switchNo.Length; i++)
-            {
-                if (ledNo == switchNo[i])
-                {
-                    switchhB[i] = !switchhB[i];
-
-                    Console.WriteLine(a);
-                }
-            }
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
