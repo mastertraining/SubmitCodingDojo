@@ -64,11 +64,18 @@ namespace Homework6.Lib
 
             if (File.Exists(CONFIG_PATH))
             {
-                using (var reader = File.OpenText(CONFIG_PATH))
+                try
                 {
-                    var stream = new YamlStream();
-                    stream.Load(reader);
-                    ymalDoc = (YamlMappingNode)stream.Documents[0].RootNode;
+                    using (var reader = File.OpenText(CONFIG_PATH))
+                    {
+                        var stream = new YamlStream();
+                        stream.Load(reader);
+                        ymalDoc = (YamlMappingNode)stream.Documents[0].RootNode;
+                    }
+                }
+                catch (Exception e)
+                {
+                    SaveYmalFile("!", " ", 1);
                 }
             }
             else
