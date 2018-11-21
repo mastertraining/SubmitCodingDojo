@@ -96,7 +96,7 @@ namespace Homework6.Lib
                 !string.IsNullOrWhiteSpace(tempoffsymbol.ToString()) &&
                 tempoffsymbol.ToString().Length == 1 ? tempoffsymbol.ToString() : " ";
             var spacesTxt = ymalDoc.Children.TryGetValue("spaces", out var tempspaces) ? tempspaces.ToString() : "1";
-            spaces = int.TryParse(spacesTxt, out spaces) ? spaces : 1;
+            spaces = int.TryParse(spacesTxt, out spaces) && spaces >= 0 ? spaces : 1;
         }
 
         public string DisplayLEDOnScreen(string ledNo)
