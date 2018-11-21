@@ -18,7 +18,7 @@ namespace Homework6.Cons
 
                 var isCorrectNumber = int.TryParse(ledNo, out var ledNoText) && ledNoText >= 1 && ledNoText <= 9;
                 var isA = ledNo == "A";
-                var isSave = ledNo == "Save";
+                var isSave = ledNo == "save";
 
                 if (isCorrectNumber || isA)
                 {
@@ -32,7 +32,7 @@ namespace Homework6.Cons
                 }
                 else
                 {
-                    Console.WriteLine("Please enter 1-9 or A ");
+                    Console.WriteLine("Type 1-9 or A to turn on/off switch and Type 'save' to save state");
                 }
             }
         }
