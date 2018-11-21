@@ -27,7 +27,6 @@ namespace Homework6
             var prm = new Program();
             prm.defaultLED();
             Console.WriteLine(prm.DisplayLEDOnScreen("5"));;
-
         }
 
         public void defaultLED() 
@@ -67,9 +66,9 @@ namespace Homework6
             var deserializer = new DeserializerBuilder().Build();
             var yamlObject = deserializer.Deserialize(read);
             var buildToJson = new SerializerBuilder()
-                .JsonCompatible()
-                .Build();
-             var json = buildToJson.Serialize(yamlObject);
+            .JsonCompatible()
+            .Build();
+            var json = buildToJson.Serialize(yamlObject);
             var reviseJson = json.Replace("-", "");
             var jsonToObj = JsonConvert.DeserializeObject<ConfigLED>(reviseJson);
             var serializer = new YamlDotNet.Serialization.Serializer();
@@ -96,23 +95,10 @@ namespace Homework6
                 }
                 var subStringNewLine = data.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
                 var listLED = subStringNewLine[0].Split(' ').ToList();
-                for (int i = 0; i < LEDs.Count; i++)
-                {
-                    if (listLED[i] == "[*]")
-                    {
-                        listLED[i] = "[ ]";
-                        LEDs[i] = listLED[i];
-                    }
-                    else
-                    {
-                        LEDs[i] = listLED[i];
-                    }
-                }
-                data = data.Replace("[*]", "[ ]");
             }
             else
             {
-                data = "NoFile";
+                data = "No Such that File";
             }
             return data;
         }
@@ -122,8 +108,7 @@ namespace Homework6
             filePath = @"SaveState.txt";
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                var txt = saveState.Replace("[ ]", "[*]");
-                writer.Write(txt);
+                writer.Write(saveState);
             }
         }
 
