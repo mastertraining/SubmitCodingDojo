@@ -11,6 +11,6 @@ namespace HomeworkXUnit
     {
         private IHomework09 IHW;
 
-        public Homework09UnitTest() { }
+        public Homework09UnitTest() => IHW = new Homework09(); 
     }
 }
