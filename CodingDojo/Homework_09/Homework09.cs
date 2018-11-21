@@ -2,34 +2,36 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Homework_09
 {
     public class Homework09 : IHomework09
     {
+        private IList<IProduct> Cart;
+        public Homework09() => Cart = new List<IProduct>();
+
         public void AddProductToCart(IProduct product)
         {
-            throw new NotImplementedException();
+            if (product == null) return;
+
+            product = GetAllProducts().FirstOrDefault(it => it.SKU == product.SKU);
+            if (product != null) Cart.Add(product);
         }
 
         public IEnumerable<IProduct> GetAllProducts()
         {
             var productFile = @"product.csv";
-            var b = File.Exists(productFile);
+            if (!File.Exists(productFile)) return new List<IProduct>();
+
             using (var reader = File.OpenText(productFile))
+            using (var csv = new CsvReader(reader))
             {
-                using (var csv = new CsvReader(reader))
-                {
-                    var records = csv.GetRecords<Product>();
-                }
+                return csv.GetRecords<Product>().ToList();
             }
-            throw new NotImplementedException();
         }
 
-        public IEnumerable<IProduct> GetProductsInCart()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<IProduct> GetProductsInCart() => Cart;
     }
 }

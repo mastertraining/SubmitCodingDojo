@@ -8,7 +8,15 @@ namespace Homework_08
     {
         public string GetTriangleShapeAsText(int input)
         {
-            throw new NotImplementedException();
+            var strBuilder = new StringBuilder();
+            for (int i = 1; i <= input; i++)
+            {
+                var baseSign = i == input ? '_' : ' ';
+                strBuilder.Append(new string(' ', input - i))
+                    .Append('/').Append(new string(baseSign, i - 1))
+                    .AppendLine("|");
+            }
+            return strBuilder.ToString();
         }
     }
 }

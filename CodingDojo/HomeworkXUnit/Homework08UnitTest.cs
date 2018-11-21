@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using FluentAssertions;
 using Homework_08;
+using System.Diagnostics;
 
 namespace HomeworkXUnit
 {
@@ -24,19 +25,19 @@ namespace HomeworkXUnit
         public static IEnumerable<object[]> GetTriangleShapeAsTextCase => new List<object[]>
         {
             new object[]{
-                1,$@"/|"
+                1,$@"/|{Environment.NewLine}"
             },
             new object[]{
-                2,$@" /|{Environment.NewLine}/_|"
+                2,$@" /|{Environment.NewLine}/_|{Environment.NewLine}"
             },
             new object[]{
-                3,$@"  /|{Environment.NewLine} /_|{Environment.NewLine}/__|"
+                3,$@"  /|{Environment.NewLine} / |{Environment.NewLine}/__|{Environment.NewLine}"
             },
             new object[]{
-                4,$@"   /|{Environment.NewLine}  /_|{Environment.NewLine} /__|{Environment.NewLine}/___|"
+                4,$@"   /|{Environment.NewLine}  / |{Environment.NewLine} /  |{Environment.NewLine}/___|{Environment.NewLine}"
             },
             new object[]{
-                5,$@"    /|{Environment.NewLine}   /_|{Environment.NewLine}  /__|{Environment.NewLine} /___|{Environment.NewLine}/____|"
+                5,$@"    /|{Environment.NewLine}   / |{Environment.NewLine}  /  |{Environment.NewLine} /   |{Environment.NewLine}/____|{Environment.NewLine}"
             },
         };
     }
