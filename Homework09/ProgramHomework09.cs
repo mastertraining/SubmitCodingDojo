@@ -6,7 +6,11 @@ namespace Homework09
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Products in your cart are");
+            Console.ReadLine();
+            Console.WriteLine("Total amount:");
+            Console.WriteLine("Please input a product key:");
+
         }
     }
 }

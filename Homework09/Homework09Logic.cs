@@ -5,6 +5,8 @@ namespace Homework09
 {
     class Homework09Logic : IHomework09
     {
+        private const string FileName = @"product.csv";
+        
         public void AddProductToCart(IProduct product)
         {
             throw new NotImplementedException();
@@ -20,11 +22,11 @@ namespace Homework09
             throw new NotImplementedException();
         }
     }
-    
+
     class Homework09LogicIProduct : IProduct
     {
-    public string SKU { get;set; }
-    public string Name { get;set; }
-    public double Price { get;set; }
+        public string SKU { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
     }
 }
