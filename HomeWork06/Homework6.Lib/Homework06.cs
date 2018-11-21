@@ -89,8 +89,8 @@ namespace Homework6.Lib
 
         private void GetConfigurationsFromYmalDoc(YamlMappingNode ymalDoc, out string onSymbol, out string offSymbol, out int spaces)
         {
-            onSymbol = ymalDoc.Children.TryGetValue("on-symbol", out var temponsymbol) && string.IsNullOrEmpty(temponsymbol.ToString()) ? temponsymbol.ToString() : "!";
-            offSymbol = ymalDoc.Children.TryGetValue("off-symbol", out var tempoffsymbol) && string.IsNullOrEmpty(tempoffsymbol.ToString()) ? tempoffsymbol.ToString() : " ";
+            onSymbol = ymalDoc.Children.TryGetValue("on-symbol", out var temponsymbol) ? temponsymbol.ToString() : "!";
+            offSymbol = ymalDoc.Children.TryGetValue("off-symbol", out var tempoffsymbol) ? tempoffsymbol.ToString() : " ";
             var spacesTxt = ymalDoc.Children.TryGetValue("spaces", out var tempspaces) ? tempspaces.ToString() : "1";
             spaces = int.TryParse(spacesTxt, out spaces) ? spaces : 1;
         }
