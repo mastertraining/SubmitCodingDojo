@@ -15,12 +15,6 @@ namespace Homework5.Lib
             Switches = new bool[] { false, false, false, false, false, false, false, false, false, false };
         }
 
-        private void SetLED(string ledNo)
-        {
-            var index = ledNo.ToUpper() == "A" ? 9 : int.Parse(ledNo) - 1;
-            Switches[index] = !Switches[index];
-        }
-
         private string GetLEDStringFromSwitches()
         {
             var ledString = ledStringPlattern;
@@ -34,7 +28,8 @@ namespace Homework5.Lib
 
         public string DisplayLEDOnScreen(string ledNo)
         {
-            SetLED(ledNo);
+            var index = ledNo.ToUpper() == "A" ? 9 : int.Parse(ledNo) - 1;
+            Switches[index] = !Switches[index];
             return GetLEDStringFromSwitches();
         }
     }
