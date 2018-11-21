@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="9.2.3" />
     <PackageReference Include="FluentAssertions" Version="5.5.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
@@ -21,6 +22,8 @@
     <ProjectReference Include="..\Homework_05\Homework_05.csproj" />
     <ProjectReference Include="..\Homework_06\Homework_06.csproj" />
     <ProjectReference Include="..\Homework_07\Homework_07.csproj" />
+    <ProjectReference Include="..\Homework_08\Homework_08.csproj" />
+    <ProjectReference Include="..\Homework_09\Homework_09.csproj" />
   </ItemGroup>
 
 </Project>
