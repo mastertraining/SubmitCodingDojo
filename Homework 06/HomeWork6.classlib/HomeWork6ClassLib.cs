@@ -41,14 +41,6 @@ namespace HomeWork6.classlib
         }
         public string DisplayLEDOnScreen(string ledNo)
         {
-            // var readYaml = ReadYaml();
-            // getConfig = new List<string>();
-            // getConfig = readYaml.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            // config = new List<string>();
-            // config.Add(getConfig[0].Substring(getConfig[0].Length-1,1));
-            // config.Add(getConfig[1].Substring(getConfig[1].Length-1,1));
-            // config.Add(getConfig[2].Substring(getConfig[2].Length-1,1));
-            // SetAppConfigurations(config[0], config[1], int.Parse(config[2]));
             var ledNoUpper = ledNo.ToUpper();
             for (int i = 0; i < noLED.Count; i++)
             {
@@ -62,25 +54,17 @@ namespace HomeWork6.classlib
                     {
                         statusLED[i] = "0";
                     }
-                    // if (LED[i] == configOff)
-                    // {
-                    //     LED[i] = configOn;
-                    //     statusLED[i] = "1";
-                    // }
-                    // else
-                    // {
-                    //     LED[i] = configOff;
-                    //     statusLED[i] = "0";
-                    // }
                 }
             }
             for (int i = 0; i < statusLED.Count; i++)
             {
-                if(statusLED[i] == "0") {
-                    
+                if (statusLED[i] == "0")
+                {
+
                     LED[i] = configOff;
                 }
-                else {
+                else
+                {
                     LED[i] = configOn;
                 }
             }
@@ -88,14 +72,9 @@ namespace HomeWork6.classlib
             var listValueLed = String.Join(configSpaces, LED);
             var sb = new StringBuilder();
             var resultDisplayLed = sb.AppendLine(listValueLed).Append(" ").Append(listNoLed).ToString();
-            // saveStateLED = resultDisplayLed;
 
             return resultDisplayLed;
         }
-
-        // public void CheckLoad(string getLoad) {
-        //     getLoad
-        // }
 
         public string LoadState()
         {
@@ -107,21 +86,6 @@ namespace HomeWork6.classlib
                 {
                     resultFormRead = reader.ReadToEnd();
                 }
-                // var subStringNewLine = resultFormRead.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                // var listLED = subStringNewLine[0].Split(' ').ToList();
-                // for (int i = 0; i < LED.Count; i++)
-                // {
-                //     if (listLED[i] == "[*]")
-                //     {
-                //         listLED[i] = "[ ]";
-                //         LED[i] = listLED[i];
-                //     }
-                //     else
-                //     {
-                //         LED[i] = listLED[i];
-                //     }
-                // }
-                // resultFormRead = resultFormRead.Replace("[*]", "[ ]");
             }
             else
             {
@@ -133,11 +97,9 @@ namespace HomeWork6.classlib
         public void SaveCurrentState()
         {
             filePath = @"SaveState.txt";
-            saveStateLED = String.Join(" ",statusLED);
+            saveStateLED = String.Join(" ", statusLED);
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                // var txt = saveStateLED.Replace("[ ]", "[*]");
-                // writer.Write(txt);
                 writer.Write(saveStateLED);
             }
         }
