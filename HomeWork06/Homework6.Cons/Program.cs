@@ -17,7 +17,7 @@ namespace Homework6.Cons
                 var ledNo = Console.ReadLine();
 
                 var isCorrectNumber = int.TryParse(ledNo, out var ledNoText) && ledNoText >= 1 && ledNoText <= 9;
-                var isA = ledNo.ToUpper() == "A";
+                var isA = ledNo == "A";
                 var isSave = ledNo == "Save";
 
                 if (isCorrectNumber || isA)
@@ -32,7 +32,7 @@ namespace Homework6.Cons
                 }
                 else
                 {
-                    Console.WriteLine("Please enter 1-9 or a/A ");
+                    Console.WriteLine("Please enter 1-9 or A ");
                 }
             }
         }
