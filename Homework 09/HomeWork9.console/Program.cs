@@ -15,7 +15,7 @@ namespace HomeWork9.console
             var getAll = hw9.GetAllProducts();
             foreach (var listP in getAll)
             {
-                Console.WriteLine(listP.SKU + "," + listP.Name + "," + listP.Price);
+                Console.WriteLine($"{listP.SKU} , {listP.Name} , {listP.Price,2:N}");
             }
             Console.WriteLine(new string('=', 30));
             hw9.setDefaultCart();
