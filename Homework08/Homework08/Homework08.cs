@@ -20,7 +20,10 @@ namespace Homework08
                     var spaceSymbol = i == input - 1 ? baseSymbol : ' ';
                     spaceStartCount--;
                     builder.Append(spaceSymbol, spaceStartCount).Append(startSymbol).Append(spaceSymbol, i).Append(endSymbol);
-                    if (i < input - 1) builder.Append(Environment.NewLine);
+                    if(i < input - 1)
+                    {
+                        builder.Append(Environment.NewLine);
+                    }                    
                 }
                 return builder.ToString();
             }
