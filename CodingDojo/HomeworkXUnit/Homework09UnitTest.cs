@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Xunit;
 using FluentAssertions;
 using Homework_09;
-using CsvHelper;
-using System.IO;
 using System.Linq;
 
 namespace HomeworkXUnit
@@ -13,7 +9,6 @@ namespace HomeworkXUnit
     public class Homework09UnitTest
     {
         private IHomework09 IHW;
-
         public Homework09UnitTest() => IHW = new Homework09();
 
         [Theory]

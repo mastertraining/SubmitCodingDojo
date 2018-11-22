@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using FluentAssertions;
 using Homework_08;
-using System.Diagnostics;
 
 namespace HomeworkXUnit
 {

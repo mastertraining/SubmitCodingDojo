@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Homework_05
 {
@@ -32,7 +31,6 @@ namespace Homework_05
             var index = ledIndex.IndexOf(ledNo);
             if (index != -1)
                 ledStatus[index] = ledStatus[index] == ledOffSign ? ledOnSign : ledOffSign;
-
             var ledStatusWriteLine = string.Join(ledStatusWriteSpace, ledStatus);
             var ledIndexWriteLine = string.Join(ledIndexWriteSpace, ledIndex);
             return $"{ledStatusWriteLine}{Environment.NewLine} {ledIndexWriteLine}";

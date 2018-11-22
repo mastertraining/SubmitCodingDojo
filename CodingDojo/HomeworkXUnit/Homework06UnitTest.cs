@@ -10,11 +10,7 @@ namespace HomeworkXUnit
     public class Homework06UnitTest
     {
         private IHomework06 IHW;
-
-        public Homework06UnitTest()
-        {
-            IHW = new Homework06();
-        }
+        public Homework06UnitTest() => IHW = new Homework06();
 
         [Theory]
         [MemberData(nameof(DisplayLEDOnScreenCase))]

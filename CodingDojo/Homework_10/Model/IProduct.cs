@@ -1,4 +1,4 @@
-﻿namespace Homework_09
+﻿namespace Homework_10.Model
 {
     public interface IProduct
     {

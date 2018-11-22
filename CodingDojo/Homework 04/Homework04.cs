@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Homework_04
 {
@@ -12,7 +10,6 @@ namespace Homework_04
             var textArray = text.Split(",");
             if (textArray.Any(it => it.Length > 4))
                 return "only accepts a sequence of comma separated 4 digit binary numbers";
-
             var divisibleBy5List = textArray.Where(it => Convert.ToInt32(it, 2) % 5 == 0);
             return string.Join(",", divisibleBy5List);
         }

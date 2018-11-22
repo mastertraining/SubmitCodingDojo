@@ -1,35 +1,31 @@
 ﻿using CsvHelper;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Homework_09
 {
     public class Homework09 : IHomework09
     {
-        private IList<IProduct> Cart;
-        private IList<IProduct> Products;
+        private IList<IProduct> cart;
+        private IList<IProduct> products;
         public Homework09()
         {
-            Cart = new List<IProduct>();
-            Products = GetAllProducts().ToList();
+            cart = new List<IProduct>();
+            products = GetAllProducts().ToList();
         }
 
         public void AddProductToCart(IProduct product)
         {
             if (product == null) return;
-
-            product = Products.FirstOrDefault(it => it.SKU == product.SKU);
-            if (product != null) Cart.Add(product);
+            product = products.FirstOrDefault(it => it.SKU == product.SKU);
+            if (product != null) cart.Add(product);
         }
 
         public IEnumerable<IProduct> GetAllProducts()
         {
             var productFile = @"product.csv";
             if (!File.Exists(productFile)) return new List<IProduct>();
-
             using (var reader = File.OpenText(productFile))
             using (var csv = new CsvReader(reader))
             {
@@ -37,6 +33,6 @@ namespace Homework_09
             }
         }
 
-        public IEnumerable<IProduct> GetProductsInCart() => Cart;
+        public IEnumerable<IProduct> GetProductsInCart() => cart;
     }
 }

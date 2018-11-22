@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace Homework_01
 {
@@ -10,8 +6,7 @@ namespace Homework_01
     {
         public string SortByAlphabetical(string text)
         {
-            var textArray = text.Split(',');
-            Array.Sort(textArray);
+            var textArray = text.Split(',').OrderBy(it => it);
             return string.Join(",", textArray);
         }
     }
