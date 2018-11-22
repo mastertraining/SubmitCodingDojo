@@ -232,7 +232,5 @@ namespace Homework06
                 ledArray[i] = ledArray[i].Replace("[ ]", displaySymbol);
             }
         }
-
-
     }
 }
