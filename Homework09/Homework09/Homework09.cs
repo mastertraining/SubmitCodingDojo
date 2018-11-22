@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Homework09
 {
@@ -17,6 +18,7 @@ namespace Homework09
             path = @"product.csv";
             myCart = new List<IProduct>();
             allProduct = GetAllProducts();
+            DisplayPOS();
         }
 
         public void GetProductById(string productid)
@@ -46,10 +48,32 @@ namespace Homework09
             return myCart;
         }
 
-        public string GetCartSummary()
+        public string FormatCurrency(double input)
         {
             var sum = myCart.Select(it => it.Price).Sum();
-            return String.Format("{0:#,##0.00}", sum);
+            return String.Format("{0:#,##0.00}", input);
+        }
+
+        public void DisplayPOS()
+        {
+            var builder = new StringBuilder();
+            builder.AppendLine("Products in your cart are");
+            var cart = myCart;
+            if (cart == null || cart.Count() == 0)
+            {
+                builder.AppendLine("None");
+            }
+            else
+            {
+                var index = 1;
+                foreach (var item in cart)
+                {
+                    builder.Append($"{index}.").Append(String.Format("{0,-28}{1,10}", item.Name, FormatCurrency(item.Price))).AppendLine();
+                    index++;
+                }
+            }
+            builder.Append('-', 3).AppendLine().Append($"Total amount: {FormatCurrency(cart.Select(it => it.Price).Sum())} baht");
+            Console.WriteLine(builder.ToString());
         }
     }
 
