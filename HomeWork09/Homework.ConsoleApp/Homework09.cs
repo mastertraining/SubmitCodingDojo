@@ -8,7 +8,7 @@ namespace Homework.ConsoleApp
 {
     public class Homework09 : IHomework09
     {
-        private List<IProduct> Cart = new List<IProduct>();
+        private List<Product> Cart = new List<Product>();
         private string _part = @"C:\Users\Computer\Desktop\CodingDojo\HomeWork09\Homework.ConsoleApp\product.csv";
 
         public IEnumerable<IProduct> GetAllProducts()
@@ -32,7 +32,7 @@ namespace Homework.ConsoleApp
             return products;
         }
 
-        public void AddProductToCart(IProduct product) => Cart.Add(product);
+        public void AddProductToCart(IProduct product) => Cart.Add(product as Product);
 
         public IEnumerable<IProduct> GetProductsInCart() => Cart;
     }

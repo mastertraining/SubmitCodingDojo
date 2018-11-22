@@ -20,7 +20,7 @@ namespace Homework.Test
 
         [Theory]
         [MemberData(nameof(GetProductForAddToCart))]
-        public void TestAddProductToCart(string productKey, IProduct expectProduct)
+        public void TestAddProductToCart(string productKey, Product expectProduct)
         {
             var sut = new Homework09();
             var products = sut.GetAllProducts();
@@ -43,7 +43,7 @@ namespace Homework.Test
             productsInCart.Should().BeEquivalentTo(expectProducts);
         }
 
-        private IEnumerable<IProduct> GetProducts()
+        private IEnumerable<Product> GetProducts()
         {
             var products = new List<Product>{
                 new Product {

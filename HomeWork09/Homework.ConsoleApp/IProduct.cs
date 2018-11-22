@@ -1,6 +1,9 @@
-public interface IProduct
+namespace Homework.ConsoleApp
 {
-    string SKU { get; set; }
-    string Name { get; set; }
-    double Price { get; set; }
+    public interface IProduct
+    {
+        string SKU { get; set; }
+        string Name { get; set; }
+        double Price { get; set; }
+    }
 }

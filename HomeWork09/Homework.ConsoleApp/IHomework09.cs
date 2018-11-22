@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Homework.ConsoleApp;
 
 public interface IHomework09
 {
