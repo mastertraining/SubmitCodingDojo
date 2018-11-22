@@ -1,8 +1,6 @@
 ﻿using FluentAssertions;
 using Homework_03;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace HomeworkXUnit

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Homework_08
+﻿namespace Homework_08
 {
     public interface IHomework08
     {
