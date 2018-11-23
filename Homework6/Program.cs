@@ -11,15 +11,16 @@ namespace Homework6
 {
     class Configs
     {
+        public string On { get; set; }
+        public string Off { get; set; }
+        public int Spacing { get; set; }
+
         public Configs(string on, string off, int spacing)
         {
             this.On = on;
             this.Off = off;
             this.Spacing = spacing;
         }
-        public string On { get; set; }
-        public string Off { get; set; }
-        public int Spacing { get; set; }
     }
 
     public class LoadState
