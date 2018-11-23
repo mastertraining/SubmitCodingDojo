@@ -7,9 +7,3 @@ public interface IHomework09
     IEnumerable<IProduct> GetProductsInCart();
 }
 
-public interface IProduct
-{
-    string SKU { get; set; }
-    string Name { get; set; }
-    double Price { get; set; }
-}

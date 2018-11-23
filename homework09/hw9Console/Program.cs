@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using hw9ClassLib;
 
 namespace hw9Console
 {
@@ -6,7 +9,51 @@ namespace hw9Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var call = new Homework09();
+            var ieum = new Product();
+            var amount = 0.00;
+            var input = "";
+            var getAllProduct = call.GetAllProducts().ToList();
+            var productsInCart = call.GetProductsInCart().ToList();
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Products in your cart are");
+
+                if (productsInCart.Capacity == 0)
+                {
+                    Console.WriteLine("none");
+                }
+                else
+                {
+                    var no = 1;
+
+                    foreach (var item in productsInCart)
+                    {
+                        Console.WriteLine($"{no}.{item.SKU},{item.Name},{item.Price,2:N}");
+                        no++;
+                    }
+                }
+
+                Console.WriteLine("---");
+                Console.WriteLine($"Total amount: {amount,2:N} baht");
+                Console.Write("Please input a product key:");
+                input = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(input))
+                {
+                    break;
+                }
+                
+                var addToCart = getAllProduct.Find(it => it.SKU == input);
+
+                call.AddProductToCart(addToCart);
+                productsInCart.Add(addToCart);
+                amount += addToCart.Price;
+
+            }
         }
     }
 }
+
