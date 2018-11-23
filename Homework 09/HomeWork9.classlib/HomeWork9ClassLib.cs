@@ -7,28 +7,23 @@ namespace HomeWork9.classlib
 {
     public class HomeWork9ClassLib : IHomework09
     {
-        public List<Product> listProduct { get; set; }
-        public List<Product> listCart { get; set; }
+        public List<IProduct> listProduct { get; set; }
+        public List<IProduct> listCart { get; set; }
 
         public void setDefaultCart()
         {
-            listCart = new List<Product>();
+            listCart = new List<IProduct>();
         }
 
         public void AddProductToCart(IProduct product)
         {
-            listCart.Add(new Product
-            {
-                SKU = product.SKU,
-                Name = product.Name,
-                Price = product.Price
-            });
+            listCart.Add(product);
         }
 
         public IEnumerable<IProduct> GetAllProducts()
         {
             var FilePath = @"product.csv";
-            listProduct = new List<Product>();
+            listProduct = new List<IProduct>();
             using (var reader = new StreamReader(FilePath))
             {
                 while (!reader.EndOfStream)
