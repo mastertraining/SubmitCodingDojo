@@ -1,11 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Homework06.classlib\Homework06.classlib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="YamlDotNet" Version="5.2.1" />
+    <ProjectReference Include="..\Homework08.classlib\Homework08.classlib.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
