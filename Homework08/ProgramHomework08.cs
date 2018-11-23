@@ -7,50 +7,40 @@ namespace ProgramHomework08
     {
         static void Main(string[] args)
         {
-             //1     /|
+            //1     /|
             //2    / |
             //3   /__|
 
+        System.Console.WriteLine("Enter your number");
+        var input = int.Parse(Console.ReadLine());
+        var star = " / ";
+        var space = "";
+        while (input > 0)
+        {   
+            space += star;
+            input --;
+            System.Console.WriteLine(space);
+        }
+        // for (int i = 0; i < input; i++)
+        // {
+        //     space += star;
+        //      System.Console.WriteLine(space);
+        // }
 
-            var left = "/";
-            var right = "|";
-            var center = "_";
+        // โปรแกรมสร้างพีระมิด-while loop
+            // Console.WriteLine("how many floor?");
+            // int floor = int.Parse(Console.ReadLine());
 
-            var add = new StringBuilder();
-            //add.Append($"{left}{right}");
+            // string a = "*";
+            // string b = "";
 
-
-            Console.WriteLine("Please enter your triangle's height (start : number1)");
-            var count = int.Parse(Console.ReadLine());
-            for (int i = 0; i < count; i++)
-            {
-                if (count == 1)
-                {
-                    add.Append($"{left}{right}");
-                    System.Console.WriteLine(add);
-                }
-                else if (count > 1)
-                {
-                    add.Append($"{left}_{right}");
-                    //var addcomma = string.Join("++++", add);
-                    System.Console.WriteLine(add);
-                }
-            }
-
-
-            // while (count > 0)
+            // while (floor > 0)
             // {
+            //    b += a;
+            //    Console.WriteLine(b);
 
-            //     System.Console.WriteLine(add);
-
-
-            //     count --;
-            // }
-
-
-            // var result = new Homework08Logic();
-            // System.Console.WriteLine(result.GetTriangleShapeAsText(input));
-        
+            //    floor--;
+            
         }
     }
 }
