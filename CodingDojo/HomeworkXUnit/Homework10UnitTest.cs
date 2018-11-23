@@ -22,8 +22,15 @@ namespace HomeworkXUnit
                 var products = IHW.GetAllProducts();
                 foreach (var productId in productIdList)
                 {
-                    var product = products.FirstOrDefault(it => it.SKU == productId);
-                    IHW.AddProductToCart(product);
+                    var order = productId.Split(",");
+                    var product = products.FirstOrDefault(it => it.SKU == order[0]);
+                    if (order.Count() > 1 && int.TryParse(order[1], out var amount))
+                        for (int i = 0; i < amount; i++)
+                        {
+                            IHW.AddProductToCart(product);
+                        }
+                    else
+                        IHW.AddProductToCart(product);
                 }
                 var result = IHW.GetProductsInCart();
                 result.Should().BeEquivalentTo(expected);
