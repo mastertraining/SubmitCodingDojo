@@ -46,7 +46,6 @@ namespace Homework_10
             using (var reader = File.OpenText(productsPath))
             using (var csv = new CsvReader(reader))
             {
-                var a = csv.GetRecords<Product>().ToList();
                 return csv.GetRecords<Product>().ToList();
             }
         }
