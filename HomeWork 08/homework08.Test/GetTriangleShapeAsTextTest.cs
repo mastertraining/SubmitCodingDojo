@@ -7,6 +7,7 @@ namespace homework08.Test
     {
         [Theory]
         [InlineData(3, "\r\n  /|\r\n / |\r\n/__|")]
+        [InlineData(5, "\r\n    /|\r\n   / |\r\n  /  |\r\n /   |\r\n/____|")]
         public void TestGetTriangleShapeAsText(int number, string expectTriangle)
         {
             var sut = new GetTriangleShapeAsTextLogic();

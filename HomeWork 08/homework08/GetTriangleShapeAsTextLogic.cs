@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-
 namespace homework08
 {
     public class GetTriangleShapeAsTextLogic : IHomework08
