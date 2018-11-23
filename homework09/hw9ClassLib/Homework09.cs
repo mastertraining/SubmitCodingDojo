@@ -7,8 +7,8 @@ namespace hw9ClassLib
 {
     public class Homework09 : IHomework09
     {
-        private List<IProduct> _Cart = new List<IProduct>();
-        private List<Product> _Products = new List<Product>();
+        private List<IProduct> _cart = new List<IProduct>();
+        private List<Product> _products = new List<Product>();
         private string _path = @"..\hw9Console\product.csv";
         public IEnumerable<IProduct> GetAllProducts()
         {
@@ -23,7 +23,7 @@ namespace hw9ClassLib
                     {
                         var values = item.Split(',');
                         Double.TryParse(values[2], out double priceDouble);
-                        _Products.Add(new Product
+                        _products.Add(new Product
                         {
                             SKU = values[0],
                             Name = values[1],
@@ -32,15 +32,16 @@ namespace hw9ClassLib
                     }
                 }
             }
-            return _Products;
+
+            return _products;
         }
         public void AddProductToCart(IProduct product)
         {
-            _Cart.Add(product);
+            _cart.Add(product);
         }
         public IEnumerable<IProduct> GetProductsInCart()
         {
-            return _Cart;
+            return _cart;
         }
     }
 }

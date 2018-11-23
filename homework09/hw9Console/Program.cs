@@ -10,7 +10,6 @@ namespace hw9Console
         static void Main(string[] args)
         {
             var call = new Homework09();
-            var ieum = new Product();
             var amount = 0.00;
             var input = "";
             var getAllProduct = call.GetAllProducts().ToList();
@@ -51,7 +50,6 @@ namespace hw9Console
                 call.AddProductToCart(addToCart);
                 productsInCart.Add(addToCart);
                 amount += addToCart.Price;
-
             }
         }
     }
