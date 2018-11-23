@@ -1,35 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Linq;
+using CsvHelper;
 using Homework_10.Model;
+using Newtonsoft.Json;
 
 namespace Homework_10
 {
     public class Homework10 : IHomework10
     {
+        private IList<IProduct> cart;
+        private IList<IProduct> products;
+        private readonly string productInCartPath = @"cart.json";
+        private readonly string productsPath = @"product.csv";
+        public Homework10() => LoadSavedCart();
+
         public void AddProductToCart(IProduct product)
         {
-            throw new NotImplementedException();
+            if (product == null) return;
+            product = products.FirstOrDefault(it => it.SKU == product.SKU);
+            if (product != null) cart.Add(product);
         }
 
-        public IEnumerable<IProduct> GetAllProducts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<IProduct> GetProductsInCart()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<IProduct> GetAllProducts() => products;
+        public IEnumerable<IProduct> GetProductsInCart() => cart;
 
         public string LoadSavedCart()
         {
-            throw new NotImplementedException();
+            cart = ReadProductInCartFile().ToList();
+            products = ReadProductFile().ToList();
+            return "Load Completed!";
+        }
+
+        private IEnumerable<IProduct> ReadProductInCartFile()
+        {
+            if (!File.Exists(productInCartPath)) return new List<IProduct>();
+            var textJson = File.ReadAllText(productInCartPath);
+            return JsonConvert.DeserializeObject<List<Product>>(textJson);
+        }
+
+        private IEnumerable<IProduct> ReadProductFile()
+        {
+            if (!File.Exists(productsPath)) return new List<IProduct>();
+            using (var reader = File.OpenText(productsPath))
+            using (var csv = new CsvReader(reader))
+            {
+                var a = csv.GetRecords<Product>().ToList();
+                return csv.GetRecords<Product>().ToList();
+            }
         }
 
         public void SaveCurrentState()
         {
-            throw new NotImplementedException();
+            using (var writer = File.CreateText(productInCartPath))
+            {
+                var productsJson = JsonConvert.SerializeObject(cart, Formatting.Indented);
+                writer.WriteLine(productsJson);
+            }
         }
     }
 }
