@@ -5,9 +5,20 @@ namespace homework09
 {
     public class ProductLogic : IHomework09
     {
+        public List<Product> productsList { get; set; }
+        public List<Product> productsCart { get; set; }
+        public void setCart()
+        {
+            productsCart = new List<Product>();
+        }
         public void AddProductToCart(IProduct product)
         {
-            throw new NotImplementedException();
+            productsCart.Add(new Product
+            {
+                SKU = product.SKU,
+                Name = product.Name,
+                Price = product.Price
+            });
         }
 
         public IEnumerable<IProduct> GetAllProducts()
@@ -17,7 +28,7 @@ namespace homework09
 
         public IEnumerable<IProduct> GetProductsInCart()
         {
-            throw new NotImplementedException();
+            return productsCart;
         }
     }
 }
