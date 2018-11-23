@@ -19,7 +19,7 @@ namespace homework10.console
             {
                 displayProducts.AppendLine($"\t{item.SKU,-7} {item.Name,-31} {item.Price.ToString("N2")}");
             }
-            var rules = $"Rules{Environment.NewLine}\tInput 'list' to display current product{Environment.NewLine}\tInput: 'exit' to exit program{Environment.NewLine}\tInput: number each SKU for add to cart";
+            var rules = $"Rules Input{Environment.NewLine}\t'list' to display current product{Environment.NewLine}\t'exit' to exit program{Environment.NewLine}\t'save' to save current cart{Environment.NewLine}\t'load' to load saved cart{Environment.NewLine}\t'<product-SKU>' or '<product-SKU>,<add-to-cart-amount>' to add product(s) to cart";
             Console.Write($"Hello Welcome to POS analysis (HomeWork 09){Environment.NewLine}{displayProducts}{Environment.NewLine}{rules}{Environment.NewLine}");
 
             var isContinueInputLedOnScreen = true;
@@ -46,6 +46,8 @@ namespace homework10.console
                 {
                     case "exit": isContinueInputLedOnScreen = false; break;
                     case "list": System.Console.WriteLine(displayProducts); break;
+                    case "load": System.Console.WriteLine(pos.LoadSavedCart()); break;
+                    case "save": pos.SaveCurrentState(); break;
                     default:
 
                         var inputSplited = input.Split(',');

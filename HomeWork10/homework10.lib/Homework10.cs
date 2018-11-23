@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace homework10.lib
 {
     public class Homework10 : IHomework10
     {
-        private const string FileName = @"product.csv";
-        private List<IProduct> _products;
-        private List<IProduct> _orderProducts;
+        private const string ProductFileName = @"product.csv";
+        private const string SavedCartFileName = @"cart.json";
+        private IList<IProduct> _products;
+        private IList<IProduct> _orderProducts;
 
         public Homework10()
         {
             _products = new List<IProduct>();
             _orderProducts = new List<IProduct>();
             LoadProducts();
+            LoadSavedCart();
         }
 
         public void AddProductToCart(IProduct product)
@@ -32,17 +35,25 @@ namespace homework10.lib
 
         public string LoadSavedCart()
         {
-            throw new NotImplementedException();
+            if (!File.Exists(SavedCartFileName)) return "Can not found any file";
+            using (var file = File.OpenText(SavedCartFileName))
+            {
+                var text = file.ReadToEnd();
+                _orderProducts = JSONConvertToCollection(text).ToList();
+                const string downloadCompletMessage = "Download completed";
+                return downloadCompletMessage;
+            }
         }
 
         public void SaveCurrentState()
         {
-            throw new NotImplementedException();
+            var cartData = JsonConvert.SerializeObject(_orderProducts);
+            File.WriteAllText(SavedCartFileName, cartData);
         }
-        
+
         private void LoadProducts()
         {
-            using (var file = File.OpenText(FileName))
+            using (var file = File.OpenText(ProductFileName))
             {
                 var textEachLine = file.ReadToEnd().Split('\n');
                 foreach (var item in textEachLine.Skip(1))
@@ -55,5 +66,8 @@ namespace homework10.lib
                 }
             }
         }
+
+        private IEnumerable<IProduct> JSONConvertToCollection(string text) => JsonConvert.DeserializeObject<IList<Product>>(text);
+
     }
 }
