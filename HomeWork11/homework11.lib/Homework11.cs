@@ -7,54 +7,47 @@ namespace homework11.lib
     {
         public string GetReadWordOfNumber(int number)
         {
-            if (number == 0) return "ศูนย์";
+            var isZeroNumberOnly = number == 0;
+            if (isZeroNumberOnly) return "ศูนย์";
 
             var actucalNumber = number;
-            var length = number.ToString().Length;
             var result = new StringBuilder();
-            for (int digit = (int)(Math.Pow(10, (length - 1))); digit > 0; digit /= 10)
+
+            const int MinimumValue = 1;
+            var numberLength = number.ToString().Length;
+            var powNumberForStartDigit = numberLength - 1;
+            var startDigit = (int)Math.Pow(10, powNumberForStartDigit);
+            for (int digit = startDigit; digit > 0; digit /= 10)
             {
-                var value = (int)(actucalNumber / digit);
-                if (value < 1) continue;
-
+                var value = (int)actucalNumber / digit;
+                var hasAnyValue = value >= MinimumValue;
+                if (!hasAnyValue) continue;
                 actucalNumber -= value * digit;
-                var word = string.Empty;
 
-                var x = digit;
-                var checkDigit = digit.ToString().Length > 7;
-                if (checkDigit) x = digit / 1000000;
+                const int DigitMillion = 7;
+                var currentDigit = digit.ToString().Length;
+                var isDigitMoreThanMillion = digit.ToString().Length > DigitMillion;
+                if (isDigitMoreThanMillion) currentDigit = (digit / (int)Math.Pow(10, DigitMillion - 1)).ToString().Length;
 
-                switch (x)
+                if (currentDigit >= 3)
                 {
-                    case 1000000:
-                        word = GetWordOfNumberMoreThanThreeDigit(value);
-                        result.Append($"{word}ล้าน");
-                        break;
-                    case 100000:
-                        word = GetWordOfNumberMoreThanThreeDigit(value);
-                        result.Append($"{word}แสน");
-                        break;
-                    case 10000:
-                        word = GetWordOfNumberMoreThanThreeDigit(value);
-                        result.Append($"{word}หมื่น");
-                        break;
-                    case 1000:
-                        word = GetWordOfNumberMoreThanThreeDigit(value);
-                        result.Append($"{word}พัน");
-                        break;
-                    case 100:
-                        word = GetWordOfNumberMoreThanThreeDigit(value);
-                        result.Append($"{word}ร้อย");
-                        break;
-                    case 10:
-                        word = GetWordOfNumberIsTwoDigit(value);
-                        result.Append($"{word}สิบ");
-                        break;
-                    case 1:
-                        word = GetWordOfNumberIsOneDigit(value);
-                        result.Append(word);
-                        break;
-                    default: break;
+                    var word = GetWordOfNumberMoreThanThreeDigit(value);
+                    var displayDigitNumber = currentDigit > 6 ?
+                                             "ล้าน" : currentDigit > 5 ?
+                                             "แสน" : currentDigit > 4 ?
+                                             "หมื่น" : currentDigit > 3 ?
+                                             "พัน" : "ร้อย";
+                    result.Append($"{word}{displayDigitNumber}");
+                }
+                else if (currentDigit >= 2)
+                {
+                    var word = GetWordOfNumberIsTwoDigit(value);
+                    result.Append($"{word}สิบ");
+                }
+                else
+                {
+                    var word = GetWordOfNumberIsOneDigit(value);
+                    result.Append(word);
                 }
             }
             return result.ToString();
