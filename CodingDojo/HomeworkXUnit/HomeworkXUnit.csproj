@@ -19,12 +19,14 @@
     <ProjectReference Include="..\Homework 02\Homework 02.csproj" />
     <ProjectReference Include="..\Homework 03\Homework 03.csproj" />
     <ProjectReference Include="..\Homework 04\Homework 04.csproj" />
+    <ProjectReference Include="..\Homework 11\Homework_11.csproj" />
     <ProjectReference Include="..\Homework_05\Homework_05.csproj" />
     <ProjectReference Include="..\Homework_06\Homework_06.csproj" />
     <ProjectReference Include="..\Homework_07\Homework_07.csproj" />
     <ProjectReference Include="..\Homework_08\Homework_08.csproj" />
     <ProjectReference Include="..\Homework_09\Homework_09.csproj" />
     <ProjectReference Include="..\Homework_10\Homework_10.csproj" />
+    <ProjectReference Include="..\Homework_11\Homework_11.csproj" />
   </ItemGroup>
 
 </Project>
