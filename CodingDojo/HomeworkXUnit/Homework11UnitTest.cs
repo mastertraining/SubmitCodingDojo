@@ -15,7 +15,7 @@ namespace HomeworkXUnit
         [Theory]
         [InlineData(0, "ศูนย์")]
         [InlineData(1, "หนึ่ง")]
-        [InlineData(153, "หนึ่งร้อยหัาสิบสาม")]
+        [InlineData(153, "หนึ่งร้อยห้าสิบสาม")]
         [InlineData(571, "ห้าร้อยเจ็ดสิบเอ็ด")]
         [InlineData(3234, "สามพันสองร้อยสามสิบสี่")]
         [InlineData(7302, "เจ็ดพันสามร้อยสอง")]
