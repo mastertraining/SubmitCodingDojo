@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 
-namespace console
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
+        Homework11 hm11 = new Homework11();
+        Console.WriteLine(hm11.GetReadWordOfNumber(110));
     }
 }
