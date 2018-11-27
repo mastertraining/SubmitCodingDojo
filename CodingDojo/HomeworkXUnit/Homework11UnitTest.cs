@@ -27,6 +27,7 @@ namespace HomeworkXUnit
         [InlineData(1234567, "หนึ่งล้านสองแสนสามหมื่นสี่พันห้าร้อยหกสิบเจ็ด")]
         [InlineData(5800345, "ห้าล้านแปดแสนสามร้อยสี่สิบห้า")]
         [InlineData(15800345, "สิบห้าล้านแปดแสนสามร้อยสี่สิบห้า")]
+        [InlineData(15000001, "สิบห้าล้านเอ็ด")]
         public void GetReadWordOfNumber(int number, string expected)
         {
             var result = IHW.GetReadWordOfNumber(number);
