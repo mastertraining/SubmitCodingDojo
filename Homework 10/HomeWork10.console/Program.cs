@@ -20,8 +20,10 @@ namespace HomeWork10.console
             }
             Console.WriteLine(new string('=', 60));
 
+            hw10.Load();
             while (true)
             {
+                var checkSave = false;
                 var getProductInCart = hw10.GetProductsInCart().ToList();
                 hw10.balance = 0;
                 Console.WriteLine("Products in your cart are");
@@ -44,21 +46,33 @@ namespace HomeWork10.console
                 Console.Write($"Please input a product key: ");
                 var inputPurchase = Console.ReadLine();
                 var purchase = new List<string>();
-                if (inputPurchase.Contains(','))
+
+                if (inputPurchase == "save")
                 {
-                    purchase = inputPurchase.Split(',').ToList();
-                    checkStringToInt = int.TryParse(purchase[1], out int amountProduct);
-                    skuNo = purchase[0];
-                    hw10.amount = checkStringToInt ? amountProduct : 1;
+                    hw10.SaveCurrentState();
+                    checkSave = true;
                 }
                 else
                 {
-                    skuNo = inputPurchase;
-                    hw10.amount = 1;
+                    if (inputPurchase.Contains(','))
+                    {
+                        purchase = inputPurchase.Split(',').ToList();
+                        checkStringToInt = int.TryParse(purchase[1], out int amountProduct);
+                        skuNo = purchase[0];
+                        hw10.amount = checkStringToInt ? amountProduct : 1;
+                    }
+                    else
+                    {
+                        skuNo = inputPurchase;
+                        hw10.amount = 1;
+                    }
+                    var addToCart = getAllProduct.FirstOrDefault(it => it.SKU == skuNo);
+                    hw10.AddProductToCart(addToCart);
                 }
-                var addToCart = getAllProduct.FirstOrDefault(it => it.SKU == skuNo);
-                hw10.AddProductToCart(addToCart);
+
                 Console.WriteLine(new string('=', 60));
+                var messageSave = checkSave ? "Current state had been saved!" : null;
+                Console.WriteLine(messageSave);
             }
         }
     }
