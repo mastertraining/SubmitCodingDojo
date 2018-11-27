@@ -1,38 +1,46 @@
-﻿using System;
+﻿using CsvHelper;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using CsvHelper;
 
 namespace Homework10
 {
     public class Homework10 : IHomework10
     {
-        private string pathProduct { get; set; }
-        private string pathSave { get; set; }
-        private IList<IProduct> myCart { get; set; }
+        private const string pathProduct = @"product.csv";
+        private const string pathSave = @"savestate.json";
+        private List<Product> myCart { get; set; }
         private IEnumerable<IProduct> allProduct { get; set; }
 
         public Homework10()
         {
-            pathProduct = @"product.csv";
-            pathSave = @"savestate.json";
-            myCart = new List<IProduct>();
+            var _myCart = LoadSavedCart();
+            myCart = JsonConvert.DeserializeObject<List<Product>>(_myCart);
             allProduct = GetAllProducts();
             DisplayPOS();
         }
 
-        public void GetProductById(string productid)
+        public void GetProductById(string input)
         {
-            var selecdProduct = allProduct.FirstOrDefault(it => it.SKU == productid);
-            AddProductToCart(selecdProduct);
+            var splited = input.Split(',');
+            var selecdProduct = allProduct.FirstOrDefault(it => it.SKU == splited[0]);
+            var count = splited.Length > 1 && int.TryParse(splited[1], out var quantity) && quantity > 0 ? quantity : 1;
+            if (selecdProduct != null)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    AddProductToCart(selecdProduct);
+                }
+            }
+            else Console.WriteLine("Your ProductId is invalid !");
         }
 
         public void AddProductToCart(IProduct product)
         {
-            if (product != null) myCart.Add(product);
-            else Console.WriteLine("Your ProductId is invalid !");
+            myCart.Add(product as Product);
         }
 
         public IEnumerable<IProduct> GetAllProducts()
@@ -60,7 +68,7 @@ namespace Homework10
         {
             var builder = new StringBuilder();
             builder.AppendLine("Products in your cart are");
-            var cart = myCart;
+            var cart = myCart.GroupBy(it => it.SKU);
             if (cart == null || cart.Count() == 0)
             {
                 builder.AppendLine("None");
@@ -70,42 +78,35 @@ namespace Homework10
                 var index = 1;
                 foreach (var item in cart)
                 {
-                    builder.Append($"{index}.").Append(String.Format("{0,-28}{1,10}", item.Name, FormatCurrency(item.Price))).AppendLine();
+                    builder.Append($"{index}.").Append(String.Format("{0,-28}({1}){2,10}", item.FirstOrDefault().Name, item.Count(), FormatCurrency(item.FirstOrDefault().Price)))
+                    .AppendLine();
                     index++;
                 }
             }
-            builder.Append('-', 3).AppendLine().Append($"Total amount: {FormatCurrency(cart.Select(it => it.Price).Sum())} baht");
+            builder.Append('-', 3).AppendLine().Append($"Total amount: {FormatCurrency(myCart.Sum(it => it.Price))} baht");
             Console.WriteLine(builder.ToString());
         }
 
         public void SaveCurrentState()
         {
-            if (!File.Exists(pathSave))
-            {
-                using (StreamWriter sw = File.CreateText(pathSave))
-                {
-
-                }
-            }
-            else
-            {
-                using (StreamWriter sw = new StreamWriter(pathSave))
-                {
-
-                }
-            }
+            var jsonData = JsonConvert.SerializeObject(myCart, Formatting.Indented);
+            File.WriteAllText(pathSave, jsonData);
+            Console.WriteLine("Current state had been saved!");
         }
 
         public string LoadSavedCart()
         {
-            throw new NotImplementedException();
+            using (var fi = File.OpenText(pathSave))
+            {
+                return fi.ReadToEnd();
+            }
         }
     }
+
     public class Product : IProduct
     {
         public string SKU { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
-        public int Quantity { get; set; }
     }
 }
