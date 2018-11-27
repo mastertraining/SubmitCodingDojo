@@ -92,5 +92,64 @@ namespace homework11Test
             Assert.Equal(expected, result);
         }
 
+        [Theory(DisplayName = "เลขสี่หลัก")]
+        [InlineData(1001, "หนึ่งพันหนึ่ง")]
+        [InlineData(5400, "ห้าพันสี่ร้อย")]
+        [InlineData(7892, "เจ็ดพันแปดร้อยเก้าสิบสอง")]
+        [InlineData(3000, "สามพัน")]
+        [InlineData(4001, "สี่พันหนึ่ง")]
+        [InlineData(3219, "สามพันสองร้อยสิบเก้า")]
+        [InlineData(1009, "หนึ่งพันเก้า")]
+        public void fourdigit(int number, string expected)
+        {
+            var sut = new Logic();
+            var result = sut.GetReadWordOfNumber(number);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory(DisplayName = "เลขห้าหลัก")]
+        [InlineData(11001, "หนึ่งหมื่นหนึ่งพันหนึ่ง")]
+        [InlineData(54800, "ห้าหมื่นสี่พันแปดร้อย")]
+        [InlineData(78692, "เจ็ดหมื่นแปดพันหกร้อยเก้าสิบสอง")]
+        [InlineData(30000, "สามหมื่น")]
+        [InlineData(40001, "สี่หมื่นหนึ่ง")]
+        [InlineData(38219, "สามหมื่นแปดพันสองร้อยสิบเก้า")]
+        [InlineData(16009, "หนึ่งหมื่นหกพันเก้า")]
+        public void fivedigit(int number, string expected)
+        {
+            var sut = new Logic();
+            var result = sut.GetReadWordOfNumber(number);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory(DisplayName = "เลขหกหลัก")]
+        [InlineData(112001, "หนึ่งแสนหนึ่งหมื่นสองพันหนึ่ง")]
+        [InlineData(548000, "ห้าแสนสี่หมื่นแปดพัน")]
+        [InlineData(780692, "เจ็ดแสนแปดหมื่นหกร้อยเก้าสิบสอง")]
+        [InlineData(300000, "สามแสน")]
+        [InlineData(400001, "สี่แสนหนึ่ง")]
+        [InlineData(368219, "สามแสนหกหมื่นแปดพันสองร้อยสิบเก้า")]
+        [InlineData(156009, "หนึ่งแสนห้าหมื่นหกพันเก้า")]
+        public void sixdigit(int number, string expected)
+        {
+            var sut = new Logic();
+            var result = sut.GetReadWordOfNumber(number);
+            Assert.Equal(expected, result);
+        }
+
+        [Theory(DisplayName = "เลขเจ็ดหลัก")]
+        [InlineData(1212001, "หนึ่งล้านสองแสนหนึ่งหมื่นสองพันหนึ่ง")]
+        [InlineData(5480000, "ห้าล้านสี่แสนแปดหมื่น")]
+        [InlineData(7860692, "เจ็ดล้านแปดแสนหกหมื่นหกร้อยเก้าสิบสอง")]
+        [InlineData(3000000, "สามล้าน")]
+        [InlineData(4000001, "สี่ล้านหนึ่ง")]
+        [InlineData(3698219, "สามล้านหกแสนเก้าหมื่นแปดพันสองร้อยสิบเก้า")]
+        [InlineData(2156009, "สองล้านหนึ่งแสนห้าหมื่นหกพันเก้า")]
+        public void sevendigit(int number, string expected)
+        {
+            var sut = new Logic();
+            var result = sut.GetReadWordOfNumber(number);
+            Assert.Equal(expected, result);
+        }
     }
 }

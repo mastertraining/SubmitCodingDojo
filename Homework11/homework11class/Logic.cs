@@ -7,7 +7,47 @@ namespace homework11class
         public string GetReadWordOfNumber(int number)
         {
             var text = number.ToString();
-            if (text.Length == 3)
+            if (text.Length == 7)
+            {
+                if (number % 1000000 == 0)
+                {
+                    var millionequal0 = Getonedigit(text[0]);
+                    return ($"{millionequal0}ล้าน");
+                }
+                var million = Getonedigit(text[0]);
+                return ($"{million}ล้าน{GetReadWordOfNumber(number % 1000000)}");
+            }
+            else if (text.Length == 6)
+            {
+                if (number % 100000 == 0)
+                {
+                    var hundredthousandqual0 = Getonedigit(text[0]);
+                    return ($"{hundredthousandqual0}แสน");
+                }
+                var hundredthousand = Getonedigit(text[0]);
+                return ($"{hundredthousand}แสน{GetReadWordOfNumber(number % 100000)}");
+            }
+            else if (text.Length == 5)
+            {
+                if (number % 10000 == 0)
+                {
+                    var tenthousandqual0 = Getonedigit(text[0]);
+                    return ($"{tenthousandqual0}หมื่น");
+                }
+                var tenthousand = Getonedigit(text[0]);
+                return ($"{tenthousand}หมื่น{GetReadWordOfNumber(number % 10000)}");
+            }
+            else if (text.Length == 4)
+            {
+                if (number % 1000 == 0)
+                {
+                    var thousandqual0 = Getonedigit(text[0]);
+                    return ($"{thousandqual0}พัน");
+                }
+                var thousand = Getonedigit(text[0]);
+                return ($"{thousand}พัน{GetReadWordOfNumber(number % 1000)}");
+            }
+            else if (text.Length == 3)
             {
                 if (number % 100 == 0)
                 {
