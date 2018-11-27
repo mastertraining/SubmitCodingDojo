@@ -69,11 +69,7 @@ namespace Homework10
             var builder = new StringBuilder();
             builder.AppendLine("Products in your cart are");
             var cart = myCart.GroupBy(it => it.SKU);
-            if (cart == null || cart.Count() == 0)
-            {
-                builder.AppendLine("None");
-            }
-            else
+            if (cart.Any())
             {
                 var index = 1;
                 foreach (var item in cart)
@@ -82,6 +78,10 @@ namespace Homework10
                     .AppendLine();
                     index++;
                 }
+            }
+            else
+            {
+                builder.AppendLine("None");
             }
             builder.Append('-', 3).AppendLine().Append($"Total amount: {FormatCurrency(myCart.Sum(it => it.Price))} baht");
             Console.WriteLine(builder.ToString());
