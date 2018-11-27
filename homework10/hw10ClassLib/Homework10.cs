@@ -2,39 +2,47 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace hw10ClassLib
 {
     public class Homework10 : IHomework10
     {
-        private List<IProduct> _cart = new List<IProduct>();
-        private List<IProduct> _products = new List<IProduct>();
-        private string _path = @"..\hw10Console\product.csv";
+        public List<Product> Cart = new List<Product>();
+        private List<Product> _products = new List<Product>();
+        private string _pathProduct = @"..\hw10Console\product.csv";
+        private string _pathCart = @"..\hw10Console\cart.json";
+
+        public Homework10()
+        {
+            var jsonString = LoadSavedCart();
+            if (!string.IsNullOrEmpty(jsonString))
+            {
+                Cart = JsonConvert.DeserializeObject<List<Product>>(jsonString);
+            }
+        }
+
         public void AddProductToCart(IProduct product)
         {
-            _cart.Add(product);
+            Cart.Add(product as Product);
         }
 
         public IEnumerable<IProduct> GetAllProducts()
         {
-            using (var reader = new StreamReader(_path))
+            using (var reader = new StreamReader(_pathProduct))
             {
                 while (!reader.EndOfStream)
                 {
                     var read = reader.ReadLine();
-                    var splitLine = read.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                    var values = read.Split(',');
 
-                    foreach (var item in splitLine)
+                    Double.TryParse(values[2], out double priceDouble);
+                    _products.Add(new Product
                     {
-                        var values = item.Split(',');
-                        Double.TryParse(values[2], out double priceDouble);
-                        _products.Add(new Product
-                        {
-                            SKU = values[0],
-                            Name = values[1],
-                            Price = priceDouble,
-                        });
-                    }
+                        SKU = values[0],
+                        Name = values[1],
+                        Price = priceDouble,
+                    });
                 }
             }
 
@@ -43,17 +51,19 @@ namespace hw10ClassLib
 
         public IEnumerable<IProduct> GetProductsInCart()
         {
-            return _cart;
+            return Cart;
         }
 
         public string LoadSavedCart()
         {
-            throw new NotImplementedException();
+            var jsonString = FileReader.ReadTextFromDataFile(_pathCart);
+            return jsonString;
         }
 
         public void SaveCurrentState()
         {
-            throw new NotImplementedException();
+            var jsonData = JsonConvert.SerializeObject(Cart, Formatting.Indented);
+            FileReader.WriteTextToDataFile(_pathCart, jsonData);
         }
     }
 }

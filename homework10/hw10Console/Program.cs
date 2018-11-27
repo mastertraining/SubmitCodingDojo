@@ -8,16 +8,18 @@ namespace hw10Console
     {
         static void Main(string[] args)
         {
+
             var call = new Homework10();
             var amount = 0.00;
             var input = "";
             var getAllProduct = call.GetAllProducts().ToList();
+            var statusSave = false;
+            var massage = "Current state had been saved!";
 
             while (true)
             {
                 var productsInCart = call.GetProductsInCart().ToList();
 
-                Console.WriteLine();
                 Console.WriteLine("Products in your cart are");
 
                 if (productsInCart.Capacity == 0)
@@ -44,11 +46,23 @@ namespace hw10Console
                 {
                     break;
                 }
+                if (input == "save")
+                {
+                    call.SaveCurrentState();
+                    statusSave = true;
+                }
 
                 var addToCart = getAllProduct.Find(it => it.SKU == input);
 
                 call.AddProductToCart(addToCart);
                 amount += addToCart.Price;
+                
+                if (statusSave)
+                {
+                    Console.WriteLine(massage);
+                }
+                else Console.WriteLine();
+
             }
         }
     }
