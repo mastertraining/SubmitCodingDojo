@@ -20,7 +20,7 @@ namespace homework11.Test
         {
             var sut = new GetReadWordOfNumberLogic();
             var result = sut.GetReadWordOfNumber(inPutNumber);
-            Assert.Equal(result,expected);
+            Assert.Equal(expected,result);
         }
        
         [Theory(DisplayName="ตัวเลขหลักสิบ")]
@@ -37,7 +37,23 @@ namespace homework11.Test
         {
             var sut = new GetReadWordOfNumberLogic();
             var result = sut.GetReadWordOfNumber(inPutNumber);
-            Assert.Equal(result,expected);
+            Assert.Equal(expected,result);
+        }
+
+        [Theory(DisplayName="ตัวเลขหลักสิบ")]
+        [InlineData(12,"สิบสอง")]
+        [InlineData(13,"สิบสาม")]
+        [InlineData(14,"สิบสี่")]
+        [InlineData(15,"สิบห้า")]
+        [InlineData(16,"สิบหก")]
+        [InlineData(17,"สิบเจ็ด")]
+        [InlineData(18,"สิบแปด")]
+        [InlineData(19,"สิบเก้า")]
+        public void CheckGetReadWordOfNumber2Digits(int inPutNumber,string expected)
+        {
+            var sut = new GetReadWordOfNumberLogic();
+            var result = sut.GetReadWordOfNumber(inPutNumber);
+            Assert.Equal(expected,result);
         }
     }
 }

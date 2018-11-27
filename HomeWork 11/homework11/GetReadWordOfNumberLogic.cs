@@ -10,24 +10,32 @@ namespace homework11
             var strNumber = number.ToString();
             if (strNumber.Length == 2)
             {
+                var result = "";
                 if (strNumber[0] == '1')
                 {
-                    return "สิบ";
+                    result = "สิบ";
                 }
                 else if (strNumber[0] == '2')
                 {
-                    return "ยี่สิบ";
+                    result = "ยี่สิบ";
                 }
                 else
                 {
-                    var result = Get1digit(strNumber[0]);
-                    return ($"{result}สิบ");
+                    var actual = Get1digit(strNumber[0]);
+                    result = ($"{actual}สิบ");
                 }
-            }
+                if (strNumber[1]=='0')
+                {
+                    return result;
+                }
+                var get1Digit = Get1digit(strNumber[1]);
+                return ($"{result}{get1Digit}");
+            }                     
             else
             {
                 return Get1digit(strNumber[0]);
             }
+
         }
 
         public string Get1digit(char number)
