@@ -49,46 +49,52 @@ namespace homework11
             }
             else
             {
-                if (strNumber == "0")
-                {
-                    return "ศูนย์";
-                }
-                else if (strNumber == "1")
-                {
-                    return "หนึ่ง";
-                }
-                else if (strNumber == "2")
-                {
-                    return "สอง";
-                }
-                else if (strNumber == "3")
-                {
-                    return "สาม";
-                }
-                else if (strNumber == "4")
-                {
-                    return "สี่";
-                }
-                else if (strNumber == "5")
-                {
-                    return "ห้า";
-                }
-                else if (strNumber == "6")
-                {
-                    return "หก";
-                }
-                else if (strNumber == "7")
-                {
-                    return "เจ็ด";
-                }
-                else if (strNumber == "8")
-                {
-                    return "แปด";
-                }
-                else
-                {
-                    return "เก้า";
-                }
+                var get1digit = Get1digit(strNumber[0]);
+                return get1digit;
+            }
+        }
+
+        public string Get1digit(char number)
+        {
+            if (number == '0')
+            {
+                return "ศูนย์";
+            }
+            else if (number == '1')
+            {
+                return "หนึ่ง";
+            }
+            else if (number == '2')
+            {
+                return "สอง";
+            }
+            else if (number == '3')
+            {
+                return "สาม";
+            }
+            else if (number == '4')
+            {
+                return "สี่";
+            }
+            else if (number == '5')
+            {
+                return "ห้า";
+            }
+            else if (number == '6')
+            {
+                return "หก";
+            }
+            else if (number == '7')
+            {
+                return "เจ็ด";
+            }
+            else if (number == '8')
+            {
+                return "แปด";
+            }
+            else
+            {
+                return "เก้า";
             }
         }
     }
