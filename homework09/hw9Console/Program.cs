@@ -13,10 +13,11 @@ namespace hw9Console
             var amount = 0.00;
             var input = "";
             var getAllProduct = call.GetAllProducts().ToList();
-            var productsInCart = call.GetProductsInCart().ToList();
 
             while (true)
             {
+                var productsInCart = call.GetProductsInCart().ToList();
+
                 Console.WriteLine();
                 Console.WriteLine("Products in your cart are");
 
@@ -44,11 +45,10 @@ namespace hw9Console
                 {
                     break;
                 }
-                
+
                 var addToCart = getAllProduct.Find(it => it.SKU == input);
 
                 call.AddProductToCart(addToCart);
-                productsInCart.Add(addToCart);
                 amount += addToCart.Price;
             }
         }

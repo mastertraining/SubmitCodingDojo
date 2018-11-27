@@ -8,7 +8,7 @@ namespace hw9ClassLib
     public class Homework09 : IHomework09
     {
         private List<IProduct> _cart = new List<IProduct>();
-        private List<Product> _products = new List<Product>();
+        private List<IProduct> _products = new List<IProduct>();
         private string _path = @"..\hw9Console\product.csv";
         public IEnumerable<IProduct> GetAllProducts()
         {
