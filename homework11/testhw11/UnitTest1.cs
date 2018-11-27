@@ -44,6 +44,12 @@ namespace testhw11
         [InlineData(910, "เก้าร้อยสิบ")]
         [InlineData(1900, "หนึ่งพันเก้าร้อย")]
         [InlineData(1713, "หนึ่งพันเจ็ดร้อยสิบสาม")]
+        [InlineData(21711, "สองหมื่นหนึ่งพันเจ็ดร้อยสิบเอ็ด")]
+        [InlineData(81713, "แปดหมื่นหนึ่งพันเจ็ดร้อยสิบสาม")]
+        [InlineData(100001, "หนึ่งแสนหนึ่ง")]
+        
+
+
 
 
         public void Test1(int number, string excepted)
