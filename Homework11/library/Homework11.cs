@@ -14,13 +14,13 @@ public class Homework11 : IHomework11
             {'0', "soon"},//"ศูนย์"},
             {'1', "Nung"},//"หนึ่ง"},
             {'2', "Song"},//"สอง"},
-            {'3', "sam"},//"สาม"},
-            {'4', "zee"},//"สี่"  },
-            {'5', "ha"},//"ห้า" },
-            {'6', "hoke"},//"หก" },
-            {'7', "jed"},//"เจ็ด"},
-            {'8', "paed"},//"แปด"},
-            {'9', "gaow"},//"เก้า" }
+            {'3', "Sam"},//"สาม"},
+            {'4', "Zee"},//"สี่"  },
+            {'5', "Ha"},//"ห้า" },
+            {'6', "Hoke"},//"หก" },
+            {'7', "Jed"},//"เจ็ด"},
+            {'8', "Paed"},//"แปด"},
+            {'9', "Waow"},//"เก้า" }
         };
     }
 
@@ -34,7 +34,29 @@ public class Homework11 : IHomework11
             return "pung";//พัง");
         }
 
-        return theHundredThousands(number);
+        if (StrNum.Length == 2)
+        {
+            return theTen(number);
+        }
+        else if (StrNum.Length == 3)
+        {
+            return theHundred(number);
+        }
+        else if (StrNum.Length == 4)
+        {
+            return theThousand(number);
+        }
+        else if (StrNum.Length == 5)
+        {
+            return theTenThousands(number);
+        }
+        else if (StrNum.Length == 6)
+        {
+            return theHundredThousands(number);
+        }
+
+        return "taeg";
+
     }
 
     String theUnit(int numb) => call[numb.ToString()[0]];
@@ -54,7 +76,7 @@ public class Homework11 : IHomework11
         numb %= 10;
         if (numb == 1)
         {
-            result.Append("et");//เอ็ด");
+            result.Append("Et");//เอ็ด");
             return result.ToString();
         }
         result.Append(call[firstChar]);
@@ -67,7 +89,7 @@ public class Homework11 : IHomework11
         var firstChar = numb.ToString()[0];
         var lastChar = numb.ToString()[numb.ToString().Length - 1];
         result.Append(call[firstChar]);
-        result.Append("roi");//ร้อย");
+        result.Append("Roi");//ร้อย");
         if (numb % 100 == 0)
         {
             return result.ToString();
@@ -82,13 +104,13 @@ public class Homework11 : IHomework11
         StringBuilder result = new StringBuilder();
         var firstChar = numb.ToString()[0];
         result.Append(call[firstChar]);
-        result.Append("pun");//พัน");
+        result.Append("Pun");//พัน");
         if (numb % 1000 == 0)
         {
             return result.ToString();
         }
         numb %= 1000;
-        result.Append(theTen(numb));
+        result.Append(theHundred(numb));
         return result.ToString();
     }
 
@@ -97,13 +119,13 @@ public class Homework11 : IHomework11
         StringBuilder result = new StringBuilder();
         var firstChar = numb.ToString()[0];
         result.Append(call[firstChar]);
-        result.Append("meun");//หมื่น");
+        result.Append("Meun");//หมื่น");
         if (numb % 10000 == 0)
         {
             return result.ToString();
         }
         numb %= 10000;
-        result.Append(theTen(numb));
+        result.Append(theThousand(numb));
         return result.ToString();
     }
 
@@ -112,13 +134,13 @@ public class Homework11 : IHomework11
         StringBuilder result = new StringBuilder();
         var firstChar = numb.ToString()[0];
         result.Append(call[firstChar]);
-        result.Append("saen");//แสน");
+        result.Append("Saen");//แสน");
         if (numb % 100000 == 0)
         {
             return result.ToString();
         }
         numb %= 100000;
-        result.Append(theTen(numb));
+        result.Append(theTenThousands(numb));
         return result.ToString();
     }
 }
