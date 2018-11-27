@@ -108,7 +108,6 @@ namespace hw11ClassLib
                     build.Append(wordNumber[0]);
                 }
             }
-
             return build.ToString();
         }
     }
