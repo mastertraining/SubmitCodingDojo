@@ -81,7 +81,7 @@ public class Homework11 : IHomework11
             result.Append("เอ็ด");
             return result.ToString();
         }
-        result.Append(call[lastChar]);
+        result.Append(theUnit(numb));
         return result.ToString();
     }
 
