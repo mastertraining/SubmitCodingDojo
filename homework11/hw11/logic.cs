@@ -7,6 +7,43 @@ namespace hw11
         public string GetReadWordOfNumber(int number)
         {
             string number2 = number.ToString();
+            if (number2.Length == 4)
+            {
+                switch (number2[0])
+                {
+                    case '0': return "";
+                    default:
+                        if (number % 1000 == 0)
+                        {
+                            return ($"{ReadNumber(number2[0])}พัน");
+                        }
+                        else
+                        {
+                            return ($"{ReadNumber(number2[0])}พัน{GetReadWordOfNumber(number % 1000)}");
+                        }
+                }
+            }
+
+            if (number2.Length == 3)
+            {
+
+                switch (number2[0])
+                {
+                    case '0': return "";
+                    default:
+                        if (number % 100 == 0)
+                        {
+                            return ($"{ReadNumber(number2[0])}ร้อย");
+                        }
+                        else
+                        {
+                            return ($"{ReadNumber(number2[0])}ร้อย{GetReadWordOfNumber(number % 100)}");
+                        }
+
+                }
+
+            }
+
             if (number2.Length == 2)
             {
                 switch (number2[0])
