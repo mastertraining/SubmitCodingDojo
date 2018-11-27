@@ -14,10 +14,10 @@ namespace Homework8
         public string GetTriangleShapeAsText(int input)
         {
             StringBuilder triangle = new StringBuilder();
-            string hypotenuse = "/";
-            string adjacent   = "|";
-            char   opposite   = '_';
-            char   blank      = ' ';
+            var hypotenuse = '/';
+            var adjacent   = '|';
+            var opposite   = '_';
+            var blank      = ' ';
 
             for (int i = 0; i < input; i++) 
             {
@@ -26,14 +26,14 @@ namespace Homework8
                     triangle.Append(new string(blank, input - i))
                             .Append(hypotenuse)
                             .Append(new string(opposite, i))
-                            .AppendLine(adjacent);
+                            .AppendLine(adjacent.ToString());
                 }
                 else 
                 {
                     triangle.Append(new string(blank, input - i))
                             .Append(hypotenuse)
                             .Append(new string(blank, i))
-                            .AppendLine(adjacent);
+                            .AppendLine(adjacent.ToString());
                 }
             }
 
