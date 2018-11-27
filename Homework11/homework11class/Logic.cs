@@ -7,10 +7,20 @@ namespace homework11class
         public string GetReadWordOfNumber(int number)
         {
             var text = number.ToString();
-            if (text.Length == 2)
+            if (text.Length == 3)
+            {
+                if (number % 100 == 0)
+                {
+                    var hundredequal0 = Getonedigit(text[0]);
+                    return ($"{hundredequal0}ร้อย");
+                }
+                var hundred = Getonedigit(text[0]);
+                return ($"{hundred}ร้อย{GetReadWordOfNumber(number % 100)}");
+            }
+            else if (text.Length == 2)
             {
                 var collect = "";
-                if (text[0] == '1' )
+                if (text[0] == '1')
                 {
                     collect = "สิบ";
                 }
@@ -19,7 +29,7 @@ namespace homework11class
                 {
                     collect = "ยี่สิบ";
                 }
-                else 
+                else
                 {
                     var morethan30 = Getonedigit(text[0]);
                     collect = ($"{morethan30}สิบ");
@@ -27,7 +37,11 @@ namespace homework11class
                 if (text[1] == '0')
                 {
                     return collect;
-                } 
+                }
+                if (text[1] == '1')
+                {
+                    return ($"{collect}เอ็ด");
+                }
                 var result = Getonedigit(text[1]);
                 return ($"{collect}{result}");
             }
@@ -79,7 +93,7 @@ namespace homework11class
             {
                 return "ศูนย์";
             }
-
         }
     }
 }
+
