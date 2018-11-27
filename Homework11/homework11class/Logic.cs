@@ -19,11 +19,15 @@ namespace homework11class
                 {
                     collect = "ยี่สิบ";
                 }
-                else
+                else 
                 {
                     var morethan30 = Getonedigit(text[0]);
                     collect = ($"{morethan30}สิบ");
                 }
+                if (text[1] == '0')
+                {
+                    return collect;
+                } 
                 var result = Getonedigit(text[1]);
                 return ($"{collect}{result}");
             }
@@ -77,6 +81,5 @@ namespace homework11class
             }
 
         }
-
     }
 }

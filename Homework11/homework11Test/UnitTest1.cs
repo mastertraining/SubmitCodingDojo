@@ -19,25 +19,25 @@ namespace homework11Test
             Assert.Equal(expected, result);
         }
 
-        // [Theory(DisplayName = "เลขสองหลักลงท้ายที่สิบ")]
-        // // [InlineData(10, "สิบ")]
-        // [InlineData(20, "ยี่สิบ")]
-        // [InlineData(30, "สามสิบ")]
-        // [InlineData(40, "สี่สิบ")]
-        // [InlineData(50, "ห้าสิบ")]
-        // [InlineData(60, "หกสิบ")]
-        // [InlineData(70, "เจ็ดสิบ")]
-        // [InlineData(80, "แปดสิบ")]
-        // [InlineData(90, "เก้าสิบ")]
+        [Theory(DisplayName = "เลขสองหลักลงท้ายที่สิบ")]
+        [InlineData(10, "สิบ")]
+        [InlineData(20, "ยี่สิบ")]
+        [InlineData(30, "สามสิบ")]
+        [InlineData(40, "สี่สิบ")]
+        [InlineData(50, "ห้าสิบ")]
+        [InlineData(60, "หกสิบ")]
+        [InlineData(70, "เจ็ดสิบ")]
+        [InlineData(80, "แปดสิบ")]
+        [InlineData(90, "เก้าสิบ")]
 
 
 
-        // public void twodigit(int number, string expected)
-        // {
-        //     var sut = new Logic();
-        //     var result = sut.GetReadWordOfNumber(number);
-        //     Assert.Equal(expected, result);
-        // }
+        public void twodigit(int number, string expected)
+        {
+            var sut = new Logic();
+            var result = sut.GetReadWordOfNumber(number);
+            Assert.Equal(expected, result);
+        }
 
         [Theory(DisplayName = "เลขสองหลักลงท้าย2-9")]
         [InlineData(12, "สิบสอง")]
