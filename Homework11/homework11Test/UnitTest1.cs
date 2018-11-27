@@ -20,7 +20,7 @@ namespace homework11Test
         }
 
         // [Theory(DisplayName = "เลขสองหลักลงท้ายที่สิบ")]
-        // [InlineData(10, "สิบ")]
+        // // [InlineData(10, "สิบ")]
         // [InlineData(20, "ยี่สิบ")]
         // [InlineData(30, "สามสิบ")]
         // [InlineData(40, "สี่สิบ")]

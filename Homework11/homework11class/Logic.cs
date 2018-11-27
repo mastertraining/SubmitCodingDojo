@@ -9,29 +9,28 @@ namespace homework11class
             var text = number.ToString();
             if (text.Length == 2)
             {
-                if (text[0] == '1')
+                var collect = "";
+                if (text[0] == '1' )
                 {
-                   var ten = "สิบ";
-                   var twodigit = Getonedigit(text[1]);
-                    return ($"{ten}{twodigit}");
+                    collect = "สิบ";
                 }
+
                 else if (text[0] == '2')
                 {
-                    return "ยี่สิบ";
+                    collect = "ยี่สิบ";
                 }
-                else if (text[0] >= '3' && text[0] > '0')
+                else
                 {
-                    var onedigit = Getonedigit(text[0]);
-                    return ($"{onedigit}สิบ");
-
+                    var morethan30 = Getonedigit(text[0]);
+                    collect = ($"{morethan30}สิบ");
                 }
+                var result = Getonedigit(text[1]);
+                return ($"{collect}{result}");
             }
             else
             {
                 return Getonedigit(text[0]);
             }
-
-            return "";
         }
 
         public string Getonedigit(char onedigit)
