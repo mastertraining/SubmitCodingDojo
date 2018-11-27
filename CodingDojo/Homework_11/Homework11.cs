@@ -74,7 +74,7 @@ namespace Homework_11
             foreach (var sixDigitItem in sixDigitList)
             {
                 var millionWordCount = sixDigitList.Count - sixDigitList.IndexOf(sixDigitItem) - 1;
-                if (int.Parse(sixDigitItem) < 10)
+                if (int.Parse(sixDigitItem) < 10 && sixDigitList.IndexOf(sixDigitItem) == 0)
                 {
                     thaiNumberWordBuilder.Append(BaseOneNumberToString(int.Parse(sixDigitItem), true));
                 }
