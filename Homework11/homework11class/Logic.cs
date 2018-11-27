@@ -11,7 +11,9 @@ namespace homework11class
             {
                 if (text[0] == '1')
                 {
-                    return "สิบ";
+                   var ten = "สิบ";
+                   var twodigit = Getonedigit(text[1]);
+                    return ($"{ten}{twodigit}");
                 }
                 else if (text[0] == '2')
                 {
@@ -23,42 +25,6 @@ namespace homework11class
                     return ($"{onedigit}สิบ");
 
                 }
-                // if (text == "90")
-                // {
-                //     return "เก้าสิบ";
-                // }
-                // else if (text == "80")
-                // {
-                //     return "แปดสิบ";
-                // }
-                // else if (text == "70")
-                // {
-                //     return "เจ็ดสิบ";
-                // }
-                // else if (text == "60")
-                // {
-                //     return "หกสิบ";
-                // }
-                // else if (text == "50")
-                // {
-                //     return "ห้าสิบ";
-                // }
-                // else if (text == "40")
-                // {
-                //     return "สี่สิบ";
-                // }
-                // else if (text == "30")
-                // {
-                //     return "สามสิบ";
-                // }
-                // else if (text == "20")
-                // {
-                //     return "ยี่สิบ";
-                // }
-                // else if (text == "10")
-                // {
-                //     return "สิบ";
-                // }
             }
             else
             {
