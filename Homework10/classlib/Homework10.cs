@@ -15,9 +15,10 @@ public class Homework10: IHomework10
 
     public Homework10()
     {
-        cart         = new List<IProduct>();
+        _filePath    = "";
         _allProducts = new List<IProduct>();
         order        = new List<IProduct>();
+        cart         = new List<IProduct>();
     }
 
     public void AddProductToCart(IProduct product)
