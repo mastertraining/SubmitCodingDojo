@@ -7,101 +7,80 @@ namespace HomeWork11.classlib
 {
     public class HomeWork11ClassLib : IHomework11
     {
-        public Dictionary<int, string> digitNumber { get; set; }
+        public Dictionary<int, string> Digit { get; set; }
+        public Dictionary<int, string> Number { get; set; }
 
         public void setDigit()
         {
-            digitNumber = new Dictionary<int, string>() {
-                {1000000,"ล้าน"},
-                {100000,"แสน"},
-                {10000,"หมื่น"},
-                {1000,"พัน"},
-                {100,"ร้อย"},
-                {20,"ยี่สิบ"},
-                {10,"สิบ"},
-                {9,"เก้า"},
-                {8,"แปด"},
-                {7,"เจ็ด"},
-                {6,"หก"},
-                {5,"ห้า"},
-                {4,"สี่"},
-                {3,"สาม"},
-                {2,"สอง"},
-                {1,"หนึ่ง"},
+            Digit = new Dictionary<int, string>() {
+                {1,string.Empty},
+                {2,"สิบ"},
+                {3,"ร้อย"},
+                {4,"พัน"},
+                {5,"หมื่น"},
+                {6,"แสน"},
+                {7,"ล้าน"}
+            };
+
+            Number = new Dictionary<int, string>() {
                 {0,"ศูนย์"},
+                {1,"หนึ่ง"},
+                {2,"สอง"},
+                {3,"สาม"},
+                {4,"สี่"},
+                {5,"ห้า"},
+                {6,"หก"},
+                {7,"เจ็ด"},
+                {8,"แปด"},
+                {9,"เก้า"},
             };
         }
+
         public string GetReadWordOfNumber(int number)
         {
-            var digit = 0;
             var numberSB = new StringBuilder();
-            var result = number;
-            if (result >= 1000000)
+            if (number < 10000000)
             {
-                digit = result / 1000000;
-                result = result - (digit * 1000000);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[1000000]);
+                var numberString = number.ToString();
+                var listDigit = new List<int>();
+                for (int i = 0; i < numberString.Count(); i++)
+                {
+                    var num = int.Parse(numberString.Substring(i, 1));
+                    listDigit.Add(num);
+                }
 
+                for (int i = 0; i < listDigit.Count; i++)
+                {
+                    var wordNumber = Number[listDigit[i]];
+                    var wordDigit = Digit[listDigit.Count - i];
+                    switch (listDigit[i])
+                    {
+                        case 0:
+                            wordNumber = listDigit.Count > 1 ? Digit[1] : Number[0];
+                            break;
+                        case 1:
+                            if (wordDigit == "สิบ")
+                            {
+                                wordNumber = string.Empty;
+                            }
+                            else if (listDigit.Count > 1 && i == listDigit.Count - 1)
+                            {
+                                wordNumber = "เอ็ด";
+                            }
+                            break;
+                        case 2:
+                            wordNumber = wordDigit == "สิบ" ? "ยี่" : wordNumber;
+                            break;
+                        default:
+                            break;
+                    }
+                    numberSB.Append(wordNumber).Append(wordDigit);
+
+                }
             }
-            if (result >= 100000)
+            else
             {
-                digit = result / 100000;
-                result = result - (digit * 100000);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[100000]);
-            }
-            if (result >= 10000)
-            {
-                digit = result / 10000;
-                result = result - (digit * 10000);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[10000]);
-            }
-            if (result >= 1000)
-            {
-                digit = result / 1000;
-                result = result - (digit * 1000);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[1000]);
-            }
-            if (result >= 100)
-            {
-                digit = result / 100;
-                result = result - (digit * 100);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[100]);
-            }
-            if (result >= 20 && result < 30)
-            {
-                digit = result / 20;
-                result = result - (digit * 20);
-                numberSB.Append(digitNumber[20]);
-            }
-            if (result >= 10 && result < 20)
-            {
-                digit = result / 10;
-                result = result - (digit * 10);
-                numberSB.Append(digitNumber[10]);
-            }
-            if (result > 10)
-            {
-                digit = result / 10;
-                result = result - (digit * 10);
-                numberSB.Append(digitNumber[digit]).Append(digitNumber[10]);
-            }
-            if (result == 1 && number >= 10)
-            {
-                digit = result / 1;
-                numberSB.Append("เอ็ด");
-            }
-            if (result == 1 && number < 10)
-            {
-                numberSB.Append(digitNumber[1]);
-            }
-            if (result > 1)
-            {
-                digit = result / 1;
-                numberSB.Append(digitNumber[digit]);
-            }
-            if (number == 0)
-            {
-                numberSB.Append(digitNumber[0]);
+                numberSB.Append("The Number is Over!!");
             }
             return numberSB.ToString();
         }
