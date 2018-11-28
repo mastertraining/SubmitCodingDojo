@@ -84,65 +84,33 @@ namespace Homework11
                     for (int i = 0; i < numberArray.Count - 1; i++)
                     {
                         if (numberArray[i] == 0 && i < 4) continue;
-                        thaiNumberWordBuilder.Append(GetThaiNumberWordForeachBase(numberArray[i], numberArray[5], (CoreBase)i));
+                        switch ((CoreBase)i)
+                        {
+                            case CoreBase.Ten:
+                                thaiNumberWordBuilder.Append(BaseTenToString(numberArray[i], numberArray[5]));
+                                break;
+                            default:
+                                thaiNumberWordBuilder.Append($"{thaiNumber[numberArray[i]]}{baseThaiNumber[(CoreBase)i]}");
+                                break;
+                        }
                     }
                 }
-                baseThaiNumber.TryGetValue(CoreBase.Million, out var millionWord);
-                var millonThaiWords = new string('A', millionWordCount).Replace("A", millionWord);
+                var millonThaiWords = new string('A', millionWordCount).Replace("A", baseThaiNumber[CoreBase.Million]);
                 thaiNumberWordBuilder.Append(millonThaiWords);
             }
             return thaiNumberWordBuilder.ToString();
         }
 
-        private string GetThaiNumberWordForeachBase(int mainNumber, int lastNumber, CoreBase coreBase)
-        {
-            thaiNumber.TryGetValue(mainNumber, out var thaiNumberWord);
-            var baseWord = string.Empty;
-            switch (coreBase)
-            {
-                case CoreBase.Ten:
-                    return BaseTenToString(mainNumber, lastNumber);
-                case CoreBase.Hundred:
-                    baseThaiNumber.TryGetValue(CoreBase.Hundred, out baseWord);
-                    break;
-                case CoreBase.Thousand:
-                    baseThaiNumber.TryGetValue(CoreBase.Thousand, out baseWord);
-                    break;
-                case CoreBase.Ten_Thousand:
-                    baseThaiNumber.TryGetValue(CoreBase.Ten_Thousand, out baseWord);
-                    break;
-                case CoreBase.Hundred_Thousand:
-                    baseThaiNumber.TryGetValue(CoreBase.Hundred_Thousand, out baseWord);
-                    break;
-                default:
-                    break;
-            }
-            return $"{thaiNumberWord}{baseWord}";
-        }
-
         private string BaseTenToString(int secondDigit, int firstDigit)
         {
             if (secondDigit == 0) return BaseOneNumberToString(firstDigit, false);
-            var secondDisgitWord = string.Empty;
-            if (secondDigit == 2) thaiNumber.TryGetValue(20, out secondDisgitWord);
-            else if (secondDigit != 1) thaiNumber.TryGetValue(secondDigit, out secondDisgitWord);
-            baseThaiNumber.TryGetValue(CoreBase.Ten, out var baseWord);
-            return $"{secondDisgitWord}{baseWord}{BaseOneNumberToString(firstDigit, false)}";
+            var secondDisgitWord = secondDigit == 2 ? thaiNumber[20] : secondDigit != 1 ? thaiNumber[secondDigit] : string.Empty;
+            return $"{secondDisgitWord}{baseThaiNumber[CoreBase.Ten]}{BaseOneNumberToString(firstDigit, false)}";
         }
 
         private string BaseOneNumberToString(int number, bool isOneDigit)
         {
-            if (!isOneDigit && number == 1)
-            {
-                thaiNumber.TryGetValue(11, out var result);
-                return result;
-            }
-            else
-            {
-                if (!isOneDigit && number == 0) return string.Empty;
-                thaiNumber.TryGetValue(number, out var result);
-                return result;
-            }
+            return !isOneDigit && number == 1 ? thaiNumber[11] : !isOneDigit && number == 0 ? string.Empty : thaiNumber[number];
         }
     }
 }
