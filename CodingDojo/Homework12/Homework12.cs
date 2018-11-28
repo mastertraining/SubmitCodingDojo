@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Homework12
@@ -8,12 +9,16 @@ namespace Homework12
     {
         public char FirstDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var firstDuplicate = text.ToCharArray().GroupBy(it => it)
+                .FirstOrDefault(it => it.Count() > 1);
+            return firstDuplicate == null ? '-' : firstDuplicate.Key;
         }
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var firstNotDuplicate = text.ToCharArray().GroupBy(it => it)
+                .FirstOrDefault(it => it.Count() == 1);
+            return firstNotDuplicate == null ? '-' : firstNotDuplicate.Key;
         }
     }
 }
