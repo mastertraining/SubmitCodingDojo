@@ -5,7 +5,6 @@ namespace Homework9.Cons
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             var svc = new Homework09();
