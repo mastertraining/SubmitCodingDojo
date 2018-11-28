@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Homework_06;
+using Homework06;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ namespace HomeworkXUnit
     public class Homework06UnitTest
     {
         private IHomework06 IHW;
-        public Homework06UnitTest() => IHW = new Homework06();
+        public Homework06UnitTest() => IHW = new Homework06.Homework06();
 
         [Theory]
         [MemberData(nameof(DisplayLEDOnScreenCase))]

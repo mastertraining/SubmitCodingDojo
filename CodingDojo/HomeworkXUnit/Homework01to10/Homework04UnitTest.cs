@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Homework_04;
+using Homework04;
 using Xunit;
 
 namespace HomeworkXUnit
@@ -7,7 +7,7 @@ namespace HomeworkXUnit
     public class Homework04UnitTest
     {
         private IHomework04 IHW;
-        public Homework04UnitTest() => IHW = new Homework04();
+        public Homework04UnitTest() => IHW = new Homework04.Homework04();
 
         [Theory]
         [InlineData("0100,0011,1010,1001", "1010")]

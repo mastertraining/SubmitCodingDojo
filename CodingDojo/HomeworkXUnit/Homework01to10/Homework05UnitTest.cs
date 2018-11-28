@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Homework_05;
+using Homework05;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -9,7 +9,7 @@ namespace HomeworkXUnit
     public class Homework05UnitTest
     {
         private IHomework05 IHW;
-        public Homework05UnitTest() => IHW = new Homework05();
+        public Homework05UnitTest() => IHW = new Homework05.Homework05();
 
         [Theory]
         [MemberData(nameof(GetDisplayLEDOnScreenCase))]

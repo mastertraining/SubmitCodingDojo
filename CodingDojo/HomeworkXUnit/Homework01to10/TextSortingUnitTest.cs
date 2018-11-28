@@ -1,5 +1,5 @@
 using FluentAssertions;
-using Homework_01;
+using Homework01;
 using Xunit;
 
 namespace HomeworkXUnit

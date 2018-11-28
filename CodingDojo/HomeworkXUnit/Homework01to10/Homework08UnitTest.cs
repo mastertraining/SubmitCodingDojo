@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 using FluentAssertions;
-using Homework_08;
+using Homework08;
 
 namespace HomeworkXUnit
 {
@@ -10,7 +10,7 @@ namespace HomeworkXUnit
     {
         private IHomework08 IHW;
 
-        public Homework08UnitTest() => IHW = new Homework08();
+        public Homework08UnitTest() => IHW = new Homework08.Homework08();
 
         [Theory]
         [MemberData(nameof(GetTriangleShapeAsTextCase))]

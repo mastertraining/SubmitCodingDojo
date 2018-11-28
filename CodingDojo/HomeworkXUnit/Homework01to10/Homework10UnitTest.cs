@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Homework_10;
-using Homework_10.Model;
+using Homework10;
+using Homework10.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace HomeworkXUnit
     public class Homework10UnitTest
     {
         IHomework10 IHW;
-        public Homework10UnitTest() => IHW = new Homework10();
+        public Homework10UnitTest() => IHW = new Homework10.Homework10();
 
         [Theory]
         [MemberData(nameof(ProductsInCartCase))]
@@ -34,11 +34,11 @@ namespace HomeworkXUnit
                 }
                 var result = IHW.GetProductsInCart();
                 result.Should().BeEquivalentTo(expected);
-                var HW10 = new Homework10();
+                var HW10 = new Homework10.Homework10();
                 result = HW10.GetProductsInCart();
                 result.Should().BeEquivalentTo(new List<IProduct>());
                 IHW.SaveCurrentState();
-                HW10 = new Homework10();
+                HW10 = new Homework10.Homework10();
                 result = HW10.GetProductsInCart();
                 result.Should().BeEquivalentTo(expected);
             }

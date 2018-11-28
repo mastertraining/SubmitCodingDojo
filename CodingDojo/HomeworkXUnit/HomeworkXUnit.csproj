@@ -15,17 +15,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Homework 01\Homework 01.csproj" />
-    <ProjectReference Include="..\Homework 02\Homework 02.csproj" />
-    <ProjectReference Include="..\Homework 03\Homework 03.csproj" />
-    <ProjectReference Include="..\Homework 04\Homework 04.csproj" />
-    <ProjectReference Include="..\Homework_05\Homework_05.csproj" />
-    <ProjectReference Include="..\Homework_06\Homework_06.csproj" />
-    <ProjectReference Include="..\Homework_07\Homework_07.csproj" />
-    <ProjectReference Include="..\Homework_08\Homework_08.csproj" />
-    <ProjectReference Include="..\Homework_09\Homework_09.csproj" />
-    <ProjectReference Include="..\Homework_10\Homework_10.csproj" />
-    <ProjectReference Include="..\Homework_11\Homework_11.csproj" />
+    <ProjectReference Include="..\Homework01\Homework01.csproj" />
+    <ProjectReference Include="..\Homework02\Homework02.csproj" />
+    <ProjectReference Include="..\Homework03\Homework03.csproj" />
+    <ProjectReference Include="..\Homework04\Homework04.csproj" />
+    <ProjectReference Include="..\Homework05\Homework05.csproj" />
+    <ProjectReference Include="..\Homework06\Homework06.csproj" />
+    <ProjectReference Include="..\Homework07\Homework07.csproj" />
+    <ProjectReference Include="..\Homework08\Homework08.csproj" />
+    <ProjectReference Include="..\Homework09\Homework09.csproj" />
+    <ProjectReference Include="..\Homework10\Homework10.csproj" />
+    <ProjectReference Include="..\Homework11\Homework11.csproj" />
   </ItemGroup>
 
 </Project>

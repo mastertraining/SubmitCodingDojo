@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 using FluentAssertions;
-using Homework_11;
+using Homework11;
 
 namespace HomeworkXUnit
 {
     public class Homework11UnitTest
     {
         public IHomework11 IHW;
-        public Homework11UnitTest() => IHW = new Homework11();
+        public Homework11UnitTest() => IHW = new Homework11.Homework11();
 
         [Theory]
         [InlineData(0, "ศูนย์")]
