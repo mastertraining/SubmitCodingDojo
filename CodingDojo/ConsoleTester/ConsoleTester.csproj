@@ -50,13 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Homework 01\Homework 01.csproj">
-      <Project>{3e5c99e6-6678-4d13-9565-5a8c6a15423f}</Project>
-      <Name>Homework 01</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Homework 02\Homework 02.csproj">
+    <ProjectReference Include="..\Homework02\Homework02.csproj">
       <Project>{7bc36527-394d-40e9-93c1-128c846b1fd0}</Project>
-      <Name>Homework 02</Name>
+      <Name>Homework02</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

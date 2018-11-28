@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Homework_03;
+using Homework03;
 using System.Collections.Generic;
 using Xunit;
 
@@ -8,7 +8,7 @@ namespace HomeworkXUnit
     public class Homework03UnitTest
     {
         private IHomework03 IHW;
-        public Homework03UnitTest() => IHW = new Homework03();
+        public Homework03UnitTest() => IHW = new Homework03.Homework03();
 
         [Theory]
         [MemberData(nameof(GetCapitalizedTextCases))]
