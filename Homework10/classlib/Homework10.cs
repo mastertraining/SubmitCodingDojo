@@ -72,7 +72,7 @@ public class Homework10: IHomework10
         using (StreamWriter writer = new StreamWriter(_filePath))
         {
             StringBuilder JsonBuilder = new StringBuilder();
-            JsonBuilder.Append("{\"ordering:\"")
+            JsonBuilder.Append("{\"ordering\":")
                        .Append(JsonConvert.SerializeObject(cart, Formatting.Indented))
                        .Append("}");
             writer.Write(JsonBuilder.ToString());
