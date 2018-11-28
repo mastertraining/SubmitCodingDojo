@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="9.2.3" />
+    <PackageReference Include="FluentAssertions" Version="5.5.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Homework01\Homework01.csproj" />
+    <ProjectReference Include="..\Homework02\Homework02.csproj" />
+    <ProjectReference Include="..\Homework03\Homework03.csproj" />
+    <ProjectReference Include="..\Homework04\Homework04.csproj" />
+    <ProjectReference Include="..\Homework05\Homework05.csproj" />
+    <ProjectReference Include="..\Homework06\Homework06.csproj" />
+    <ProjectReference Include="..\Homework07\Homework07.csproj" />
+    <ProjectReference Include="..\Homework08\Homework08.csproj" />
+    <ProjectReference Include="..\Homework09\Homework09.csproj" />
+    <ProjectReference Include="..\Homework10\Homework10.csproj" />
+    <ProjectReference Include="..\Homework11\Homework11.csproj" />
+    <ProjectReference Include="..\Homework12\Homework12.csproj" />
+  </ItemGroup>
+
+</Project>
