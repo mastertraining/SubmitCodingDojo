@@ -40,7 +40,7 @@ namespace homework11.Test
             Assert.Equal(expected, result);
         }
 
-        [Theory(DisplayName = "ตัวเลขหลักสิบ12-19")]
+        [Theory(DisplayName = "ตัวเลขหลักสิบ11-39")]
         [InlineData(11, "สิบเอ็ด")]
         [InlineData(12, "สิบสอง")]
         [InlineData(13, "สิบสาม")]
@@ -75,7 +75,7 @@ namespace homework11.Test
             Assert.Equal(expected, result);
         }
 
-        [Theory(DisplayName = "ตัวเลขหลักร้อยทั้งหมด100-900")]
+        [Theory(DisplayName = "ตัวเลขหลักร้อยถึงหลักล้าน")]
         [InlineData(100, "หนึ่งร้อย")]
         [InlineData(200, "สองร้อย")]
         [InlineData(300, "สามร้อย")]

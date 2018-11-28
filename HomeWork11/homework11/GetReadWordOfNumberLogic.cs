@@ -21,7 +21,6 @@ namespace homework11
                     return ($"{million}ล้าน{GetReadWordOfNumber(number % 1000000)}");
                 }
             }
-
             else if (strNumber.Length == 6)
             {
                 var hundredThousand = Get1digit(strNumber[0]);
@@ -34,7 +33,6 @@ namespace homework11
                     return ($"{hundredThousand}แสน{GetReadWordOfNumber(number % 100000)}");
                 }
             }
-
             else if (strNumber.Length == 5)
             {
                 var tenThousand = Get1digit(strNumber[0]);
@@ -47,7 +45,6 @@ namespace homework11
                     return ($"{tenThousand}หมื่น{GetReadWordOfNumber(number % 10000)}");
                 }
             }
-
             else if (strNumber.Length == 4)
             {
                 var thousand = Get1digit(strNumber[0]);
@@ -72,7 +69,6 @@ namespace homework11
                     return ($"{hundred}ร้อย{GetReadWordOfNumber(number % 100)}");
                 }
             }
-
             else if (strNumber.Length == 2)
             {
                 if (strNumber[0] == '1')
@@ -106,7 +102,6 @@ namespace homework11
             }
 
         }
-
         public string Get1digit(char number)
         {
             if (number == '0')
