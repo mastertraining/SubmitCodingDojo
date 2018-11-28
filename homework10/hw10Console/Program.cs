@@ -1,16 +1,19 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
+using System.Text;
 using hw10ClassLib;
 
 namespace hw10Console
 {
     class Program
     {
+        private static string _pathSumAmount = @"amount.txt";
         static void Main(string[] args)
         {
 
             var call = new Homework10();
-            var amount = 0.00;
+            var amount = double.Parse(getAmount());
             var input = " ";
             var getAllProduct = call.GetAllProducts().ToList();
             var massage = "Current state had been saved!";
@@ -19,7 +22,7 @@ namespace hw10Console
             {
                 var productsInCart = call.GetProductsInCart().ToList();
                 var products = productsInCart.GroupBy(it => it.SKU);
-              
+
                 Console.WriteLine("Products in your cart are");
 
                 if (productsInCart.Capacity == 0)
@@ -49,7 +52,8 @@ namespace hw10Console
                 {
                     call.SaveCurrentState();
                     Console.WriteLine(massage);
-                    amount = amount;
+                    WriteAmonut(amount.ToString());
+
                 }
                 else if (input.Contains(','))
                 {
@@ -74,6 +78,17 @@ namespace hw10Console
                     Console.WriteLine();
                 }
             }
+        }
+        static string getAmount()
+        {
+            var read = File.ReadLines(_pathSumAmount, Encoding.UTF8).Last();
+            return read;
+        }
+        static void WriteAmonut(string amount)
+        {
+            var write = new StreamWriter(_pathSumAmount);
+            write.WriteLine($"{amount}.00");
+            write.Close();
         }
     }
 }
