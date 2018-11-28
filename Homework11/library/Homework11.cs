@@ -31,7 +31,7 @@ public class Homework11 : IHomework11
 
         if (number >= 1000000)
         {
-            return "pung";//พัง");
+            return "พัง");
         }
 
         if (StrNum.Length == 2)
