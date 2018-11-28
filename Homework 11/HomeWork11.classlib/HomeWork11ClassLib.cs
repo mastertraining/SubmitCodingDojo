@@ -56,7 +56,11 @@ namespace HomeWork11.classlib
                     switch (listDigit[i])
                     {
                         case 0:
-                            wordNumber = listDigit.Count > 1 ? Digit[1] : Number[0];
+                            if (listDigit.Count > 1)
+                            {
+                                wordNumber = string.Empty;
+                                wordDigit = string.Empty;
+                            }
                             break;
                         case 1:
                             if (wordDigit == "สิบ")
@@ -75,7 +79,6 @@ namespace HomeWork11.classlib
                             break;
                     }
                     numberSB.Append(wordNumber).Append(wordDigit);
-
                 }
             }
             else
