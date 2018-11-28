@@ -1,0 +1,27 @@
+[
+  {
+    "SKU": "p01",
+    "Name": "iPad Pro 11-inch",
+    "Price": 23900.0
+  },
+  {
+    "SKU": "p03",
+    "Name": "MacBook Pro with Touch Bar",
+    "Price": 47900.0
+  },
+  {
+    "SKU": "p09",
+    "Name": "Mac Mini 2018",
+    "Price": 27900.0
+  },
+  {
+    "SKU": "p02",
+    "Name": "Apple Watch Series 4",
+    "Price": 14400.0
+  },
+  {
+    "SKU": "p04",
+    "Name": "Apple TV 4K",
+    "Price": 8500.0
+  }
+]
