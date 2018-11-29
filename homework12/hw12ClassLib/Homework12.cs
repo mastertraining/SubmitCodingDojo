@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 
 namespace hw12ClassLib
 {
@@ -6,12 +8,19 @@ namespace hw12ClassLib
     {
         public char FirstDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var groupText = text.GroupBy(it => it).FirstOrDefault(it => it.Count() > 1);
+            var result = groupText != null ? groupText.First() : '-';
+
+            return result;
+
         }
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var groupText = text.GroupBy(it => it).FirstOrDefault(it => it.Count() == 1);
+            var result = groupText != null ? groupText.First() : '-';
+
+            return result;
         }
     }
 }
