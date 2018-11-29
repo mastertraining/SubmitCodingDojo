@@ -6,15 +6,15 @@ namespace Homework12
     {
         public char FirstDuplicateCharactor(string text)
         {
-            var splitChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() > 1);
-            var result = splitChar == null ? '-' : splitChar.Key;
+            var firstDuplicateChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() > 1);
+            var result = firstDuplicateChar == null ? '-' : firstDuplicateChar.Key;
             return result;
         }
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            var splitChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() < 2d);
-            var result = splitChar == null ? '-' : splitChar.Key;
+            var firstNotDuplicateChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() < 2d);
+            var result = firstNotDuplicateChar == null ? '-' : firstNotDuplicateChar.Key;
             return result;
         }
     }
