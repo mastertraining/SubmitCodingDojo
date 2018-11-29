@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace homework12
 {
@@ -6,7 +7,9 @@ namespace homework12
     {
         public char FirstDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var firstDuplicateChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() > 1);
+            var result = firstDuplicateChar == null ? '-' : firstDuplicateChar.Key;
+            return result;
         }
 
         public char FirstNotDuplicateCharactor(string text)
