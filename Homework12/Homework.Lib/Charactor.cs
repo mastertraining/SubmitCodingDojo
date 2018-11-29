@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Homework.Lib
 {
@@ -22,7 +23,8 @@ namespace Homework.Lib
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var cha = text.ToCharArray();
+            return '-';
         }
     }
 }
