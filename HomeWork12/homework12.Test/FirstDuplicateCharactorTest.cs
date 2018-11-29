@@ -6,7 +6,10 @@ namespace homework12.Test
     public class FirstDuplicateCharactorTest
     {
         [Theory]
-        [InlineData("ZXCVBNMASDFGHJ",'-')]
+        [InlineData("ZXCVBNMASDFGHJ", '-')]
+        [InlineData("AsviaHcLKEjvDJhFjhfd", 'v')]
+        [InlineData("ZXCVBNZXCVBMASDFGHJMASDFGHJ", 'Z')]
+        [InlineData("ZXCZXCVBNMASDFGHJVBNMASZXCVBNMASDFGHJDFGHJ", 'Z')]
         public void CheckFirstDuplicateCharactor(string inputString, char expected)
         {
             var sut = new FirstDuplicateCharactorLogic();
@@ -15,7 +18,10 @@ namespace homework12.Test
         }
 
         [Theory]
-        [InlineData("ZXCVBNMASDFGHJ",'Z')]
+        [InlineData("ZXCVBNMASDFGHJ", 'Z')]
+        [InlineData("AsviaHcLKEjvDJhFjhfd", 'A')]
+        [InlineData("ZXCVBNZXCVBMASDFGHJMASDFGHJ", 'N')]
+        [InlineData("ZXCZXCVBNMASDFGHJVBNMASZXCVBNMASDFGHJDFGHJ", '-')]
         public void CheckFirstNotDuplicateCharactorr(string inputString, char expected)
         {
             var sut = new FirstDuplicateCharactorLogic();
