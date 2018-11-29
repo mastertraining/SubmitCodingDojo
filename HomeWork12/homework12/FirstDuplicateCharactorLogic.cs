@@ -14,7 +14,9 @@ namespace homework12
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var FirstNotDuplicateChar = text.ToCharArray().GroupBy(it => it).FirstOrDefault(it => it.Count() == 1);
+            var result = FirstNotDuplicateChar == null ? '-' : FirstNotDuplicateChar.Key;
+            return result;
         }
     }
 }
