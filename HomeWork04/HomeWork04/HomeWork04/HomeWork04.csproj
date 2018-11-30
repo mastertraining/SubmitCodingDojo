@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HomeWork04.lib.Contract\HomeWork04.lib.Contract.csproj" />
+    <ProjectReference Include="..\HomeWork04.lib\HomeWork04.lib.csproj" />
+  </ItemGroup>
+
+</Project>
