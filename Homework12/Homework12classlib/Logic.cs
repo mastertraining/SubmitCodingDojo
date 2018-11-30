@@ -24,14 +24,14 @@ namespace Homework12classlib
         public char FirstNotDuplicateCharactor(string text)
         {
             var returnchar = text.ToCharArray();
-            var x = returnchar.GroupBy(it => it);
-            var y = x.Where(it => it.Count() == 1);
-            var z = y.FirstOrDefault();
-            if (z == null)
+            var Group = returnchar.GroupBy(it => it);
+            var GroupWhere = Group.Where(it => it.Count() == 1);
+            var result = GroupWhere.FirstOrDefault();
+            if (result == null)
             {
                 return '-';
             }
-            return z.Key;
+            return result.Key;
 
         }
     }
