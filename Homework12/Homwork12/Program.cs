@@ -9,14 +9,11 @@ namespace Homwork12
         {
             Console.WriteLine("Input somthing");
             string text = Console.ReadLine();
-
             var logic = new Logic();
             var resultDuplicate = logic.FirstDuplicateCharactor(text);
-            //  var resultNotDuplicate = logic.FirstNotDuplicateCharactor(text);
-
+            var resultNotDuplicate = logic.FirstNotDuplicateCharactor(text);
             Console.WriteLine($"First duplicate charactor is: {resultDuplicate}");
-
-            // Console.WriteLine($"First not duplicate charactor is: {resultNotDuplicate}");
+            Console.WriteLine($"First not duplicate charactor is: {resultNotDuplicate}");
         }
     }
 }

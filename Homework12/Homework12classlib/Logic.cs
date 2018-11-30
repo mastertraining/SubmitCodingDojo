@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Homework12classlib
 {
@@ -17,12 +18,21 @@ namespace Homework12classlib
                     }
                 }
             }
-             return '-';
+            return '-';
         }
 
         public char FirstNotDuplicateCharactor(string text)
         {
-            throw new NotImplementedException();
+            var returnchar = text.ToCharArray();
+            var x = returnchar.GroupBy(it => it);
+            var y = x.Where(it => it.Count() == 1);
+            var z = y.FirstOrDefault();
+            if (z == null)
+            {
+                return '-';
+            }
+            return z.Key;
+
         }
     }
 }
