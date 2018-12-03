@@ -14,15 +14,15 @@ namespace ProgramHomework08
             System.Console.WriteLine("Enter your number");
             var input = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i <= input; i++)
+            for (int i = 1; i <= input; i++)
             {
-                if (i == 0)
+                if (i == 1)
                 {
-                    addStr.Append(new string(' ', input - i)).Append("/").Append("|").AppendLine();
+                    addStr.Append(new string('x', input - i)).Append("/").Append("|").AppendLine();
                 }
                 else if (i == input)
                 {
-                    addStr.Append("/").Append(new string('9', input)).Append("|");
+                    addStr.Append("/").Append(new string('_', input)).Append("|");
                 }
                 else
                 {
