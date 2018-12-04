@@ -17,21 +17,16 @@ namespace homework13.lib
             var isTextValid = text.Contains("99");
             if (!isTextValid) return false;
 
-            for (int i = 0; i < text.Length; i++)
+            for (int i = 0; i < text.Length - 1; i++)
             {
-                var isNinetyNineNumber = text[i] == '9';
+                var isNinetyNineNumber = text[i] == '9' && text[i + 1] == '9';
                 if (!isNinetyNineNumber) continue;
 
-                var isNextNumberBeNine = false;
-                if (i + 1 < text.Length) isNextNumberBeNine = text[i + 1] == '9';
-
-                var isBeyoundNextNumberBeNine = false;
-                if (i + 2 < text.Length) isBeyoundNextNumberBeNine = text[i + 2] == '9';
-
-                var isPreviousNumberBeNine = false;
-                if (i - 1 >= 0) isPreviousNumberBeNine = text[i - 1] == '9';
-
-                if (isNextNumberBeNine && !isBeyoundNextNumberBeNine && !isPreviousNumberBeNine) return true;
+                var nextNumberIndex = i + 2;
+                var previousNumberIndex = i - 1;
+                var isNextNumberBeNine = nextNumberIndex < text.Length ? text[nextNumberIndex] == '9' : false;
+                var isPreviousNumberBeNine = previousNumberIndex >= 0 ? text[previousNumberIndex] == '9' : false;
+                if (!isNextNumberBeNine && !isPreviousNumberBeNine) return true;
             }
             return false;
         }
