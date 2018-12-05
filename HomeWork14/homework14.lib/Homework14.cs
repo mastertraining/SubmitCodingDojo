@@ -15,7 +15,7 @@ namespace homework14.lib
         private int player2_numberStack;
         private int player2_combo;
 
-        private bool IsGameEnd => player1_distance == WinnerDistance || player2_distance == WinnerDistance;
+        public bool IsGameEnd => player1_distance == WinnerDistance || player2_distance == WinnerDistance;
 
         public string RenderDistance
         {
@@ -69,12 +69,16 @@ namespace homework14.lib
             if (isEvenNumber)
             {
                 player1_distance -= player2_combo;
+                if (player1_distance < 0) player1_distance = 0;
+
                 player1_numberStack++;
                 player2_numberStack = ResetNumberStack;
             }
             else
             {
                 player2_distance -= player1_combo;
+                if (player2_distance < 0) player2_distance = 0;
+
                 player1_numberStack = ResetNumberStack;
                 player2_numberStack++;
             }
