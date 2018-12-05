@@ -79,6 +79,10 @@ namespace homework14.test
             Assert.Equal(expected, result);
 
             gameControl.SetupANewGame();
+            result = gameControl.RenderDistance;
+            expected = $"Koo (20): ********************{Environment.NewLine}Kee (20): ********************";
+            Assert.Equal(expected, result);
+
             result = gameControl.GetGameResult(2);
             expected = $"Koo (19): *******************{Environment.NewLine}Kee (20): ********************";
             Assert.Equal(expected, result);
@@ -127,8 +131,23 @@ namespace homework14.test
             Assert.Equal(expected, result);
 
             gameControl.SetupANewGame();
+            result = gameControl.RenderDistance;
+            expected = $"Koo (20): ********************{Environment.NewLine}Kee (20): ********************";
+            Assert.Equal(expected, result);
+
             result = gameControl.GetGameResult(5);
             expected = $"Koo (20): ********************{Environment.NewLine}Kee (19): *******************";
+            Assert.Equal(expected, result);
+        }
+
+        [Theory(DisplayName = "Give wrong number, system should not calculate these cases")]
+        [InlineData(0)]
+        [InlineData(-1)]
+        public void GameCalculate_WrongInput(int number)
+        {
+            var gameControl = new Homework14();
+            var result = gameControl.GetGameResult(number);
+            var expected = $"Koo (20): ********************{Environment.NewLine}Kee (20): ********************";
             Assert.Equal(expected, result);
         }
     }

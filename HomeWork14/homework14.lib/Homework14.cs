@@ -5,68 +5,91 @@ namespace homework14.lib
 {
     public class Homework14 : IHomework14
     {
-        private int player1_distance;
-        private int player1_distanceStack;
-        private int player1_distanceStackCount;
-        private int player2_distance;
-        private int player2_distanceStack;
-        private int player2_distanceStackCount;
+        private const int ResetNumberStack = 0;
 
-        private string RenderDistance
+        private int player1_distance;
+        private int player1_numberStack;
+        private int player1_combo;
+        private int player2_distance;
+        private int player2_numberStack;
+        private int player2_combo;
+
+        public string RenderDistance
         {
             get
             {
+                var player1_score = player1_distance.ToString("00");
+                var player1_displayDistance = new string('*', player1_distance);
+
+                var player2_score = player2_distance.ToString("00");
+                var player2_displayDistance = new string('*', player2_distance);
+
                 var display = new StringBuilder();
-                display.AppendLine($"Koo ({player1_distance.ToString("00")}): {new string('*', player1_distance)}");
-                display.Append($"Kee ({player2_distance.ToString("00")}): {new string('*', player2_distance)}");
+                display.AppendLine($"Koo ({player1_score}): {player1_displayDistance}").
+                        Append($"Kee ({player2_score}): {player2_displayDistance}");
+
                 if (player1_distance == 0) display.Append($"{Environment.NewLine}The Winner is MR.Koo");
                 if (player2_distance == 0) display.Append($"{Environment.NewLine}The Winner is MR.Kee");
                 return display.ToString();
             }
         }
 
-        public Homework14()
-        {
-            SetupANewGame();
-        }
+        public Homework14() => SetupANewGame();
 
         public string GetGameResult(int number)
         {
-            if (number % 2 == 0)
-            {
-                player1_distance -= 1 + player2_distanceStackCount;
-                player1_distanceStack++;
-                player2_distanceStack = 0;
-            }
-            else
-            {
-                player2_distance -= 1 + player1_distanceStackCount;
-                player1_distanceStack = 0;
-                player2_distanceStack++;
-            }
+            var isNumberValid = number > 0;
+            if (isNumberValid) CalculateDistance(number);
 
-            if (player2_distanceStack == 3)
-            {
-                player2_distanceStackCount++;
-                player2_distanceStack = 0;
-            }
-            if (player1_distanceStack == 3)
-            {
-                player1_distanceStackCount++;
-                player1_distanceStack = 0;
-            }
             return RenderDistance;
         }
 
         public void SetupANewGame()
         {
-            const int DefaultDistance = 20;
-            player1_distance = DefaultDistance;
-            player2_distance = DefaultDistance;
-            player1_distanceStack = 0;
-            player1_distanceStackCount = 0;
-            player2_distanceStack = 0;
-            player2_distanceStackCount = 0;
+            const int ResetDistance = 20;
+            player1_distance = ResetDistance;
+            player2_distance = ResetDistance;
+
+            player1_numberStack = ResetNumberStack;
+            player2_numberStack = ResetNumberStack;
+
+            const int ResetCombo = 1;
+            player1_combo = ResetCombo;
+            player2_combo = ResetCombo;
+        }
+
+        private void CalculateDistance(int number)
+        {
+            var isEvenNumber = number % 2 == 0;
+            if (isEvenNumber)
+            {
+                player1_distance -= player2_combo;
+                player1_numberStack++;
+                player2_numberStack = ResetNumberStack;
+            }
+            else
+            {
+                player2_distance -= player1_combo;
+                player1_numberStack = ResetNumberStack;
+                player2_numberStack++;
+            }
+
+            CalculateCombo();
+        }
+
+        private void CalculateCombo()
+        {
+            const int MaximumStack = 3;
+            if (player1_numberStack == MaximumStack)
+            {
+                player1_combo++;
+                player1_numberStack = ResetNumberStack;
+            }
+            else if (player2_numberStack == MaximumStack)
+            {
+                player2_combo++;
+                player2_numberStack = ResetNumberStack;
+            }
         }
     }
 }
