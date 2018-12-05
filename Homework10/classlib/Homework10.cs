@@ -32,7 +32,7 @@ public class Homework10: IHomework10
         Tuple<string, string, double> row;
         using (TextReader fileReader = File.OpenText(_filePath))
         {
-            fileReader.ReadLine(); // Ignored header of csv file.
+            fileReader.ReadLine(); 
             var csv = new CsvReader(fileReader);
             while (csv.Read())
             {
@@ -60,8 +60,8 @@ public class Homework10: IHomework10
         using (StreamReader reader = new StreamReader(_filePath))
         {
             string json = reader.ReadToEnd();
-            data = JsonConvert.DeserializeObject<ILoadSaved>(json);
-            this.cart = data.ordering;
+            data        = JsonConvert.DeserializeObject<ILoadSaved>(json);
+            this.cart   = data.ordering;
         }
         return data.ToString();
     }
