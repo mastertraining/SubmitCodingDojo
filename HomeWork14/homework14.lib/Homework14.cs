@@ -5,6 +5,7 @@ namespace homework14.lib
 {
     public class Homework14 : IHomework14
     {
+        private const int WinnerDistance = 0;
         private const int ResetNumberStack = 0;
 
         private int player1_distance;
@@ -13,6 +14,8 @@ namespace homework14.lib
         private int player2_distance;
         private int player2_numberStack;
         private int player2_combo;
+
+        private bool IsGameEnd => player1_distance == WinnerDistance || player2_distance == WinnerDistance;
 
         public string RenderDistance
         {
@@ -28,8 +31,8 @@ namespace homework14.lib
                 display.AppendLine($"Koo ({player1_score}): {player1_displayDistance}").
                         Append($"Kee ({player2_score}): {player2_displayDistance}");
 
-                if (player1_distance == 0) display.Append($"{Environment.NewLine}The Winner is MR.Koo");
-                if (player2_distance == 0) display.Append($"{Environment.NewLine}The Winner is MR.Kee");
+                if (player1_distance == WinnerDistance) display.Append($"{Environment.NewLine}The Winner is MR.Koo");
+                if (player2_distance == WinnerDistance) display.Append($"{Environment.NewLine}The Winner is MR.Kee");
                 return display.ToString();
             }
         }
@@ -60,6 +63,8 @@ namespace homework14.lib
 
         private void CalculateDistance(int number)
         {
+            if (IsGameEnd) return;
+
             var isEvenNumber = number % 2 == 0;
             if (isEvenNumber)
             {

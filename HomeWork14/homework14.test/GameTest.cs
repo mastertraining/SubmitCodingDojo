@@ -150,5 +150,56 @@ namespace homework14.test
             var expected = $"Koo (20): ********************{Environment.NewLine}Kee (20): ********************";
             Assert.Equal(expected, result);
         }
+
+        [Fact(DisplayName = "Give a number even game is end, system should not calculate these cases")]
+        public void GameCalculate_InputNumber_EvenGameIsEnd()
+        {
+            var gameControl = new Homework14();
+            var result = gameControl.GetGameResult(5);
+            var expected = $"Koo (20): ********************{Environment.NewLine}Kee (19): *******************";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(90);
+            expected = $"Koo (19): *******************{Environment.NewLine}Kee (19): *******************";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(3);
+            expected = $"Koo (19): *******************{Environment.NewLine}Kee (18): ******************";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(7);
+            expected = $"Koo (19): *******************{Environment.NewLine}Kee (17): *****************";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(9);
+            expected = $"Koo (19): *******************{Environment.NewLine}Kee (16): ****************";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(2);
+            expected = $"Koo (17): *****************{Environment.NewLine}Kee (16): ****************";
+            Assert.Equal(expected, result);
+
+            for (int i = 0; i < 14; i++) result = gameControl.GetGameResult(3);
+
+            result = gameControl.GetGameResult(3);
+            expected = $"Koo (17): *****************{Environment.NewLine}Kee (01): *";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(2);
+            expected = $"Koo (10): **********{Environment.NewLine}Kee (01): *";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(1);
+            expected = $"Koo (10): **********{Environment.NewLine}Kee (00): {Environment.NewLine}The Winner is MR.Kee";
+            Assert.Equal(expected, result);
+
+            result = gameControl.GetGameResult(1);
+            expected = $"Koo (10): **********{Environment.NewLine}Kee (00): {Environment.NewLine}The Winner is MR.Kee";
+            Assert.Equal(expected, result);
+            
+            result = gameControl.GetGameResult(2);
+            expected = $"Koo (10): **********{Environment.NewLine}Kee (00): {Environment.NewLine}The Winner is MR.Kee";
+            Assert.Equal(expected, result);
+        }
     }
 }
