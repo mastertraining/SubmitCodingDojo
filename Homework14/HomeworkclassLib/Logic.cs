@@ -5,12 +5,13 @@ namespace HomeworkclassLib
 {
     public class Logic : IHomework14
     {
-        private int _speedkoo = 1;
-        private int _speedkee = 1;
-        private int _numdistancekoo = 20;
-        private int _numdistancekee = 20;
-        private int _countkoo = 0;
-        private int _countkee = 0;
+        private int _speedkoo;
+        private int _speedkee;
+        private int _numdistancekoo;
+        private int _numdistancekee;
+        private int _countkoo;
+        private int _countkee;
+        private int _winner;
 
         private string startGame;
 
@@ -51,11 +52,20 @@ namespace HomeworkclassLib
             var sb = new StringBuilder();
             sb.Append("Koo ").Append($"({_numdistancekoo}): {displayKoo}").AppendLine()
               .Append("Kee ").Append($"({_numdistancekee}): {displayKee}");
+
+            // ใครแพ้ใครชนะ
+            //var KooIsWinner = _numdistancekoo == _winner ? sb.Append("The Winner is MR.Kee"):sb.Append("The Winner is MR.Kee");
             return sb.ToString();
         }
         public void SetupANewGame()
         {
-            throw new NotImplementedException();
+            int ResetDistance = 20;
+            _numdistancekoo = ResetDistance;
+            _numdistancekee = ResetDistance;
+
+            int speed = 1;
+            _speedkoo = speed;
+            _speedkee = speed;
         }
     }
 }
