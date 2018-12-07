@@ -1,66 +1,105 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Homework14
 {
     public class Homework14 : IHomework14
     {
-        public int GoalDistance = 20;
-        public int MaxRunStack = 3;
-        public Runner Player1;
-        public Runner Player2;
+        public string RunnerEvenName { get; set; }
+        public string RunnerOddName { get; set; }
+        public int GoalDistance { get; set; }
+        public int MaxRunStack { get; set; }
+        public IEnumerable<Runner> RunnerList { get; set; }
 
         public Homework14()
         {
+            RunnerEvenName = "Koo";
+            RunnerOddName = "Kee";
+            GoalDistance = 20;
+            MaxRunStack = 3;
             SetupANewGame();
         }
 
         public string GetGameResult(int number)
         {
-            if(number%2 == 0)
-            {
-                var runBonus = Player1.BonusCount > 0 ? Player1.BonusCount : 0;
-                Player1.RunStack++;
-                Player1.RemainDistance -= 1 + runBonus;
-                Player1.BonusCount = 0;
-                if(Player1.RunStack == MaxRunStack)
-                {
-                    Player1.RunStack = 0;
-                    Player2.BonusCount++;
-                }
-                return string.Format($"{new String('*', Player1.RemainDistance)}{Environment.NewLine}{new String('*', Player2.RemainDistance)}");
-            }
-            else
-            {
-                var runBonus = Player2.BonusCount > 0 ? Player2.BonusCount : 0;
-                Player2.RunStack++;
-                Player2.RemainDistance -= 1 + runBonus;
-                Player2.BonusCount = 0;
-                if (Player2.RunStack == MaxRunStack)
-                {
-                    Player2.RunStack = 0;
-                    Player1.BonusCount++;
-                }
-                return string.Format($"{new String('*', Player1.RemainDistance)}{Environment.NewLine}{new String('*', Player2.RemainDistance)}");
-            }
+            var runnerName = number % 2 == 0 ? RunnerEvenName : RunnerOddName;
+            UpdateRunnerInfo(runnerName);
+            return DisplayGameResult();
         }
 
         public void SetupANewGame()
         {
-            Player1 = new Runner
+            RunnerList = new List<Runner>
             {
-                Name = "Koo",
-                RemainDistance = GoalDistance,
-                BonusCount = 0,
-                RunStack = 0
+                new Runner
+                {
+                    Name = RunnerEvenName,
+                    RemainDistance = GoalDistance,
+                    BonusDistance = 0,
+                    RunStack = 0,
+                    IsWin = false,
+                },
+                new Runner
+                {
+                    Name = RunnerOddName,
+                    RemainDistance = GoalDistance,
+                    BonusDistance = 0,
+                    RunStack = 0,
+                    IsWin = false,
+                }
             };
+        }
 
-            Player2 = new Runner
+        public void UpdateRunnerInfo(string name)
+        {
+            var mainRunner = RunnerList.First(it => it.Name == name);
+            var opponentRunner = name == RunnerEvenName ? RunnerList.First(it => it.Name == RunnerOddName) : RunnerList.First(it => it.Name == RunnerEvenName);
+            var runBonus = mainRunner.BonusDistance > 0 ? mainRunner.BonusDistance : 0;
+            mainRunner.RemainDistance -= 1 + runBonus;
+            mainRunner.BonusDistance = 0;
+            CheckRunInRow(mainRunner,opponentRunner);
+            if (mainRunner.RemainDistance <= 0)
             {
-                Name = "Kee",
-                RemainDistance = GoalDistance,
-                BonusCount = 0,
-                RunStack = 0
-            };
+                mainRunner.IsWin = true;
+            }
+        }
+
+        public void CheckRunInRow(Runner mainRunner,Runner opponentRunner)
+        {
+            mainRunner.RunStack++;
+            opponentRunner.RunStack = 0;
+            if (mainRunner.RunStack == MaxRunStack)
+            {
+                mainRunner.RunStack = 0;
+                opponentRunner.BonusDistance++;
+            }
+        }
+
+        public string DisplayGameResult()
+        {
+            var builder = new StringBuilder();
+            var evenRunner = RunnerList.First(it => it.Name == RunnerEvenName);
+            var oddRunner = RunnerList.First(it => it.Name == RunnerOddName);
+            var evenStar = evenRunner.RemainDistance > 0 ? new string('*', evenRunner.RemainDistance) : "";
+            var oddStar = oddRunner.RemainDistance > 0 ? new string('*', oddRunner.RemainDistance) : "";
+            builder
+                .Append($"{evenRunner.Name}").Append($" ({evenRunner.RemainDistance}):").Append(evenStar).AppendLine()
+                .Append($"{oddRunner.Name}").Append($" ({oddRunner.RemainDistance}):").Append(oddStar).AppendLine();
+            if (evenRunner.IsWin || oddRunner.IsWin)
+            {
+                var winnerName = evenRunner.IsWin ? evenRunner.Name : oddRunner.Name;
+                builder
+                    .Append($"The Winner is MR.{winnerName}")
+                    .AppendLine()
+                    .Append("Do you want to try again?: ");
+                SetupANewGame();
+            }
+            else
+            {
+                builder.Append("Please input a number: ");
+            }
+            return builder.ToString();
         }
     }
 
@@ -69,7 +108,7 @@ namespace Homework14
         public string Name { get; set; }
         public int RemainDistance { get; set; }
         public int RunStack { get; set; }
-        public int BonusCount { get; set; }
+        public int BonusDistance { get; set; }
         public bool IsWin { get; set; }
     }
 }
