@@ -11,7 +11,15 @@ namespace homework14console
             {
                 var koo = 5;
                 var kee = 5;
-                var maximum = 3;
+
+                var maximumCountKoo = 3;
+                var maximumCountKee = 3;
+
+                var comboKoo = 0;
+                var comboKee = 0;
+
+                var resetcombo = 0;
+
                 var nameKoo = "Mr.Koo";
                 var nameKee = "Mr.Kee";
 
@@ -21,9 +29,12 @@ namespace homework14console
                 var numberKee = kee.ToString();
                 var numberKees = new string('*', kee);
 
+                var countStarKoo = new string('*', koo);
+                var countStarKee = new string('*', kee);
+
+
                 System.Console.WriteLine($"Koo ({koo}) :{numberKoos}");
                 System.Console.WriteLine($"Kee ({kee}) :{numberKees}");
-
                 for (int i = 0; i < kee || i < koo; i++)
                 {
                     Console.Write("Please Input Numbers : ");
@@ -33,16 +44,28 @@ namespace homework14console
                     if (isEvenNumber)
                     {
                         koo -= 1;
-                        var countStar = new string('*', koo);
-                        System.Console.WriteLine($"Koo ({koo}) :{countStar}");
+                        countStarKoo = new string('*', koo);
+                        System.Console.WriteLine($"Koo ({koo}) :{countStarKoo}");
                         System.Console.WriteLine($"Kee ({kee}) :{numberKees}");
+                        if (koo == maximumCountKoo)
+                        {
+                            kee -= 1;
+                            countStarKee = new string('*', koo);
+                            resetcombo = maximumCountKoo;
+                        }
                     }
                     else
                     {
                         kee -= 1;
-                        var countStar = new string('*', kee);
+                        countStarKee = new string('*', kee);
                         System.Console.WriteLine($"Koo ({koo}) :{numberKoos}");
-                        System.Console.WriteLine($"Kee ({kee}) :{countStar}");
+                        System.Console.WriteLine($"Kee ({kee}) :{countStarKee}");
+                        if (kee == maximumCountKee)
+                        {
+                            koo -= 1;
+                            countStarKee = new string('*', kee);
+                            resetcombo = maximumCountKee;
+                        }
                     }
                 }
                 if (koo == 0)
