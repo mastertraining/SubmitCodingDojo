@@ -52,18 +52,24 @@ namespace HomeworkclassLib
             var sb = new StringBuilder();
             sb.Append("Koo ").Append($"({_numdistancekoo}): {displayKoo}").AppendLine()
               .Append("Kee ").Append($"({_numdistancekee}): {displayKee}");
-
-            // ใครแพ้ใครชนะ
-            //var KooIsWinner = _numdistancekoo == _winner ? sb.Append("The Winner is MR.Kee"):sb.Append("The Winner is MR.Kee");
+              
+            if (_numdistancekoo == 0)
+            {
+                sb.AppendLine().Append("The Winner is MR.Koo");
+            }
+            if (_numdistancekee == 0)
+            {
+                sb.AppendLine().Append("The Winner is MR.Kee");
+            }
             return sb.ToString();
         }
         public void SetupANewGame()
         {
-            int ResetDistance = 20;
+            const int ResetDistance = 20;
             _numdistancekoo = ResetDistance;
             _numdistancekee = ResetDistance;
 
-            int speed = 1;
+            const int speed = 1;
             _speedkoo = speed;
             _speedkee = speed;
         }
